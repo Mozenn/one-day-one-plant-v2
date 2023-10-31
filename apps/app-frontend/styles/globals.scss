@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~react-datepicker/dist/react-datepicker.css";
+
+:root {
+  --color-primary: rgb(123, 168, 119); //#7ba877
+  --color-primary-light: rgb(214, 244, 207); //#bad8b3
+  --color-primary-dark: rgb(71, 92, 68); //#475c44
+  --color-primary-disabled: rgb(103, 112, 99); //#677063
+  --color-secondary: rgb(148, 134, 107); //#94866b
+  --color-secondary-light: rgb(241, 235, 224); // #f1ebe0
+  --color-secondary-dark: rgb(77, 65, 62);
+  --color-secondary-dark-light: rgb(114, 99, 95);
+  --color-secondary-disabled: rgb(135, 129, 127);
+  --color-danger: rgb(167, 82, 67);
+  --color-danger-dark: rgb(131, 64, 52);
+  --color-background: rgb(255, 255, 255);
+  --color-background-hex: 255, 255, 255;
+  --color-background-dark: rgb(87, 87, 87);
+
+  --color-grade-novice: var(--color-primary);
+  --color-grade-confirmed: var(--color-secondary);
+  --color-grade-senior: rgb(74, 96, 182);
+  --color-grade-guardian: rgb(126, 90, 162);
+
+  background-color: var(--color-background);
+  color: var(--color-primary-dark);
+
+  --filter-primary: invert(65%) sepia(16%) saturate(735%) hue-rotate(68deg)
+    brightness(93%) contrast(83%);
+  --filter-primary-dark: invert(31%) sepia(46%) saturate(251%) hue-rotate(65deg)
+    brightness(92%) contrast(87%);
+  --filter-primary-light: invert(93%) sepia(25%) saturate(351%)
+    hue-rotate(46deg) brightness(93%) contrast(81%);
+  --filter-primary-disabled: invert(38%) sepia(1%) saturate(3628%) hue-rotate(57deg) brightness(105%) contrast(74%);
+  --filter-secondary: invert(57%) sepia(3%) saturate(2475%) hue-rotate(1deg)
+    brightness(93%) contrast(89%);
+  --filter-secondary-dark: invert(60%) sepia(11%) saturate(770%)
+    hue-rotate(1deg) brightness(87%) contrast(85%);
+  --filter-white: invert(100%) sepia(0%) saturate(7500%) hue-rotate(175deg)
+    brightness(121%) contrast(114%);
+  --filter-danger: invert(39%) sepia(44%) saturate(714%) hue-rotate(321deg)
+    brightness(89%) contrast(89%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // TODO handle Dark Theme 
+    // --foreground-rgb: 255, 255, 255;
+    // --background-start-rgb: 0, 0, 0;
+    // --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  // TODO handle Dark Theme 
+  // color: rgb(var(--foreground-rgb));
+  // background: linear-gradient(
+  //     to bottom,
+  //     transparent,
+  //     rgb(var(--background-end-rgb))
+  //   )
+  //   rgb(var(--background-start-rgb));
+}
+
+.react-datepicker {
+  border-radius: 20px;
+
+  button {
+    outline: none;
+  }
+}
+
+.react-datepicker__current-month {
+  color: var(--color-secondary-dark);
+}
+
+.react-datepicker__day-name {
+  color: var(--color-secondary-dark);
+}
+
+.react-datepicker__header {
+  background-color: var(--color-secondary-light);
+  color: var(--color-primary-dark);
+}
+
+.react-datepicker__day {
+  color: var(--color-secondary-dark);
+
+  &:hover {
+    background-color: var(--color-secondary-light);
+  }
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--color-primary-light);
+
+  &:hover {
+    background-color: var(--color-primary);
+  }
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--color-primary-light);
+
+  &:hover {
+    background-color: var(--color-primary);
+  }
+}
+
+.globalButton {
+  @apply bg-primary text-white rounded-3xl
+  text-xl p-3 m-2 font-normal cursor-pointer transition-colors duration-300
+  hover:bg-primary-dark
+  active:bg-primary-light active:text-primary-dark;
+}

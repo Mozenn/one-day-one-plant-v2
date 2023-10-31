@@ -1,0 +1,14 @@
+.button {
+  @apply border-none cursor-none outline-inherit bg-black text-primary-dark
+          transition-colors duration-300
+          hover:text-primary-light;
+}
+
+.container {
+  @apply absolute top-80 right-20 box-border h-auto inline-block bg-white text-primary-dark
+  rounded-3xl border-solid border-primary-dark;
+}
+
+.list {
+  @apply list-none py-0 px-2 flex flex-col items-center;
+}

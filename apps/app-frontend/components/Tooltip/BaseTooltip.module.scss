@@ -1,0 +1,7 @@
+.tooltip {
+  @apply absolute box-border w-60 text-base text-secondary-dark bg-white border-solid border-2 border-primary-dark rounded-s-3xl opacity-0 z-[-1] transition-opacity duration-500;
+
+  p {
+    @apply m-0 p-2;
+  }
+}

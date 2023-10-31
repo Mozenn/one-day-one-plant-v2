@@ -1,0 +1,9 @@
+.tooltip {
+  composes: tooltip from "./BaseTooltip.module.scss";
+
+  @apply w-fit text-xs text-secondary-dark bg-secondary-light border-2 border-solid border-secondary-light rounded-s-3xl;
+
+  p {
+    @apply p-2;
+  }
+}

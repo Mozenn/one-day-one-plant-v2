@@ -1,0 +1,48 @@
+.page {
+  @apply text-center text-base text-secondary-dark outline-none py-[0.2rem] px-[0.3rem] w-full;
+}
+
+.pageLabel {
+  composes: page;
+  @apply cursor-pointer w-full;
+}
+
+.pageInput {
+  composes: page;
+  @apply bg-transparent border-none outline-none py-[0.2rem] px-[0.3rem] w-full;
+}
+
+.baseButton {
+  @apply flex items-center outline-none border-2 border-solid border-primary-dark rounded-full;
+}
+
+.button {
+  composes: baseButton;
+  @apply cursor-pointer bg-white transition-colors duration-200;
+
+  img {
+    @apply filter-secondary-dark;
+  }
+
+  &:hover {
+    @apply bg-secondary;
+
+    img {
+      @apply filter-primary-dark;
+    }
+  }
+
+  &:active {
+    @apply bg-secondary-light;
+  }
+}
+
+.buttonDisabled {
+  composes: baseButton;
+
+  @apply bg-primary-disabled;
+
+  img {
+    @apply filter-white;
+  }
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "username": "hey",
+    "email": "example@gmail.com",
+    "score": 0,
+    "grade": "NOVICE",
+    "profilePlant": 1,
+    "createdAt": "2023-10-11T06:21:04.656Z",
+    "lastDrawDate": "2023-10-09T06:21:04.656Z",
+    "lastDrawPlant": 1
+  },
+  {
+    "id": 2,
+    "username": "Gauthier",
+    "email": "example@outlook.com",
+    "score": 0,
+    "grade": "NOVICE",
+    "profilePlant": 2,
+    "createdAt": "2023-10-11T06:21:04.656Z",
+    "lastDrawDate": "2023-10-11T06:21:04.656Z",
+    "lastDrawPlant": 2
+  }
+]

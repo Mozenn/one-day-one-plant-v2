@@ -1,0 +1,7 @@
+.container {
+  @apply flex items-center [&>label]:mr-3;
+
+  input {
+    @apply border-2 border-solid border-primary-dark rounded-2xl outline-none items-center text-secondary-dark text-sm;
+  }
+}

@@ -1,0 +1,51 @@
+.columnLabelButton {
+  @apply bg-transparent outline-none border-none cursor-pointer w-auto mr-4;
+
+  label {
+    @apply text-primary-dark text-base underline cursor-pointer;
+  }
+
+  &:hover {
+    label {
+      @apply text-primary-light;
+    }
+  }
+}
+
+.labelActive {
+  label {
+    color: var(--color-secondary);
+  }
+
+  &:hover {
+    label {
+      color: var(--color-secondary-light);
+    }
+  }
+}
+
+.columnLabelSortButton {
+  @apply flex items-center border-2 border-solid border-primary-dark rounded-lg bg-background outline-none cursor-pointer;
+
+  img {
+    @apply h-auto w-6 filter-primary-dark p-[12%];
+  }
+}
+
+.active {
+  color: var(--color-secondary);
+  img {
+    filter: var(--filter-secondary-dark);
+  }
+}
+
+.filters {
+  input {
+    border: 2px solid var(--color-primary-dark);
+    border-radius: 15px;
+    text-align: center;
+    outline: none;
+    padding: 0.2rem 0rem;
+    color: var(--color-secondary-dark);
+  }
+}

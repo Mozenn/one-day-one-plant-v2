@@ -1,0 +1,19 @@
+.container {
+  @apply flex items-center bg-primary text-white w-full min-h-[6rem] max-h-[10vh] m-0;
+}
+
+.button {
+  @apply bg-background text-primary-dark border-none rounded-2xl
+          text-base p-1.5 m-2 font-normal cursor-pointer outline-none
+          transition-colors duration-300
+          hover:bg-primary-light
+          active:bg-primary-dark active:text-white;
+
+  img {
+    @apply h-auto w-auto transition-colors ease-in-out duration-100;
+    // TODO add filter
+  }
+}
+
+// --filter-primary-dark: invert(31%) sepia(46%) saturate(251%) hue-rotate(65deg)
+// brightness(92%) contrast(87%);
