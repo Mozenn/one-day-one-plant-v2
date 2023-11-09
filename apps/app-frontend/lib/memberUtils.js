@@ -15,7 +15,12 @@ export const getMemberFromId = (memberId) => {
     return member.id === memberId;
   });
 
-  const plant = getPlantFromId(member.lastDrawPlant);
+  const drawPlant = getPlantFromId(member.lastDrawPlant);
+  const profilePlant = getPlantFromId(member.profilePlant);
 
-  return { ...member, lastDrawPlant: plant };
+  return {
+    ...member,
+    lastDrawPlant: drawPlant,
+    profileImageUrl: profilePlant.imageUrl,
+  };
 };

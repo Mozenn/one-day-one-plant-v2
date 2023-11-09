@@ -5,7 +5,6 @@ export interface Member extends TableRow {
   username: string;
   email: string;
   score: number;
-  grade: string;
   profileImageUrl: string;
   createdAt: string;
   lastDrawDate: string;

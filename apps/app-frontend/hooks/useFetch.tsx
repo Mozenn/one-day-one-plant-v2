@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import useAuth from "./useAuth";
+import { useEffect } from "react";
 
 export type UseFetchParams = {
   [key: string]: any;
@@ -52,10 +53,14 @@ function useFetch<T>(
         result = resultAccumulator(res, result);
       }
 
-      console.log("RES", result);
+      console.log("fetch result", result);
       return result;
     }
   );
+
+  useEffect(() => {
+    console.log("fetch effect " + data);
+  }, [data]);
 
   return {
     data,

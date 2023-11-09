@@ -1,5 +1,6 @@
 "use client";
 
+import HeroCapsule from "@/components/Home/HeroCapsule";
 import useAuth from "../hooks/useAuth";
 import Link from "next/link";
 
@@ -48,6 +49,58 @@ export default function Home() {
     },
   ];
 
+  const heroCapsules = [
+    {
+      id: 1,
+      url: "/images/landing/hero/acer-saccharinum.jpg",
+      alt: "image of a acer saccharinum",
+      borderColor: "primary",
+      additionalStyle: "rotate-[30deg] top-40 left-20",
+    },
+    {
+      id: 2,
+      url: "/images/landing/hero/abies-lasiocarpa.jpg",
+      alt: "image of a abies lasiocarpa",
+      borderColor: "secondary",
+      additionalStyle: "rotate-[15deg] top-[10rem] left-[85rem]",
+    },
+    {
+      id: 3,
+      url: "/images/landing/hero/edelweiss.jpg",
+      alt: "image of a edelweiss",
+      borderColor: "primary",
+      additionalStyle: "rotate-[-24deg] top-[45rem] left-[50rem]",
+    },
+    {
+      id: 4,
+      url: "/images/landing/hero/pistia-stratiotes.jpg",
+      alt: "image of a pistia stratiotes",
+      borderColor: "secondary",
+      additionalStyle: "rotate-[5deg] top-[15rem] left-[60rem]",
+    },
+    {
+      id: 5,
+      url: "/images/landing/hero/sour-cherry.jpg",
+      alt: "image of a sour cherry",
+      borderColor: "primary",
+      additionalStyle: "rotate-[-15deg] top-[38rem] left-[80rem]",
+    },
+    {
+      id: 6,
+      url: "/images/landing/hero/subalpinefir.jpg",
+      alt: "image of a subalpinefir",
+      borderColor: "secondary",
+      additionalStyle: "rotate-[-25deg] top-[10rem] left-[38rem] !w-48",
+    },
+    {
+      id: 7,
+      url: "/images/landing/hero/subalpinefir2.jpg",
+      alt: "image of a subalpinefir",
+      borderColor: "primary",
+      additionalStyle: "rotate-[5deg] top-[38rem] left-[15rem] !w-48",
+    },
+  ];
+
   return (
     <div className='flex flex-col'>
       {isAuthenticated() ? (
@@ -72,23 +125,19 @@ export default function Home() {
         </main>
       ) : (
         <main
-          className='flex flex-col items-center flex-1 m-0 min-h-[80vh] py-20 px-0'
+          className='flex flex-col items-center flex-1 m-0 min-h-[80vh] pb-20 px-0'
           role='main'
         >
-          <section className='flex flex-col items-center flex-1 w-full'>
+          <section className='flex flex-col items-center justify-center w-full h-[100vh]'>
             <h1
-              className='text-primary-dark text-4xl p-4 rounded-full'
+              className='text-primary-dark text-5xl font-semibold p-4 rounded-full'
               role='heading'
             >
               Welcome to One Day One Plant !
             </h1>
-            <div className='flex items-center mb-12'>
-              <img
-                className='ml-28 h-[30rem]'
-                src='/images/landing/hero.png'
-                alt='hero landing page image'
-              />
-            </div>
+            {heroCapsules.map((capsule) => (
+              <HeroCapsule key={capsule.id} capsuleProps={capsule} />
+            ))}
           </section>
           {sections.map((section) => {
             const text = (
@@ -98,14 +147,14 @@ export default function Home() {
                 }`}
               >
                 <h2
-                  className={`text-2xl self-start mb-0 ${
+                  className={`text-3xl self-start mb-0 ${
                     section.alignLeft ? "self-start mb-0" : ""
                   }`}
                 >
                   {section.title}
                 </h2>
                 <p
-                  className={`mb-[5vh] max-w-sm text-lg ${
+                  className={`mb-[5vh] max-w-sm text-xl ${
                     section.alignLeft ? "mr-60" : ""
                   }`}
                 >
@@ -126,7 +175,7 @@ export default function Home() {
               <section
                 key={section.id}
                 className={`flex items-center justify-around mb-12 w-full py-8 ${
-                  section.colored ? "bg-primary-light" : ""
+                  section.colored ? "bg-primary text-white" : ""
                 }`}
               >
                 {section.alignLeft ? text : img}
@@ -135,7 +184,10 @@ export default function Home() {
             );
           })}
           <section className='mt-16'>
-            <button className='globalButton' onClick={onJoinClicked}>
+            <button
+              className='globalButton !text-2xl hover:scale-110'
+              onClick={onJoinClicked}
+            >
               Start Collecting
             </button>
           </section>

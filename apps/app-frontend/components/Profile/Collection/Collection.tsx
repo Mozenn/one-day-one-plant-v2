@@ -40,9 +40,9 @@ const Collection = () => {
   };
 
   return (
-    <div className='min-h-[60vh]'>
+    <div className='flex flex-col items-center min-h-[60vh] w-full'>
       <h2
-        className='text-primary-dark text-4xl p-4 rounded-full'
+        className='text-primary-dark text-4xl p-4 rounded-full font-bold'
         role='heading'
       >
         Collection

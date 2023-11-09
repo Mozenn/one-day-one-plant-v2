@@ -24,6 +24,7 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          'landing-background': "url('/images/landing/bg.png')",
       },
       colors: {
         'primary': "var(--color-primary)",
@@ -40,6 +41,11 @@ const config: Config = {
         'background': "var(--color-background)",
         'background-hex': "var(--color-background-hex)",
         'background-dark': "var(--color-background-dark)",
+        'novice': "var(--color-grade-novice)",
+        'hobbyist': "var(--color-grade-hobbyist)",
+        'connoisseur': "var(--color-grade-connoisseur)",
+        'scholar': "var(--color-grade-scholar)",
+        'worshiper': "var(--color-grade-worshiper)",
       }
     },
   },
@@ -47,13 +53,13 @@ const config: Config = {
     plugin(function({ addUtilities }) {
       addUtilities({
         '.filter-primary': {
-          filter: 'invert(65%) sepia(16%) saturate(735%) hue-rotate(68deg) brightness(93%) contrast(83%)',
+          filter: 'invert(65%) sepia(79%) saturate(372%) hue-rotate(68deg) brightness(94%) contrast(92%)',
         },
         '.filter-primary-dark': {
-          filter: 'invert(31%) sepia(46%) saturate(251%) hue-rotate(65deg) brightness(92%) contrast(87%)',
+          filter: 'invert(23%) sepia(85%) saturate(525%) hue-rotate(65deg) brightness(94%) contrast(96%)',
         },
         '.filter-primary-light': {
-          filter: 'invert(93%) sepia(25%) saturate(351%) hue-rotate(46deg) brightness(93%) contrast(81%)',
+          filter: 'invert(96%) sepia(8%) saturate(2229%) hue-rotate(47deg) brightness(99%) contrast(87%)',
         },
         '.filter-primary-disabled': {
           filter: 'invert(38%) sepia(1%) saturate(3628%) hue-rotate(57deg) brightness(105%) contrast(74%)',

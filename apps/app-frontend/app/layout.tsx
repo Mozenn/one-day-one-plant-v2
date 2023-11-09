@@ -1,10 +1,10 @@
 import "../styles/globals.scss";
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-const openSans = Open_Sans({ subsets: ["latin"] });
+const font = Nunito_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "One Day One Plant",
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={openSans.className}>
+      <body className={font.className}>
         <Header />
         {children}
         <Footer />

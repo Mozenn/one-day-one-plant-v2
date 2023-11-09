@@ -1,25 +1,34 @@
 [
   {
     "id": 1,
-    "name": "sour cherry",
-    "scientificName": "prunus cerasus",
+    "name": "Sour Cherry",
+    "scientificName": "Prunus Cerasus",
     "family": "Rosaceae",
     "createdAt": "2023-10-11T06:21:04.656Z",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg/796px-Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg",
     "urls": [
-      "https://en.wikipedia.org/wiki/Prunus_cerasus",
-      "https://inpn.mnhn.fr/espece/cd_nom/116054"
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Prunus_cerasus"
+      },
+      {
+        "label": "INP",
+        "url": "https://inpn.mnhn.fr/espece/cd_nom/116054"
+      }
     ]
   },
   {
     "id": 2,
-    "name": "chinese witch hazel",
-    "scientificName": "hamamelis mollis",
+    "name": "Chinese witch Hazel",
+    "scientificName": "Hamamelis Mollis",
     "family": "Hamamelidaceae",
     "createdAt": "2023-10-11T06:21:04.656Z",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Hamamelis_mollis0.jpg/220px-Hamamelis_mollis0.jpg",
     "urls": [
-      "https://en.wikipedia.org/wiki/Hamamelis_mollis"
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Hamamelis_mollis"
+      }
     ]
   }
 ]

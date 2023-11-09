@@ -4,7 +4,7 @@
 
 .button {
   @apply bg-background text-primary-dark border-none rounded-2xl
-          text-base p-1.5 m-2 font-normal cursor-pointer outline-none
+          text-lg p-2 m-2 font-semibold cursor-pointer outline-none
           transition-colors duration-300
           hover:bg-primary-light
           active:bg-primary-dark active:text-white;

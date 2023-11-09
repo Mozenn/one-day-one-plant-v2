@@ -6,31 +6,32 @@ import { Member } from "@/types/member";
 import { useState, useEffect } from "react";
 import Timer from "@/components/Timer/Timer";
 import { cooldownBetweenDraw } from "@/lib/timeUtils";
+import Link from "next/link";
 
 const Collect = () => {
-  const [inCooldown, setInCooldown] = useState(true);
+  const [inCooldown, setInCooldown] = useState(false);
   const { authId, getAuthClient } = useAuth();
-  const { data: member, mutate } = useFetch<Member>({
-    url: `/api/member`,
+  const { data, mutate } = useFetch<Member>({
+    url: `/member`,
     params: {
       id: authId,
     },
   });
 
   useEffect(() => {
-    if (member) {
+    if (data) {
       setInCooldown(
-        new Date().getTime() - new Date(member.lastDrawDate).getTime() >
+        new Date().getTime() - new Date(data.lastDrawDate).getTime() <
           cooldownBetweenDraw
       );
     }
-  }, [member]);
+  }, [data]);
 
   const fetchRandomPlant = async () => {
     const axiosClient: any = await getAuthClient();
 
     const requestData = {
-      memberId: authId,
+      dataId: authId,
     };
     const url = `${process.env.NEXT_PUBLIC_API_URL}/plant/draw`;
     const response = await axiosClient.get(url, requestData);
@@ -43,17 +44,25 @@ const Collect = () => {
   const renderButtons = () => {
     if (!inCooldown) {
       return (
-        <button onClick={fetchRandomPlant} className='!mt-6 globalButton'>
+        <button
+          onClick={fetchRandomPlant}
+          className='!mt-6 globalButton !text-2xl hover:scale-110'
+        >
           Collect
         </button>
       );
-    } else if (member && member.lastDrawPlant) {
+    } else if (data && data.lastDrawPlant) {
       return (
         <>
-          <Timer lastDrawDate={member!.lastDrawDate} />
-          <a href={member?.lastDrawPlant.imageUrl} className='globalButton'>
-            Learn more
-          </a>
+          <Timer lastDrawDate={data!.lastDrawDate} />
+          {data &&
+            data.lastDrawPlant.urls.map((data) => {
+              return (
+                <a key={data.label} href={data.url} className='globalButton'>
+                  {`Learn more on ${data.label}`}
+                </a>
+              );
+            })}
         </>
       );
     }
@@ -61,24 +70,36 @@ const Collect = () => {
 
   const renderImage = () => {
     const readyToCollect =
-      !inCooldown || !member || member.lastDrawPlant === undefined;
+      !inCooldown || !data || data.lastDrawPlant === undefined;
 
     return (
-      <img
-        className='text-primary p-8 h-[20rem] w-auto filter-primary transition-transform hover:animate-wiggle'
-        src={
-          readyToCollect
-            ? "/images/icons/question.svg"
-            : member.lastDrawPlant.imageUrl
-        }
-        alt={readyToCollect ? "question mark icon" : "last drawn plant"}
-      />
+      <div className='bg-white border-solid border-primary-dark border-[0.8rem] rounded-3xl'>
+        <img
+          className={`text-primary p-8 h-[20rem] w-auto ${
+            readyToCollect
+              ? "filter-primary transition-transform hover:animate-wiggle"
+              : ""
+          }`}
+          src={
+            readyToCollect
+              ? "/images/icons/question.svg"
+              : data.lastDrawPlant.imageUrl
+          }
+          alt={readyToCollect ? "question mark icon" : "last drawn plant"}
+        />
+      </div>
     );
   };
 
   const renderName = () => {
-    if (inCooldown && member && member.lastDrawPlant !== undefined) {
-      return <p className=''>{member.lastDrawPlant.name}</p>;
+    if (inCooldown && data && data.lastDrawPlant !== undefined) {
+      return (
+        <Link href={`/plant/${data.lastDrawPlant.id}`} passHref>
+          <p className='text-2xl mt-4 font-bold underline transition-colors duration-200 hover:text-primary-light active:text-primary'>
+            {data.lastDrawPlant.name}
+          </p>
+        </Link>
+      );
     }
   };
 
@@ -88,14 +109,12 @@ const Collect = () => {
       role='main'
     >
       <h1
-        className='text-primary-dark text-4xl p-4 rounded-full'
+        className='text-primary-dark text-4xl p-6 rounded-full mb-4'
         role='heading'
       >
         Collect your daily plant
       </h1>
-      <div className='bg-secondary-light border-solid border-primary border-[0.4rem] rounded-3xl'>
-        {renderImage()}
-      </div>
+      {renderImage()}
       {renderName()}
       {renderButtons()}
     </main>

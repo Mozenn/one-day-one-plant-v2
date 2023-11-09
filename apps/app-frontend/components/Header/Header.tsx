@@ -57,7 +57,7 @@ const Header = () => {
             </div>
           </>
         ) : (
-          <div className='flex items-center font-normal my-0 mr-4 ml-auto'>
+          <div className='flex items-center my-0 mr-4 ml-auto'>
             <button onClick={onLoginClicked} className={styles.button}>
               Log in
             </button>

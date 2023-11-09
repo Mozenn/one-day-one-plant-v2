@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
   }
 
   const id = +request.nextUrl.searchParams.get('id')!;
-  const data = getPlantFromId(id);
+  const plant = getPlantFromId(id);
  
-  return Response.json({ data });
+  return Response.json(plant);
 }

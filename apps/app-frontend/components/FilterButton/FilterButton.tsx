@@ -19,10 +19,19 @@ const FilterButton = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <button
-        className={`${styles.button} ${showOverlay && styles.active}`}
+        className={` bg-background border-2 border-solid border-primary-dark rounded-xl 
+        transition-[colors_0.2s,transform_0.5s] duration-100 cursor-pointer outline-none
+        hover:rotate-[35deg]
+        ${showOverlay && "bg-primary transition-[colors_0.2s,transform_0.5s]"}`}
         onClick={onButtonClicked}
       >
-        <img src='/images/icons/filter.svg' alt='filter icon' />
+        <img
+          src='/images/icons/filter.svg'
+          alt='filter icon'
+          className={`w-6 filter-primary-dark ${
+            showOverlay && "w-6 filter-white"
+          }`}
+        />
       </button>
       {showOverlay && <FilterButtonOverlay />}
       <SmallTooltip

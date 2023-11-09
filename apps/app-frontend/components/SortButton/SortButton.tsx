@@ -1,4 +1,3 @@
-import styles from "./SortButton.module.scss";
 import { useContext, useState } from "react";
 import { SortContext } from "../../contexts/sortContext";
 import SortButtonOverlay from "./SortButtonOverlay";
@@ -14,17 +13,23 @@ const SortButton = () => {
 
   return (
     <div
-      className={styles.container}
+      className='relative flex flex-col items-start'
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <button
-        className={`${styles.button} ${showOverlay && styles.active}`}
+        className={`bg-background border-solid border-2 border-primary-dark rounded-xl
+        [transition:_background-color_0.1s,transform_0.1s_ease-out] cursor-pointer outline-none
+        hover:rotate-[45deg]
+        ${showOverlay && "bg-primary"}`}
         onClick={onButtonClicked}
       >
         <img
           src={`/images/icons/sort${sortParams.direction}.svg`}
           alt='sort icon'
+          className={`w-8 p-1 filter-primary-dark ${
+            showOverlay && "filter-white"
+          }`}
         />
       </button>
       {showOverlay && <SortButtonOverlay />}
