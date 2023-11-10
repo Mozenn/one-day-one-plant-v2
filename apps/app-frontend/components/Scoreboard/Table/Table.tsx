@@ -36,11 +36,20 @@ const Table = <T extends TableRow>({
     <div className='flex flex-col items-center mt-16 min-h-[88vh]'>
       <div className='flex items-start'>
         <button
-          className={`${styles.filterButton} ${showOverlay && styles.selected}`}
+          className={`flex items-center border-2 border-solid border-primary-dark 
+          rounded-xl bg-background outline-none cursor-pointer 
+          transition-transform duration-500 mr-8 mt-8 hover:rotate-45
+          ${showOverlay && "bg-primary"}`}
           onClick={() => setShowOverlay(!showOverlay)}
           data-testid='filter-button'
         >
-          <img src='/images/icons/filter.svg' alt='filter button icon' />
+          <img
+            src='/images/icons/filter.svg'
+            alt='filter button icon'
+            className={`filter-primary-dark p-[12%] h-8 ${
+              showOverlay && "filter-white"
+            }`}
+          />
         </button>
         <table className={styles.table}>
           <TableHead columns={columns} />

@@ -54,13 +54,10 @@ function useFetch<T>(
       }
 
       console.log("fetch result", result);
+
       return result;
     }
   );
-
-  useEffect(() => {
-    console.log("fetch effect " + data);
-  }, [data]);
 
   return {
     data,

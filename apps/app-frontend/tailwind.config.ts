@@ -23,8 +23,10 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-          'landing-background': "url('/images/landing/bg.png')",
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+      },
+      boxShadow: {
+        'plant-thumbnail': 'inset 5em 5em 5em 1em rgba(132, 230, 34,0.5)'
       },
       colors: {
         'primary': "var(--color-primary)",
@@ -62,19 +64,19 @@ const config: Config = {
           filter: 'invert(96%) sepia(8%) saturate(2229%) hue-rotate(47deg) brightness(99%) contrast(87%)',
         },
         '.filter-primary-disabled': {
-          filter: 'invert(38%) sepia(1%) saturate(3628%) hue-rotate(57deg) brightness(105%) contrast(74%)',
+          filter: 'invert(46%) sepia(20%) saturate(381%) hue-rotate(59deg) brightness(89%) contrast(94%)',
         },
         '.filter-secondary': {
-          filter: 'invert(57%) sepia(3%) saturate(2475%) hue-rotate(1deg) brightness(93%) contrast(89%)',
+          filter: 'invert(37%) sepia(10%) saturate(2949%) hue-rotate(1deg) brightness(109%) contrast(82%)',
         },
         '.filter-secondary-dark': {
-          filter: 'invert(60%) sepia(11%) saturate(770%) hue-rotate(1deg) brightness(87%) contrast(85%)',
+          filter: 'invert(11%) sepia(28%) saturate(1001%) hue-rotate(330deg) brightness(98%) contrast(93%)',
         },
         '.filter-white': {
           filter: 'invert(100%) sepia(0%) saturate(7500%) hue-rotate(175deg) brightness(121%) contrast(114%)',
         },
         '.filter-danger': {
-          filter: 'invert(39%) sepia(44%) saturate(714%) hue-rotate(321deg) brightness(89%) contrast(89%)',
+          filter: 'invert(16%) sepia(54%) saturate(5466%) hue-rotate(2deg) brightness(98%) contrast(97%)',
         },
       })
     })

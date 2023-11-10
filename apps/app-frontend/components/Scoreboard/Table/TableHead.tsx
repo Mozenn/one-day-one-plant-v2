@@ -1,4 +1,3 @@
-import styles from "./TableHead.module.scss";
 import { useState, useEffect, useContext } from "react";
 import { SortContext } from "../../../contexts/sortContext";
 import { FilterContext } from "../../../contexts/filterContext";
@@ -83,27 +82,39 @@ const TableHead = <T extends TableRow>({
     <thead>
       <tr>
         {columns.map((column, index) => {
-          const isActiveSortColumn = index === activeSortColumnIndex;
+          const isActiveSortColumn: boolean = index === activeSortColumnIndex;
           return (
             <th key={column.name}>
               <div className='flex items-center justify-center'>
                 <button
                   onClick={() => setActiveColumn(index)}
-                  className={`${styles.columnLabelButton} ${
-                    isActiveSortColumn && styles.labelActive
+                  className={`bg-transparent outline-none border-none cursor-pointer w-auto mr-4 
+                  hover:[&>label]:text-primary-light
+                  ${
+                    isActiveSortColumn && "hover:[&>label]:text-secondary-light"
                   }`}
                 >
-                  <label>{column.name}</label>
+                  <label
+                    className={`text-primary-dark text-xl underline cursor-pointer
+                  ${isActiveSortColumn && "text-secondary"}
+                  `}
+                  >
+                    {column.name}
+                  </label>
                 </button>
                 <button
-                  className={`${styles.columnLabelSortButton} ${
-                    isActiveSortColumn && styles.active
+                  className={`flex items-center border-2 border-solid border-primary-dark 
+                  rounded-lg bg-background outline-none cursor-pointer ${
+                    isActiveSortColumn && "text-secondary"
                   }`}
                   onClick={() => toggleSortState(index)}
                 >
                   <img
                     src={`/images/icons/sort${columnSortStates[index]}.svg`}
                     alt='sort icon'
+                    className={`h-auto w-7 filter-primary-dark p-[12%] ${
+                      isActiveSortColumn && "filter-secondary"
+                    }`}
                   />
                 </button>
               </div>
@@ -112,20 +123,22 @@ const TableHead = <T extends TableRow>({
         })}
       </tr>
       {showOverlay && (
-        <tr className={styles.filters}>
+        <tr>
           {columns.map((column, index) => {
             switch (column.type) {
               case "text":
                 return (
                   <th
                     key={column.name + "filter"}
-                    className={styles.filter}
                     data-testid={`${column.propertyName}-filter`}
                   >
                     <input
                       value={getFilter(filterMapping[index])}
                       onChange={(e) => updateFilterValue(index, e.target.value)}
                       placeholder='...'
+                      className='border-2 border-solid border-primary-dark rounded-2xl
+                      text-center outline-none py-1 px-0 text-secondary-dark
+                      '
                     ></input>
                   </th>
                 );

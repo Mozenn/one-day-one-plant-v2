@@ -8,14 +8,14 @@
   --color-primary: rgb(89, 210, 84); //#59d254
   --color-primary-light: rgb(166, 237, 150); //#a6ed96
   --color-primary-dark: rgb(23, 88, 13); //#17580d
-  --color-primary-disabled: rgb(103, 112, 99); //#677063
-  --color-secondary: rgb(142, 108, 41); //#94866b
+  --color-primary-disabled: rgb(98, 116, 91); //#62745b
+  --color-secondary: rgb(142, 108, 41); //#8e6c29
   --color-secondary-light: rgb(232, 183, 93); // #f1ebe0
-  --color-secondary-dark: rgb(62, 35, 28);
+  --color-secondary-dark: rgb(62, 35, 28); // #382018
   --color-secondary-dark-light: rgb(74, 52, 46);
   --color-secondary-disabled: rgb(112, 97, 92);
-  --color-danger: rgb(220, 67, 40);
-  --color-danger-dark: rgb(144, 36, 17);
+  --color-danger: rgb(199, 34, 5); // #c72205
+  --color-danger-dark: rgb(126, 23, 5);
   --color-background: rgb(255, 255, 255);
   --color-background-hex: 255, 255, 255;
   --color-background-dark: rgb(87, 87, 87);
@@ -28,22 +28,6 @@
 
   background-color: var(--color-background);
   color: var(--color-primary-dark);
-
-  --filter-primary: invert(65%) sepia(16%) saturate(735%) hue-rotate(68deg)
-    brightness(93%) contrast(83%);
-  --filter-primary-dark: invert(31%) sepia(46%) saturate(251%) hue-rotate(65deg)
-    brightness(92%) contrast(87%);
-  --filter-primary-light: invert(93%) sepia(25%) saturate(351%)
-    hue-rotate(46deg) brightness(93%) contrast(81%);
-  --filter-primary-disabled: invert(38%) sepia(1%) saturate(3628%) hue-rotate(57deg) brightness(105%) contrast(74%);
-  --filter-secondary: invert(57%) sepia(3%) saturate(2475%) hue-rotate(1deg)
-    brightness(93%) contrast(89%);
-  --filter-secondary-dark: invert(60%) sepia(11%) saturate(770%)
-    hue-rotate(1deg) brightness(87%) contrast(85%);
-  --filter-white: invert(100%) sepia(0%) saturate(7500%) hue-rotate(175deg)
-    brightness(121%) contrast(114%);
-  --filter-danger: invert(39%) sepia(44%) saturate(714%) hue-rotate(321deg)
-    brightness(89%) contrast(89%);
 }
 
 @media (prefers-color-scheme: dark) {

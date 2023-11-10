@@ -28,8 +28,8 @@ const FilterButton = () => {
         <img
           src='/images/icons/filter.svg'
           alt='filter icon'
-          className={`w-6 filter-primary-dark ${
-            showOverlay && "w-6 filter-white"
+          className={`w-8 p-1 filter-primary-dark ${
+            showOverlay && "filter-white"
           }`}
         />
       </button>

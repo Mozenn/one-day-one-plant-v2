@@ -7,7 +7,6 @@ import { useContext } from "react";
 import useFetch, { FetchItem } from "../../hooks/useFetch";
 import Pagination from "../Pagination/Pagination";
 import { PaginationContext } from "../../contexts/paginationContext";
-import styles from "./Panel.module.scss";
 import { Page } from "../../types/page";
 import SortButton from "../SortButton/SortButton";
 import FilterButton from "../FilterButton/FilterButton";
@@ -61,6 +60,10 @@ const Panel = <T extends unknown>({
     }
   }, [data, elementCount, setElementCount]);
 
+  useEffect(() => {
+    console.log("effect pagep", page);
+  }, [page]);
+
   const anyContentToRender = () => {
     return !(!data || !data.content || elementCount <= 0);
   };
@@ -74,8 +77,8 @@ const Panel = <T extends unknown>({
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.buttons}>
+    <div className='flex flex-col items-center justify-center py-0 px-8 w-full'>
+      <div className='self-start w-full flex items-start content-between mt-8 [&>*]:mr-8'>
         <SortButton />
         <FilterButton />
       </div>
@@ -88,17 +91,14 @@ const Panel = <T extends unknown>({
                 panelInputs.gridSizeOverwrite
               ),
             }}
-            className={styles.items}
+            className='grid w-full my-8 justify-center items-center gap-8'
             data-testid='items-container'
           >
             {data?.content.map((item) => {
               return panelInputs.renderItem(item);
             })}
           </div>
-          <div
-            className={styles.paginationContainer}
-            data-testid='pagination-container'
-          >
+          <div className='mb-8' data-testid='pagination-container'>
             <Pagination />
           </div>
         </>

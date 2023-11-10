@@ -15,6 +15,26 @@ export const getMemberFromId = (memberId) => {
     return member.id === memberId;
   });
 
+  return fillMember(member);
+};
+
+export const getMemberPage = (page, elementsPerPage) => {
+  const members = getMembers();
+
+  const membersResult = members
+    .slice(
+      page === 0 ? page : page * elementsPerPage,
+      page === 0 ? elementsPerPage : (page + 1) * elementsPerPage
+    )
+    .map((member) => fillMember(member));
+
+  return {
+    content: membersResult,
+    total: members.length,
+  };
+};
+
+const fillMember = (member) => {
   const drawPlant = getPlantFromId(member.lastDrawPlant);
   const profilePlant = getPlantFromId(member.profilePlant);
 

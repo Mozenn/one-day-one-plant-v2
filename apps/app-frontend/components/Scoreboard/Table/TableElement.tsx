@@ -15,11 +15,11 @@ const TableElement = <T extends TableRow>({
         return (
           <td
             key={column.name.concat(row.id.toString())}
-            className={
+            className={`text-lg font-semibold ${
               isLink
                 ? "cursor-pointer underline transition-colors duration-200 hover:text-primary"
                 : ""
-            }
+            }`}
           >
             {row[column.propertyName as keyof TableRow]}
           </td>

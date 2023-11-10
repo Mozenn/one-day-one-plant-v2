@@ -1,33 +1,8 @@
-.button {
-  @apply flex items-center border-2 border-solid border-primary-dark rounded-xl bg-background outline-none cursor-pointer;
-
-  img {
-    @apply filter-primary-dark p-[12%] h-8;
-  }
-}
-
-.filterButton {
-  composes: button;
-  @apply transition-transform duration-500 mr-8 mt-8;
-
-  &:hover {
-    @apply rotate-45;
-  }
-}
-
-.selected {
-  @apply bg-primary;
-
-  img {
-    @apply filter-white;
-  }
-}
-
 .table {
-  @apply w-[60vw] border-2 border-solid border-primary-dark rounded-3xl border-spacing-0 border-separate text-center align-middle;
+  @apply w-[60vw] border-4 border-solid border-primary-dark rounded-3xl border-spacing-0 border-separate text-center align-middle;
 
   th {
-    @apply p-2 border-b-2 border-solid border-primary-dark;
+    @apply p-2 border-b-4 border-solid border-primary-dark;
   }
 
   td {

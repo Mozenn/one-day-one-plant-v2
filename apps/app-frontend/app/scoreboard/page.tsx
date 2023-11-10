@@ -19,7 +19,7 @@ const ScoreboardPage = () => {
       role='main'
     >
       <h1
-        className='text-primary-dark text-4xl p-4 rounded-full'
+        className='text-primary-dark text-4xl p-4 rounded-full font-bold'
         role='heading'
       >
         Scoreboard

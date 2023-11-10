@@ -24,7 +24,7 @@ const PlantPage = ({ params }: { params: { plantId: string } }) => {
             <img
               src={plant.imageUrl}
               alt={`A picture of a ${plant.name}`}
-              className='rounded-2xl border-solid border-4 border-secondary w-[40rem]'
+              className='rounded-2xl border-solid border-4 border-secondary w-[35rem]'
             />
             <div className='ml-14'>
               <h2 className='text-3xl font-bold mr-8 mb-4'>{plant.name}</h2>

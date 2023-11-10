@@ -6,7 +6,7 @@ import SortButtonOverlayButton from "./SortButtonOverlayButton";
 const SortButtonOverlay = () => {
   const { sortParams, setDirection, setKeyToSortBy, resetSort } =
     useContext(SortContext);
-
+  //[&>*:nth-child(1)]:
   return (
     <div
       className='relative top-3 flex flex-col p-4 bg-white border-2 border-solid border-primary-dark
@@ -18,19 +18,20 @@ const SortButtonOverlay = () => {
         <label>direction:</label>
         <div
           className='flex content-center justify-center mb-3 border-2 border-solid border-primary-dark rounded-xl
-        [&>*:nth-child(1)]:rounded-l-lg last:rounded-r-lg
         '
         >
           <SortButtonOverlayButton
             label={"ASC"}
             direction={sortParams.direction}
             currentDirection='asc'
+            additionalStyles='rounded-l-lg'
             onButtonClick={() => setDirection("asc")}
           />
           <SortButtonOverlayButton
             label={"DSC"}
             currentDirection='dsc'
             direction={sortParams.direction}
+            additionalStyles='rounded-r-lg'
             onButtonClick={() => setDirection("dsc")}
           />
         </div>

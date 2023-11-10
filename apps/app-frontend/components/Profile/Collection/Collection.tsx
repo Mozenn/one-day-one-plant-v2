@@ -37,6 +37,7 @@ const Collection = () => {
     renderItem: (itemData: Plant) => (
       <PlantThumbnail key={itemData.id} plantData={itemData} />
     ),
+    gridSizeOverwrite: 20,
   };
 
   return (
@@ -47,7 +48,7 @@ const Collection = () => {
       >
         Collection
       </h2>
-      <PaginationProvider>
+      <PaginationProvider elementsPerPage={8}>
         <FilterProvider initialFiltersOnOverlay={postInitialFilters}>
           <SortProvider initialKey='name'>
             <Panel panelInputs={plantsPanelInputs} />

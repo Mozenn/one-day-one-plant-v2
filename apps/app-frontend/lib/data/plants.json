@@ -30,5 +30,89 @@
         "url": "https://en.wikipedia.org/wiki/Hamamelis_mollis"
       }
     ]
+  },
+  {
+    "id": 3,
+    "name": "Asian pear",
+    "scientificName": "Pyrus Pyrifolia",
+    "family": "Rosaceae",
+    "createdAt": "2023-10-11T06:21:04.656Z",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Nashi_pear.jpg/800px-Nashi_pear.jpg",
+    "urls": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Pyrus_pyrifolia"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Silver maple",
+    "scientificName": "Acer Saccharinum",
+    "family": "Sapindaceae",
+    "createdAt": "2023-10-11T06:21:04.656Z",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Silber-Ahorn_%28Acer_saccharinum%29.jpg/220px-Silber-Ahorn_%28Acer_saccharinum%29.jpg",
+    "urls": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Acer_saccharinum"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Cucumber Tree",
+    "scientificName": "Magnolia Acuminata",
+    "family": "Magnoliaceae",
+    "createdAt": "2023-10-11T06:21:04.656Z",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Magnolia_acuminata.jpg/220px-Magnolia_acuminata.jpg",
+    "urls": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Magnolia_acuminata"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Korean Rhododendron",
+    "scientificName": "Rhododendron Mucronulatum",
+    "family": "Ericaceae",
+    "createdAt": "2023-10-11T06:21:04.656Z",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Korea-Jindallae-Rhododendron_mucronulatum-01.jpg/220px-Korea-Jindallae-Rhododendron_mucronulatum-01.jpg",
+    "urls": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Rhododendron_mucronulatum"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Water lettuce",
+    "scientificName": "Pistia",
+    "family": "Araceae",
+    "createdAt": "2023-10-11T06:21:04.656Z",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Pistia_stratiotes0.jpg/220px-Pistia_stratiotes0.jpg",
+    "urls": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Pistia"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Sessile Oak",
+    "scientificName": "Quercus Petraea",
+    "family": "Fagaceae",
+    "createdAt": "2023-10-11T06:21:04.656Z",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Quercus_petraea_06.jpg/220px-Quercus_petraea_06.jpg",
+    "urls": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Quercus_petraea"
+      }
+    ]
   }
 ]
