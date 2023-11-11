@@ -4,14 +4,8 @@ import PaginationProvider from "@/contexts/paginationContext";
 import SortProvider from "@/contexts/sortContext";
 
 const ScoreboardPage = () => {
-  const scoreboardData: ScoreboardData = {
-    tableData: {
-      tableElementType: "default",
-      fetchUrl: "/member/page",
-    },
-    elementsPerPage: 5,
-    initialSortKey: "name",
-  };
+  const elementsPerPage = 5;
+  const initialSortKey = "name";
 
   return (
     <main
@@ -24,10 +18,10 @@ const ScoreboardPage = () => {
       >
         Scoreboard
       </h1>
-      <PaginationProvider elementsPerPage={scoreboardData.elementsPerPage}>
-        <SortProvider initialKey={scoreboardData.initialSortKey}>
+      <PaginationProvider elementsPerPage={elementsPerPage}>
+        <SortProvider initialKey={initialSortKey}>
           <FilterProvider>
-            <Scoreboard tableData={scoreboardData.tableData} />
+            <Scoreboard />
           </FilterProvider>
         </SortProvider>
       </PaginationProvider>

@@ -47,7 +47,15 @@ const TableContent = <T extends TableRow>({
         onElementSelected={tableData.onElementSelected}
       />
     ) : (
-      <TableElement key={row[`${idProperty}`]} columns={columns} row={row} />
+      <TableElement
+        key={row[`${idProperty}`]}
+        columns={columns}
+        row={row}
+        additionalStyles={
+          tableData.additionalElementStyles &&
+          tableData.additionalElementStyles(row)
+        }
+      />
     );
   };
 

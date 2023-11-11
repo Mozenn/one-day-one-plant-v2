@@ -14,6 +14,7 @@ export type TableData<T> = {
   tableElementType: string;
   fetchUrl: string;
   onElementSelected?: OnElementSelected<T>;
+  additionalElementStyles?: (row: T) => string;
 };
 
 export type TableColumn<T> = {

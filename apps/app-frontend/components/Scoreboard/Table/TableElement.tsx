@@ -5,9 +5,11 @@ import { TableRow } from "@/types/tableRow";
 const TableElement = <T extends TableRow>({
   columns,
   row,
+  additionalStyles,
 }: {
   columns: TableColumn<T>[];
   row: T;
+  additionalStyles?: string;
 }) => {
   const renderColumn = (column: TableColumn<T>, isLink = false) => {
     switch (column.type) {
@@ -19,7 +21,7 @@ const TableElement = <T extends TableRow>({
               isLink
                 ? "cursor-pointer underline transition-colors duration-200 hover:text-primary"
                 : ""
-            }`}
+            } ${additionalStyles}`}
           >
             {row[column.propertyName as keyof TableRow]}
           </td>
