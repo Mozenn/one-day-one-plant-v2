@@ -4,8 +4,11 @@ import SortProvider from "../../../contexts/sortContext";
 import Panel, { PanelInputs } from "../../Panel/Panel";
 import PlantThumbnail from "@/components/PlantThumbnail/PlantThumbnail";
 import { Plant } from "@/types/plant";
+import useAuth from "@/hooks/useAuth";
 
 const Collection = () => {
+  const { authId } = useAuth();
+
   const postInitialFilters = [
     {
       filterId: "name",
@@ -33,6 +36,9 @@ const Collection = () => {
   const plantsPanelInputs: PanelInputs<Plant> = {
     fetchItem: {
       fetchUrl: "/plant/page",
+      extraParams: {
+        memberId: authId,
+      },
     },
     renderItem: (itemData: Plant) => (
       <PlantThumbnail key={itemData.id} plantData={itemData} />

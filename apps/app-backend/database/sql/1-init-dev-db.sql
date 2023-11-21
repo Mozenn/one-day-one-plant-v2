@@ -1,0 +1,111 @@
+\c odop_core;
+
+-- DROP TABLE IF EXISTS Plant;
+
+-- CREATE TABLE Plant (
+--     id SERIAL NOT NULL PRIMARY KEY,
+--     name TEXT NOT NULL,
+--     scientificName TEXT NOT NULL,
+--     family TEXT NOT NULL,
+--     createdAt TIMESTAMP DEFAULT NOW(),
+--     imageUrl TEXT NOT NULL,
+--     urls JSONB NOT NULL
+-- );
+
+-- DROP TABLE IF EXISTS Member;
+
+-- CREATE TABLE Member (
+--     id SERIAL NOT NULL PRIMARY KEY,
+--     username TEXT NOT NULL,
+--     email TEXT NOT NULL,
+--     score INT NOT NULL DEFAULT 0,
+--     profilePlantUrl TEXT NOT NULL DEFAULT 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg/796px-Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg',
+--     createdAt TIMESTAMP DEFAULT NOW(),
+--     lastDrawDate TIMESTAMP DEFAULT NOW(),
+--     lastDrawPlant INT DEFAULT NULL,
+--     CONSTRAINT fk_Member_Plant FOREIGN KEY(lastDrawPlant) REFERENCES Plant(id) ON DELETE CASCADE ON UPDATE CASCADE
+-- );
+
+-- INSERT INTO Plant (id, name, scientificName, family, createdAt, imageUrl, urls) VALUES 
+-- (DEFAULT,'Subalpine Fir','Abies Lasiocarpa','Pinaceae',NOW(),'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG',
+-- '[
+--     {
+--         "source": "Wikipedia",
+--         "url": "https://en.wikipedia.org/wiki/Abies_lasiocarpa"
+--     }
+-- ]'),
+-- (DEFAULT,'Sour Cherry','Prunus Cerasus','Rosaceae',NOW(),'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG',
+--     '[
+--         {
+--             "source": "Wikipedia",
+--             "url": "https://en.wikipedia.org/wiki/Prunus_cerasus"
+--         },
+--         {
+--             "source": "INP",
+--             "url": "https://inpn.mnhn.fr/espece/cd_nom/116054"
+--         }
+--     ]'
+-- ),
+-- (DEFAULT,'Chinese Witch Hazel','Hamamelis Mollis','Hamamelidaceae',NOW(),'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Hamamelis_mollis0.jpg/220px-Hamamelis_mollis0.jpg',
+-- '[
+--     {
+--         "source": "Wikipedia",
+--         "url": "https://en.wikipedia.org/wiki/Hamamelis_mollis"
+--     }
+-- ]'
+-- ),
+-- (DEFAULT,'Asian Pear','Pyrus Pyrifolia','Rosaceae',NOW(),'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Nashi_pear.jpg/800px-Nashi_pear.jpg',
+-- '[
+--     {
+--         "source": "Wikipedia",
+--         "url": "https://en.wikipedia.org/wiki/Pyrus_pyrifolia"
+--     }
+-- ]'
+-- ),
+-- (DEFAULT,'Silver Maple','Acer Saccharinum','Sapindaceae',NOW(),'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Silber-Ahorn_%28Acer_saccharinum%29.jpg/220px-Silber-Ahorn_%28Acer_saccharinum%29.jpg',
+-- '[
+--     {
+--         "source": "Wikipedia",
+--         "url": "https://en.wikipedia.org/wiki/Acer_saccharinum"
+--     }
+-- ]'
+-- ),
+-- (DEFAULT,'Cucumber Tree','Magnolia Acuminata','Magnoliaceae',NOW(),'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Magnolia_acuminata.jpg/220px-Magnolia_acuminata.jpg',
+-- '
+-- [
+--     {
+--         "label": "Wikipedia",
+--         "url": "https://en.wikipedia.org/wiki/Magnolia_acuminata"
+--     }
+-- ]
+-- '
+-- ),
+-- (DEFAULT,'Korean Rhododendron','Rhododendron Mucronulatum','Ericaceae',NOW(),'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Korea-Jindallae-Rhododendron_mucronulatum-01.jpg/220px-Korea-Jindallae-Rhododendron_mucronulatum-01.jpg',
+-- '[
+--     {
+--         "source": "Wikipedia",
+--         "url": "https://en.wikipedia.org/wiki/Rhododendron_mucronulatum"
+--     }
+-- ]'
+-- ),
+-- (DEFAULT,'Water Lettuce','Pistia','Araceae',NOW(),'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Pistia_stratiotes0.jpg/220px-Pistia_stratiotes0.jpg',
+-- '[
+--     {
+--         "source": "Wikipedia",
+--         "url": "https://en.wikipedia.org/wiki/Pistia"
+--     }
+-- ]'
+-- ),
+-- (DEFAULT,'Sessile Oak','Quercus Petraea','Fagaceae',NOW(),'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Quercus_petraea_06.jpg/220px-Quercus_petraea_06.jpg',
+-- '[
+--     {
+--         "source": "Wikipedia",
+--         "url": "https://en.wikipedia.org/wiki/Quercus_petraea"
+--     }
+-- ]'
+-- );
+
+-- INSERT INTO Member (id,username, email, score, profilePlantUrl, createdAt, lastDrawDate, lastDrawPlant) 
+-- VALUES 
+-- (DEFAULT,'user1','gauthier.cassany@gmail.com',10,'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG','2021-04-04 19:10:25','2021-05-04 19:10:25',1),
+-- (DEFAULT,'user2','gauthierclapiers@hotmail.fr',100,'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG','2021-04-05 12:18:25','2021-04-05 12:18:25',2);

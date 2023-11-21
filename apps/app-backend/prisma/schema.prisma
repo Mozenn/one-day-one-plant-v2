@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Member {
+  id              Int      @id @default(autoincrement())
+  username        String   @unique
+  email           String   @unique
+  score           Int      @default(0)
+  profilePlantUrl String   @default("https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg/796px-Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg")
+  createdAt       DateTime @default(now())
+  lastDrawDate    DateTime @default(now())
+  lastDrawPlant   Plant?   @relation(fields: [lastDrawPlantId], references: [id])
+  lastDrawPlantId Int
+}
+
+model Plant {
+  id             Int      @id @default(autoincrement())
+  name           String   @unique
+  scientificName String   @unique
+  family         String
+  createdAt      DateTime @default(now())
+  imageUrl       String
+  urls           Json
+  Member         Member[]
+}

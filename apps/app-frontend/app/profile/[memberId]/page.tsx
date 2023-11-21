@@ -8,6 +8,7 @@ import {
   getGradeBorderFromScore,
   getGradeFromScore,
 } from "../../../lib/gradeUtils";
+import NoContent from "@/components/NoContent/NoContent";
 
 const Profile = ({ params }: { params: { memberId: string } }) => {
   const { data: member } = useFetch<Member>({
@@ -18,7 +19,7 @@ const Profile = ({ params }: { params: { memberId: string } }) => {
   });
 
   if (!member) {
-    return null;
+    return <NoContent />;
   }
 
   return (

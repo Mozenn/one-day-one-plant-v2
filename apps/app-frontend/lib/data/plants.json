@@ -114,5 +114,19 @@
         "url": "https://en.wikipedia.org/wiki/Quercus_petraea"
       }
     ]
+  },
+  {
+    "id": 9,
+    "name": "Subalpine Fir",
+    "scientificName": "Abies Lasiocarpa",
+    "family": "Pinaceae",
+    "createdAt": "2023-10-11T06:21:04.656Z",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG",
+    "urls": [
+      {
+        "label": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Abies_lasiocarpa"
+      }
+    ]
   }
 ]
