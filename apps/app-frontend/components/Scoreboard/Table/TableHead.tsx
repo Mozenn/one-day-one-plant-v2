@@ -54,7 +54,7 @@ const TableHead = <T extends TableRow>({
       let currentDirection = loopState;
 
       if (index === loopIndex) {
-        currentDirection = loopState === "asc" ? "dsc" : "asc";
+        currentDirection = loopState === "asc" ? "desc" : "asc";
         newDirection = currentDirection;
       }
 

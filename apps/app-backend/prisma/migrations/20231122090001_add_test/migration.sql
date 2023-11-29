@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Member" ADD COLUMN     "test" INTEGER NOT NULL DEFAULT 1;

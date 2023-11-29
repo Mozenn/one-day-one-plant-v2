@@ -5,11 +5,7 @@ import useAuth from "../hooks/useAuth";
 import Link from "next/link";
 
 export default function Home() {
-  const { isAuthenticated, authId, register } = useAuth();
-
-  const onJoinClicked = async () => {
-    await register();
-  };
+  const { isAuthenticated, authId } = useAuth();
 
   const sections = [
     {
@@ -54,50 +50,50 @@ export default function Home() {
       id: 1,
       url: "/images/landing/hero/acer-saccharinum.jpg",
       alt: "image of a acer saccharinum",
-      borderColor: "primary",
       additionalStyle: "rotate-[30deg] top-40 left-20",
+      additionalImageStyle: "border-primary",
     },
     {
       id: 2,
       url: "/images/landing/hero/abies-lasiocarpa.jpg",
       alt: "image of a abies lasiocarpa",
-      borderColor: "secondary",
       additionalStyle: "rotate-[15deg] top-[10rem] left-[85rem]",
+      additionalImageStyle: "border-secondary",
     },
     {
       id: 3,
       url: "/images/landing/hero/edelweiss.jpg",
       alt: "image of a edelweiss",
-      borderColor: "primary",
       additionalStyle: "rotate-[-24deg] top-[45rem] left-[50rem]",
+      additionalImageStyle: "border-primary",
     },
     {
       id: 4,
       url: "/images/landing/hero/pistia-stratiotes.jpg",
       alt: "image of a pistia stratiotes",
-      borderColor: "secondary",
       additionalStyle: "rotate-[5deg] top-[15rem] left-[60rem]",
+      additionalImageStyle: "border-secondary",
     },
     {
       id: 5,
       url: "/images/landing/hero/sour-cherry.jpg",
       alt: "image of a sour cherry",
-      borderColor: "primary",
       additionalStyle: "rotate-[-15deg] top-[38rem] left-[80rem]",
+      additionalImageStyle: "border-primary",
     },
     {
       id: 6,
       url: "/images/landing/hero/subalpinefir.jpg",
       alt: "image of a subalpinefir",
-      borderColor: "secondary",
       additionalStyle: "rotate-[-25deg] top-[10rem] left-[38rem] !w-48",
+      additionalImageStyle: "border-secondary",
     },
     {
       id: 7,
       url: "/images/landing/hero/subalpinefir2.jpg",
       alt: "image of a subalpinefir",
-      borderColor: "primary",
       additionalStyle: "rotate-[5deg] top-[38rem] left-[15rem] !w-48",
+      additionalImageStyle: "border-primary",
     },
   ];
 
@@ -184,12 +180,11 @@ export default function Home() {
             );
           })}
           <section className='mt-16'>
-            <button
-              className='globalButton !text-2xl hover:scale-110'
-              onClick={onJoinClicked}
-            >
-              Start Collecting
-            </button>
+            <Link href='/auth/signup' passHref>
+              <p className='globalButton !text-2xl hover:scale-110'>
+                Start Collecting
+              </p>
+            </Link>
           </section>
         </main>
       )}

@@ -2,20 +2,18 @@
 
 import useAuth from "@/hooks/useAuth";
 import useFetch from "@/hooks/useFetch";
-import { Member } from "@/types/member";
+import { User } from "@/types/user";
 import { useState, useEffect } from "react";
 import Timer from "@/components/Timer/Timer";
 import { cooldownBetweenDraw } from "@/lib/timeUtils";
 import Link from "next/link";
+import { capitalize } from "@/lib/stringUtils";
 
 const Collect = () => {
   const [inCooldown, setInCooldown] = useState(false);
   const { authId, getAuthClient } = useAuth();
-  const { data, mutate } = useFetch<Member>({
-    url: `/member`,
-    params: {
-      id: authId,
-    },
+  const { data, mutate } = useFetch<User>({
+    url: `user/${authId}`,
   });
 
   useEffect(() => {
@@ -58,8 +56,8 @@ const Collect = () => {
           {data &&
             data.lastDrawPlant.urls.map((data) => {
               return (
-                <a key={data.label} href={data.url} className='globalButton'>
-                  {`Learn more on ${data.label}`}
+                <a key={data.source} href={data.url} className='globalButton'>
+                  {`Learn more on ${capitalize(data.source)}`}
                 </a>
               );
             })}
@@ -75,10 +73,10 @@ const Collect = () => {
     return (
       <div className='bg-white border-solid border-primary-dark border-[0.8rem] rounded-3xl'>
         <img
-          className={`text-primary p-8 h-[20rem] w-auto ${
+          className={`text-primary h-[20rem] w-auto ${
             readyToCollect
-              ? "filter-primary transition-transform hover:animate-wiggle"
-              : ""
+              ? "filter-primary transition-transform hover:animate-wiggle p-8"
+              : "rounded-xl"
           }`}
           src={
             readyToCollect
@@ -96,7 +94,7 @@ const Collect = () => {
       return (
         <Link href={`/plant/${data.lastDrawPlant.id}`} passHref>
           <p className='text-2xl mt-4 font-bold underline transition-colors duration-200 hover:text-primary-light active:text-primary'>
-            {data.lastDrawPlant.name}
+            {capitalize(data.lastDrawPlant.name)}
           </p>
         </Link>
       );

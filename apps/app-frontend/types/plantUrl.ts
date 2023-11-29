@@ -1,4 +1,4 @@
 export interface PlantUrl {
-  label: string;
+  source: string;
   url: string;
 }

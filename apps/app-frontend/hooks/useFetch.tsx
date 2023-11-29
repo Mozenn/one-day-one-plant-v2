@@ -1,6 +1,5 @@
 import useSWR from "swr";
 import useAuth from "./useAuth";
-import { useEffect } from "react";
 
 export type UseFetchParams = {
   [key: string]: any;

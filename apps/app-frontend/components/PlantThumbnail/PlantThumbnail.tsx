@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { Plant } from "../../types/plant";
+import { capitalize } from "@/lib/stringUtils";
 
 const PlantThumbnail = ({ plantData }: { plantData: Plant }) => {
   const router = useRouter();
@@ -24,15 +25,15 @@ const PlantThumbnail = ({ plantData }: { plantData: Plant }) => {
       onClick={onClick}
     >
       <h3 className='text-2xl font-black m-1 stroke-gray-500'>
-        {plantData.name}
+        {capitalize(plantData.name)}
       </h3>
       <div>
         <label className='mr-2'>Scientific Name :</label>
-        <label>{plantData.scientificName}</label>
+        <label>{capitalize(plantData.scientificName)}</label>
       </div>
       <div>
         <label className='mr-2'>Family :</label>
-        <label>{plantData.family}</label>
+        <label>{capitalize(plantData.family)}</label>
       </div>
     </div>
   );

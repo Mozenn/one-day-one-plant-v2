@@ -1,11 +1,11 @@
 import { Plant } from "./plant";
 import { TableRow } from "./tableRow";
 
-export interface Member extends TableRow {
+export interface User extends TableRow {
   username: string;
   email: string;
   score: number;
-  profileImageUrl: string;
+  profilePlantUrl: string;
   createdAt: string;
   lastDrawDate: string;
   lastDrawPlant: Plant;

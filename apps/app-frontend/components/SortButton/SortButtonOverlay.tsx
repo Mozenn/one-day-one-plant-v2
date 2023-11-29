@@ -28,11 +28,11 @@ const SortButtonOverlay = () => {
             onButtonClick={() => setDirection("asc")}
           />
           <SortButtonOverlayButton
-            label={"DSC"}
-            currentDirection='dsc'
+            label={"DESC"}
+            currentDirection='desc'
             direction={sortParams.direction}
             additionalStyles='rounded-r-lg'
-            onButtonClick={() => setDirection("dsc")}
+            onButtonClick={() => setDirection("desc")}
           />
         </div>
       </div>

@@ -8,7 +8,7 @@ export class PageDto {
   @Transform((val) => +val.value)
   @Min(1)
   elementsPerPage: number;
-  @IsIn(['asc', 'dsc'])
+  @IsIn(['asc', 'desc'])
   direction: string = 'asc';
   key: string;
 }

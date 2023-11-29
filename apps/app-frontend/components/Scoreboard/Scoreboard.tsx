@@ -1,11 +1,11 @@
 "use client";
 
-import { Member } from "@/types/member";
+import { User } from "@/types/user";
 import Table, { TableColumn, TableData } from "./Table/Table";
 import useAuth from "@/hooks/useAuth";
 
 export type ScoreboardData = {
-  tableData: TableData<Member>;
+  tableData: TableData<User>;
   elementsPerPage: number;
   initialSortKey: string;
 };
@@ -14,13 +14,13 @@ const Scoreboard = () => {
   const { authId } = useAuth();
   const tableData = {
     tableElementType: "default",
-    fetchUrl: "/member/page",
-    additionalElementStyles: (row: Member) => {
+    fetchUrl: "user/page",
+    additionalElementStyles: (row: User) => {
       return row.id === authId ? "text-secondary" : "";
     },
   };
 
-  const columns: TableColumn<Member>[] = [
+  const columns: TableColumn<User>[] = [
     {
       name: "Username",
       propertyName: "username",

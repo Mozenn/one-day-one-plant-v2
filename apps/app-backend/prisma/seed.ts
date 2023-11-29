@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { hash } from 'bcrypt';
 
 const prisma = new PrismaClient();
 async function main() {
@@ -180,8 +181,8 @@ async function main() {
     sessileOak,
   });
 
-  const user1 = await prisma.member.upsert({
-    where: { email: 'alice@prisma.io' },
+  const user1 = await prisma.user.upsert({
+    where: { email: 'gauthier.cassany@gmail.com' },
     update: {},
     create: {
       username: 'user1',
@@ -190,11 +191,24 @@ async function main() {
       profilePlantUrl:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG',
       createdAt: new Date(),
+      password: await hash('pwd', 10),
       lastDrawDate: new Date('2021-05-04 19:10:25'),
       lastDrawPlantId: 1,
+      plants: {
+        connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
+        create: [
+          {
+            name: 'test',
+            scientificName: 'test',
+            family: 'test',
+            imageUrl: 'test',
+            urls: '{}',
+          },
+        ],
+      },
     },
   });
-  const user2 = await prisma.member.upsert({
+  const user2 = await prisma.user.upsert({
     where: { email: 'gauthierclapiers@hotmail.fr' },
     update: {},
     create: {
@@ -204,8 +218,12 @@ async function main() {
       profilePlantUrl:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG',
       createdAt: new Date(),
+      password: await hash('pwd', 10),
       lastDrawDate: new Date('2021-05-04 19:10:25'),
       lastDrawPlantId: 2,
+      plants: {
+        connect: [{ id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }, { id: 9 }],
+      },
     },
   });
   console.log({ user1, user2 });

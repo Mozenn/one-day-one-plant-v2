@@ -4,11 +4,11 @@ export type HeroCapsuleProps = {
   url: string;
   alt: string;
   additionalStyle: string;
-  borderColor: string;
+  additionalImageStyle: string;
 };
 
 const HeroCapsule = ({ capsuleProps }: { capsuleProps: HeroCapsuleProps }) => {
-  const { url, alt, additionalStyle, borderColor } = capsuleProps;
+  const { url, alt, additionalStyle, additionalImageStyle } = capsuleProps;
 
   return (
     <div
@@ -18,7 +18,7 @@ const HeroCapsule = ({ capsuleProps }: { capsuleProps: HeroCapsuleProps }) => {
       <img
         src={url}
         alt={alt}
-        className={`border-solid border-8 border-${borderColor} rounded-3xl`}
+        className={`border-solid border-8 border-primary rounded-3xl ${additionalImageStyle}`}
       />
     </div>
   );

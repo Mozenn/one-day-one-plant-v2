@@ -32,7 +32,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    // TODO handle Dark Theme 
+    // TODO handle Dark Theme
     // --foreground-rgb: 255, 255, 255;
     // --background-start-rgb: 0, 0, 0;
     // --background-end-rgb: 0, 0, 0;
@@ -40,7 +40,7 @@
 }
 
 body {
-  // TODO handle Dark Theme 
+  // TODO handle Dark Theme
   // color: rgb(var(--foreground-rgb));
   // background: linear-gradient(
   //     to bottom,
@@ -100,4 +100,8 @@ body {
   text-xl p-3 m-2 font-normal cursor-pointer transition-all duration-300
   hover:bg-primary-dark
   active:bg-primary-light active:text-primary-dark;
+}
+
+.globalButtonDisabled {
+  @apply bg-primary-disabled hover:bg-primary-disabled active:text-white active:bg-primary-disabled;
 }

@@ -6,10 +6,10 @@ import ReactDOM from "react-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const MenuDropdown = ({
-  memberId,
+  userId,
   closeDropdown,
 }: {
-  memberId: String;
+  userId: String;
   closeDropdown: () => void;
 }) => {
   const { logout } = useAuth();
@@ -17,7 +17,7 @@ const MenuDropdown = ({
   const menuOptions = [
     {
       label: "Profile",
-      link: `/profile/${memberId}`,
+      link: `/profile/${userId}`,
     },
     {
       label: "Collect",

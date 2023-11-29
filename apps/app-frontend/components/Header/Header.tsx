@@ -12,10 +12,6 @@ const Header = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const { isAuthenticated } = useAuth();
 
-  const onLoginClicked = async () => {};
-
-  const onSignupClicked = async () => {};
-
   const onMenuDropdownClicked = () => {
     setDropdownVisible(!isDropdownVisible);
   };
@@ -49,7 +45,7 @@ const Header = () => {
                 </button>
                 {isDropdownVisible && (
                   <MenuDropdown
-                    memberId={"TOCHANGE"}
+                    userId={"TOCHANGE"}
                     closeDropdown={closeDropdown}
                   />
                 )}
@@ -58,12 +54,12 @@ const Header = () => {
           </>
         ) : (
           <div className='flex items-center my-0 mr-4 ml-auto'>
-            <button onClick={onLoginClicked} className={styles.button}>
-              Log in
-            </button>
-            <button onClick={onSignupClicked} className={styles.button}>
-              Sign up
-            </button>
+            <Link href='/auth/login' passHref>
+              <p className={styles.button}>Log In</p>
+            </Link>
+            <Link href='/auth/signup' passHref>
+              <p className={styles.button}>Sign Up</p>
+            </Link>
           </div>
         )}
       </header>

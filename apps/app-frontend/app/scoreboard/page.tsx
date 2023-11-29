@@ -5,7 +5,7 @@ import SortProvider from "@/contexts/sortContext";
 
 const ScoreboardPage = () => {
   const elementsPerPage = 5;
-  const initialSortKey = "name";
+  const initialSortKey = "username";
 
   return (
     <main

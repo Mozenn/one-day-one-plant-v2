@@ -68,7 +68,7 @@ const TableContent = <T extends TableRow>({
   }, [data, elementCount, setElementCount]);
 
   if (!data) {
-    return <Spinner styleOverride='ml-[50%]' />;
+    return;
   }
 
   return (
