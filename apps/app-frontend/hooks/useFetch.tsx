@@ -29,7 +29,7 @@ function useFetch<T>(
   fetchInput: UseFetchInput,
   resultAccumulator: UseFetchResultAccumulator<T> = (result, acc) => result.data
 ): UseFetchOutput<T> {
-  const { getAuthClient } = useAuth();
+  const { authFetch } = useAuth();
 
   const { data, error, mutate } = useSWR(
     JSON.stringify(fetchInput),
@@ -44,8 +44,7 @@ function useFetch<T>(
         const url = `${process.env.NEXT_PUBLIC_API_URL}${fetchItem.url}`;
 
         console.log("fetch", fetchItem);
-        const axiosClient = await getAuthClient();
-        const res = await axiosClient.get(url, {
+        const res = await authFetch(url, {
           params: fetchItem.params,
           headers: fetchItem.headers,
         });

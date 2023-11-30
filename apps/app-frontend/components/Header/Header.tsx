@@ -32,6 +32,23 @@ const Header = () => {
             alt='Logo'
           />
         </Link>
+        <button
+          className={styles.button}
+          onClick={async () => {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}auth`, {
+              method: "GET",
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+
+            const jsonRes = JSON.parse(await res.text());
+            console.log(jsonRes);
+          }}
+        >
+          Test Auth
+        </button>
         {isAuthenticated() ? (
           <>
             <div className='flex items-center font-normal my-0 mr-4 ml-auto'>

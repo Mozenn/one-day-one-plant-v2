@@ -35,7 +35,7 @@ const Collection = () => {
 
   const plantsPanelInputs: PanelInputs<Plant> = {
     fetchItem: {
-      fetchUrl: "plant/page",
+      fetchUrl: "/plant/page",
       extraParams: {
         userId: authId,
       },

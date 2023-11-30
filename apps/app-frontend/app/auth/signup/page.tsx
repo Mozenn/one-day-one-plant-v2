@@ -4,6 +4,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import AuthField from "@/components/Auth/AuthField";
 import { SignUpInputs } from "../../../types/signUpInputs";
 import AuthPasswordField from "@/components/Auth/AuthPasswordField";
+import { useState } from "react";
+import useAuth from "@/hooks/useAuth";
 
 type SignUpFieldData = {
   name: "password" | "email" | "username";
@@ -15,7 +17,9 @@ const SignUp = () => {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<SignUpInputs>();
+  } = useForm<SignUpInputs>({ mode: "onSubmit", reValidateMode: "onSubmit" });
+  const [formError, setFormError] = useState<string | null>(null);
+  const { register } = useAuth();
 
   const authFields: SignUpFieldData[] = [
     {
@@ -74,16 +78,18 @@ const SignUp = () => {
     errors.password !== undefined ||
     errors.username !== undefined;
 
-  const onSubmit: SubmitHandler<SignUpInputs> = (data) => {
-    console.log(data);
-    // TODO Handle error with message shown above submit button and implement useAuth
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}auth/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+  const onSubmit: SubmitHandler<SignUpInputs> = async (data) => {
+    const res = await register(data);
+
+    res?.headers.forEach((value, key) => console.log("header", key, value));
+
+    if (res && res.status != 201) {
+      const jsonRes = JSON.parse(await res.text());
+      console.log(jsonRes);
+      setFormError(jsonRes?.message);
+    } else {
+      setFormError(null);
+    }
   };
 
   return (
@@ -129,6 +135,11 @@ const SignUp = () => {
             }`}
             disabled={formDisabled()}
           />
+          {formError && (
+            <span role='alert' className='text-danger mt-1 '>
+              {formError}
+            </span>
+          )}
         </form>
       </div>
     </main>

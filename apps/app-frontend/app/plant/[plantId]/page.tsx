@@ -9,7 +9,7 @@ import { capitalize } from "@/lib/stringUtils";
 
 const PlantPage = ({ params }: { params: { plantId: string } }) => {
   const { data: plant } = useFetch<Plant>({
-    url: `plant/${params.plantId}`,
+    url: `/plant/${params.plantId}`,
   });
 
   return (

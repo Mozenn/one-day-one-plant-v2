@@ -14,7 +14,7 @@ const Scoreboard = () => {
   const { authId } = useAuth();
   const tableData = {
     tableElementType: "default",
-    fetchUrl: "user/page",
+    fetchUrl: "/user/page",
     additionalElementStyles: (row: User) => {
       return row.id === authId ? "text-secondary" : "";
     },

@@ -12,7 +12,7 @@ import NoContent from "@/components/NoContent/NoContent";
 
 const Profile = ({ params }: { params: { userId: string } }) => {
   const { data: user } = useFetch<User>({
-    url: `user/${params.userId}`,
+    url: `/user/${params.userId}`,
   });
 
   if (!user) {
