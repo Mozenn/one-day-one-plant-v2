@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import { Suspense, useEffect, useState } from "react";
+import Loading from "./loading";
 
 const font = Nunito_Sans({ subsets: ["latin"] });
 
@@ -18,9 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={font.className}>
+      <body className={font.className} id='__next'>
         <Header />
-        {children}
+        <Suspense fallback={<Loading />}>{children}</Suspense>
         <Footer />
       </body>
     </html>

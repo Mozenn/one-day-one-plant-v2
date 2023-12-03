@@ -1,25 +1,28 @@
 "use client";
 
-import { SubmitHandler, useForm } from "react-hook-form";
-import AuthField from "@/components/Auth/AuthField";
-import { SignUpInputs } from "../../../types/signUpInputs";
-import AuthPasswordField from "@/components/Auth/AuthPasswordField";
-import { useState } from "react";
 import useAuth from "@/hooks/useAuth";
+import { AuthFieldData } from "@/types/authFieldData";
+import AuthForm from "@/components/Auth/AuthForm";
+import { AuthFormInputs } from "@/types/authFormInputs";
+import { DefaultValues } from "react-hook-form";
 
-type SignUpFieldData = {
+interface SignUpFieldData extends AuthFieldData {
   name: "password" | "email" | "username";
-  rules: any;
-};
+}
+
+interface SignUpFormInputs extends AuthFormInputs {
+  email: string;
+  username: string;
+}
 
 const SignUp = () => {
-  const {
-    control,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<SignUpInputs>({ mode: "onSubmit", reValidateMode: "onSubmit" });
-  const [formError, setFormError] = useState<string | null>(null);
   const { register } = useAuth();
+
+  const defaultValues: DefaultValues<SignUpFormInputs> = {
+    email: "",
+    username: "",
+    password: "",
+  };
 
   const authFields: SignUpFieldData[] = [
     {
@@ -73,76 +76,18 @@ const SignUp = () => {
     },
   ];
 
-  const formDisabled = () =>
-    errors.email !== undefined ||
-    errors.password !== undefined ||
-    errors.username !== undefined;
-
-  const onSubmit: SubmitHandler<SignUpInputs> = async (data) => {
-    const res = await register(data);
-
-    res?.headers.forEach((value, key) => console.log("header", key, value));
-
-    if (res && res.status != 201) {
-      const jsonRes = JSON.parse(await res.text());
-      console.log(jsonRes);
-      setFormError(jsonRes?.message);
-    } else {
-      setFormError(null);
-    }
-  };
-
   return (
-    <main
-      className='flex flex-col items-center flex-1 m-0 min-h-[80vh] py-28 px-0'
-      role='main'
-    >
-      <div className='flex items-center flex-col w-2/5 border-solid border-primary-dark border-8 rounded-3xl p-12'>
-        <img
-          className='h-[12rem] w-auto absolute top-28'
-          src='/images/logo.png'
-          alt='Logo'
-        />
-        <h2 className='text-3xl font-bold mt-16 mb-8'>
-          Sign Up to One Day One Plant
-        </h2>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className='flex items-center flex-col w-3/4'
-        >
-          {authFields.map((fieldData) =>
-            fieldData.name === "password" ? (
-              <AuthPasswordField
-                key={fieldData.name}
-                name={fieldData.name}
-                control={control}
-                rules={fieldData.rules}
-              />
-            ) : (
-              <AuthField
-                key={fieldData.name}
-                name={fieldData.name}
-                control={control}
-                rules={fieldData.rules}
-              />
-            )
-          )}
-          <input
-            type='submit'
-            value='Sign Up'
-            className={`globalButton !mt-8 ${
-              formDisabled() ? "globalButtonDisabled" : ""
-            }`}
-            disabled={formDisabled()}
-          />
-          {formError && (
-            <span role='alert' className='text-danger mt-1 '>
-              {formError}
-            </span>
-          )}
-        </form>
-      </div>
-    </main>
+    <AuthForm
+      title='Sign Up to One Day One Plant'
+      submitLabel='Sign Up'
+      authFields={authFields}
+      defaultValues={defaultValues}
+      onSubmit={register}
+      footerLink={{
+        route: "/auth/login",
+        text: "Already have an account ? Log in here",
+      }}
+    />
   );
 };
 

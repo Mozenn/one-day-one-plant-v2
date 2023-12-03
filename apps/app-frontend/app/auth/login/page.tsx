@@ -1,65 +1,72 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+"use client";
 
-type LoginInputs = {
+import AuthForm from "@/components/Auth/AuthForm";
+import useAuth from "@/hooks/useAuth";
+import { AuthFieldData } from "@/types/authFieldData";
+import { AuthFormInputs } from "@/types/authFormInputs";
+import { DefaultValues } from "react-hook-form";
+interface LogInFieldData extends AuthFieldData {
+  name: "password" | "emailOrUsername";
+}
+
+interface LogInFormInputs extends AuthFormInputs {
   emailOrUsername: string;
-  password: string;
-};
+}
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginInputs>();
-  const onSubmit: SubmitHandler<LoginInputs> = (data) => console.log(data);
+  const { login } = useAuth();
+
+  const defaultValues: DefaultValues<LogInFormInputs> = {
+    emailOrUsername: "",
+    password: "",
+  };
+
+  const authFields: LogInFieldData[] = [
+    {
+      name: "emailOrUsername",
+      label: "email or username",
+      rules: {
+        required: {
+          value: true,
+          message: "Email or Username required",
+        },
+        pattern: {
+          value: /^\S+@\S+\.\S+|[A-Za-z0-9_-]+$/i,
+          message: "Entered value does not match email or username format",
+        },
+      },
+    },
+    {
+      name: "password",
+      rules: {
+        required: {
+          value: true,
+          message: "Password required",
+        },
+        minLength: {
+          value: 8,
+          message: "Password length must be above 8 characters",
+        },
+        maxLength: {
+          value: 128,
+          message: "Password length must be below 128 characters",
+        },
+      },
+    },
+  ];
 
   return (
-    <main
-      className='flex flex-col items-center flex-1 m-0 min-h-[80vh] py-20 px-0'
-      role='main'
-    >
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <input
-            defaultValue='email or username'
-            {...register("emailOrUsername", {
-              required: true,
-              pattern: {
-                value: /^\S+@\S+\.\S+|[A-Za-z0-9_-]+$/i,
-                message:
-                  "Entered value does not match email or username format",
-              },
-            })}
-          />
-          {errors.emailOrUsername && (
-            <span role='alert'>{errors.emailOrUsername.message}</span>
-          )}
-          <input
-            {...register("password", {
-              required: true,
-              minLength: {
-                value: 8,
-                message: "Password length must be above 8 characters",
-              },
-              maxLength: {
-                value: 128,
-                message: "Password length must be below 128 characters",
-              },
-              pattern: {
-                value:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/i,
-                message:
-                  "Password must contains at least one uppercase letter, one lowercase letter, one number and one special character",
-              },
-            })}
-          />
-          {errors.password && (
-            <span role='alert'>{errors.password.message}</span>
-          )}
-          <input type='submit' />
-        </form>
-      </div>
-    </main>
+    <AuthForm
+      title='Log In to One Day One Plant'
+      submitLabel='Log In'
+      authFields={authFields}
+      defaultValues={defaultValues}
+      onSubmit={login}
+      footerLink={{
+        route: "/auth/signup",
+        text: "No account yet ? Sign up here",
+      }}
+    />
   );
 };
 

@@ -41,7 +41,8 @@ export class AuthController {
   @Post('logout')
   async logOut(@Res() reply: FastifyReply) {
     reply.headers({ 'Set-Cookie': this.authService.getCookieForLogOut() });
-    return reply.status(200);
+    reply.status(200);
+    return reply.send();
   }
 
   @UseGuards(JwtAuthenticationGuard)

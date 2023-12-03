@@ -3,16 +3,20 @@ import { UseControllerProps, useController } from "react-hook-form";
 import AuthFieldError from "./AuthFieldError";
 import AuthFieldLabel from "./AuthFieldLabel";
 import { useState } from "react";
+import { AuthFieldProps } from "./AuthFieldProps";
 
 const AuthPasswordField = <T extends AuthFormInputs>(
-  props: UseControllerProps<T>
+  props: AuthFieldProps<T>
 ) => {
-  const { field, fieldState } = useController(props);
+  const { field, fieldState } = useController(props.useControllerProps);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
     <>
-      <AuthFieldLabel name={props.name} />
+      <AuthFieldLabel
+        name={props.useControllerProps.name}
+        label={props.label}
+      />
       <div className='flex items-center w-3/4'>
         <input
           className={`border-solid ${
@@ -20,7 +24,7 @@ const AuthPasswordField = <T extends AuthFormInputs>(
           } border-2 rounded-2xl px-2 w-full text-secondary-dark
           mr-2
           `}
-          placeholder={props.name}
+          placeholder={props.useControllerProps.name}
           {...field}
           type={`${isVisible ? "text" : "password"}`}
         />

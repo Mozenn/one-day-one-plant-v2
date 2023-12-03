@@ -45,6 +45,26 @@ export class UserService {
     return user;
   }
 
+  async getUserByEmailOrUsername(
+    emailOrUsername: string,
+  ): Promise<User | null> {
+    const user = this.prisma.user.findFirst({
+      where: {
+        OR: [
+          {
+            email: emailOrUsername,
+          },
+          {
+            username: emailOrUsername,
+          },
+        ],
+      },
+      include: { plants: true, lastDrawPlant: true },
+    });
+
+    return user;
+  }
+
   async getUserPage(pageDto: UserPageDto): Promise<PaginationResult<User>> {
     const whereQuery = {
       username: {

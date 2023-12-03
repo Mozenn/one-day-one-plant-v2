@@ -27,7 +27,7 @@ export type FetchItem = {
 
 function useFetch<T>(
   fetchInput: UseFetchInput,
-  resultAccumulator: UseFetchResultAccumulator<T> = (result, acc) => result.data
+  resultAccumulator: UseFetchResultAccumulator<T> = (result, acc) => result
 ): UseFetchOutput<T> {
   const { authFetch } = useAuth();
 
@@ -41,14 +41,13 @@ function useFetch<T>(
       let result: any = {};
 
       for (const fetchItem of fetchItems) {
-        const url = `${process.env.NEXT_PUBLIC_API_URL}${fetchItem.url}`;
-
         console.log("fetch", fetchItem);
-        const res = await authFetch(url, {
+        const res = await authFetch(fetchItem.url, {
           params: fetchItem.params,
           headers: fetchItem.headers,
         });
-        result = resultAccumulator(res, result);
+
+        result = resultAccumulator(await res.json(), result);
       }
 
       console.log("fetch result", result);

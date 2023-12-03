@@ -11,9 +11,9 @@ import { capitalize } from "@/lib/stringUtils";
 
 const Collect = () => {
   const [inCooldown, setInCooldown] = useState(false);
-  const { authId, authFetch } = useAuth();
+  const { authUser, authFetch } = useAuth();
   const { data, mutate } = useFetch<User>({
-    url: `/user/${authId}`,
+    url: `/user/${authUser.id}`,
   });
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Collect = () => {
 
   const fetchRandomPlant = async () => {
     const requestData = {
-      dataId: authId,
+      dataId: authUser.id,
     };
 
     const response = await authFetch("/plant/draw", { params: requestData });

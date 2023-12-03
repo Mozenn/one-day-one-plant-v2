@@ -34,9 +34,10 @@ export class AuthService {
     }
   }
 
-  async getAuthenticatedUser(email: string, password: string) {
+  async getAuthenticatedUser(emailOrUsername: string, password: string) {
     try {
-      const user = await this.userService.getUserByEmail(email);
+      const user =
+        await this.userService.getUserByEmailOrUsername(emailOrUsername);
       this.verifyPassword(password, user.password);
       return user;
     } catch (error) {

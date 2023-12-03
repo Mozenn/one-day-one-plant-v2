@@ -1,5 +1,7 @@
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import useLocalStorage from "./useLocalStorage";
+import { User } from "@/types/user";
+import { useEffect } from "react";
 
 export type AuthFetchParams = {
   [key: string]: any;
@@ -10,17 +12,43 @@ export type AuthFetchProps = {
   params?: AuthFetchParams;
 };
 
-const useAuth = () => {
+const useAuth = (/*{ authCheckRate = 5000 }: { authCheckRate?: number }*/) => {
   const router = useRouter();
-  const [authUser, setAuthUser] = useLocalStorage("authUser", null);
+  const pathname = usePathname();
+  const [authUser, setAuthUser] = useLocalStorage<User>("authUser", null);
+  const [lastAuthCheckTime, setLastAuthCheckTime] = useLocalStorage(
+    "lastAuthCheckTime",
+    null
+  );
 
-  const login = async () => {
+  useEffect(() => {
+    console.log("authUser effect", authUser, isAuthenticated());
+    //router.refresh();
+  }, [authUser, router]);
+
+  const login = async (data: any) => {
     console.log("login");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (res.status === 200) {
+      const user = await res.json();
+      setAuthUser(user);
+      redirectTo("/");
+    } else {
+      return res;
+    }
   };
 
   const register = async (data: any) => {
     console.log("register");
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}auth/signup`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -30,10 +58,9 @@ const useAuth = () => {
     });
 
     if (res.status === 201) {
-      const user = res.json();
+      const user = await res.json();
       setAuthUser(user);
-      // todo setup auth by saving user in local storage
-      router.push("/");
+      redirectTo("/");
     } else {
       return res;
     }
@@ -41,34 +68,56 @@ const useAuth = () => {
 
   const logout = async (redirectUri?: string | undefined) => {
     console.log("logout");
-    const res = await authFetch("/auth/logout");
-    if (res.status === 200) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    });
+
+    console.log("logout path", pathname);
+
+    if (res.status === 200 || res.status === 401) {
       setAuthUser(null);
-      router.push(redirectUri || "/");
+      redirectTo(redirectUri || "/");
     }
   };
 
   const isAuthenticated = () => {
-    return false;
+    return authUser != null;
   };
 
   const authFetch = async (target: string, props?: AuthFetchProps) => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}${target}${
-        props && "?" + new URLSearchParams(props.params)
+        props != undefined ? "?" + new URLSearchParams(props.params) : ""
       }`,
       {
         method: "GET",
         credentials: "include",
-        headers: props?.headers,
+        headers: {
+          "Content-Type": "application/json",
+          ...props?.headers,
+        },
       }
     );
 
     if (res.status === 401) {
-      // TODO handle unauthorized result
+      setAuthUser(null);
+      redirectTo("/auth/login");
     }
 
     return res;
+  };
+
+  const redirectTo = (path: string) => {
+    if (pathname == path) {
+      window.location.reload();
+    } else {
+      router.push(path);
+    }
   };
 
   return {

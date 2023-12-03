@@ -60,10 +60,6 @@ const Panel = <T extends unknown>({
     }
   }, [data, elementCount, setElementCount]);
 
-  useEffect(() => {
-    console.log("effect pagep", page);
-  }, [page]);
-
   const anyContentToRender = () => {
     return !(!data || !data.content || elementCount <= 0);
   };
