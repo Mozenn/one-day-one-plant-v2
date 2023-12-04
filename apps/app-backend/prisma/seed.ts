@@ -30,7 +30,7 @@ async function main() {
       family: 'rosaceae',
       createdAt: new Date(),
       imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg/1280px-Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg',
       urls: [
         {
           source: 'wikipedia',

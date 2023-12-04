@@ -11,9 +11,5 @@
 
   img {
     @apply h-auto w-auto transition-colors ease-in-out duration-100;
-    // TODO add filter
   }
 }
-
-// --filter-primary-dark: invert(31%) sepia(46%) saturate(251%) hue-rotate(65deg)
-// brightness(92%) contrast(87%);

@@ -8,12 +8,13 @@ import Timer from "@/components/Timer/Timer";
 import { cooldownBetweenDraw } from "@/lib/timeUtils";
 import Link from "next/link";
 import { capitalize } from "@/lib/stringUtils";
+import AuthGuard from "@/components/Auth/AuthGuard";
 
 const Collect = () => {
   const [inCooldown, setInCooldown] = useState(false);
-  const { authUser, authFetch } = useAuth();
+  const { authId, authFetch } = useAuth();
   const { data, mutate } = useFetch<User>({
-    url: `/user/${authUser.id}`,
+    url: `/user/${authId}`,
   });
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const Collect = () => {
 
   const fetchRandomPlant = async () => {
     const requestData = {
-      dataId: authUser.id,
+      dataId: authId,
     };
 
     const response = await authFetch("/plant/draw", { params: requestData });
@@ -100,20 +101,22 @@ const Collect = () => {
   };
 
   return (
-    <main
-      className='flex flex-col items-center flex-1 m-0 min-h-[80vh] py-20 px-0'
-      role='main'
-    >
-      <h1
-        className='text-primary-dark text-4xl p-6 rounded-full mb-4'
-        role='heading'
+    <AuthGuard>
+      <main
+        className='flex flex-col items-center flex-1 m-0 min-h-[80vh] py-20 px-0'
+        role='main'
       >
-        Collect your daily plant
-      </h1>
-      {renderImage()}
-      {renderName()}
-      {renderButtons()}
-    </main>
+        <h1
+          className='text-primary-dark text-4xl p-6 rounded-full mb-4'
+          role='heading'
+        >
+          Collect your daily plant
+        </h1>
+        {renderImage()}
+        {renderName()}
+        {renderButtons()}
+      </main>
+    </AuthGuard>
   );
 };
 

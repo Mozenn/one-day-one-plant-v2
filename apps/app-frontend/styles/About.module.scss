@@ -1,0 +1,19 @@
+.main {
+  @apply py-20 px-[28%] m-0 flex flex-col justify-start items-start min-h-[80vh];
+}
+
+.title {
+  @apply text-primary-dark text-3xl p-4 rounded-3xl;
+}
+
+.subtitle {
+  @apply text-2xl text-primary-dark m-4;
+}
+
+.text {
+  @apply text-base;
+
+  a {
+    @apply text-primary underline cursor-pointer transition-colors hover:text-primary-light;
+  }
+}

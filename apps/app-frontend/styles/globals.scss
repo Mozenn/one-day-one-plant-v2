@@ -95,6 +95,12 @@ body {
   }
 }
 
+.react-datepicker__input-container {
+  input {
+    padding-left: 8px;
+  }
+}
+
 .globalButton {
   @apply bg-primary text-white rounded-3xl
   text-xl p-3 m-2 font-normal cursor-pointer transition-all duration-300

@@ -2,14 +2,19 @@
 
 import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import MenuDropdown from "./MenuDropdown/MenuDropdown";
 import GoogleAnalytics from "../GoogleAnalytics/GoogleAnalytics";
 
 const HeaderSideContent = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const { isAuthenticated, authFetch, authUser } = useAuth();
+  const { isAuthenticated, authFetch } = useAuth();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const onMenuDropdownClicked = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -19,7 +24,7 @@ const HeaderSideContent = () => {
     setDropdownVisible(false);
   };
 
-  if (!window) {
+  if (!isLoaded) {
     return <></>;
   }
 
@@ -27,17 +32,19 @@ const HeaderSideContent = () => {
     <>
       {process.env.NODE_ENV === "production" &&
         typeof window !== "undefined" && <GoogleAnalytics />}
-      <button
-        className={styles.button}
-        onClick={async () => {
-          const res = await authFetch("/auth");
+      {process.env.NODE_ENV !== "production" && (
+        <button
+          className={styles.button}
+          onClick={async () => {
+            const res = await authFetch("/auth");
 
-          const jsonRes = JSON.parse(await res.text());
-          console.log(jsonRes);
-        }}
-      >
-        Test Auth
-      </button>
+            const jsonRes = JSON.parse(await res.text());
+            console.log(jsonRes);
+          }}
+        >
+          Test Auth
+        </button>
+      )}
       {isAuthenticated() ? (
         <div className='flex items-center font-normal my-0 mr-8 ml-auto'>
           <div className='flex flex-col items-center'>
@@ -46,13 +53,14 @@ const HeaderSideContent = () => {
               data-testid='dropdown-button'
               onClick={onMenuDropdownClicked}
             >
-              <img src='/images/icons/menu.svg' alt='menu button icon' />
+              <img
+                className='filter-primary-dark'
+                src='/images/icons/menu.svg'
+                alt='menu button icon'
+              />
             </button>
             {isDropdownVisible && (
-              <MenuDropdown
-                userId={authUser?.id}
-                closeDropdown={closeDropdown}
-              />
+              <MenuDropdown closeDropdown={closeDropdown} />
             )}
           </div>
         </div>

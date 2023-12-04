@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const { isAuthenticated, authUser } = useAuth();
+  const { isAuthenticated, authId } = useAuth();
 
   const sections = [
     {
@@ -112,7 +112,7 @@ export default function Home() {
             Welcome Back!
           </h1>
           <div className='flex  items-center'>
-            <Link href={`/profile/${authUser?.id}`} passHref>
+            <Link href={`/profile/${authId}`} passHref>
               <button className='globalButton'>Profile</button>
             </Link>
             <Link href={`/collect`} passHref>

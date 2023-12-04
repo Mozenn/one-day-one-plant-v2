@@ -5,19 +5,13 @@ import styles from "./MenuDropdown.module.scss";
 import ReactDOM from "react-dom";
 import useAuth from "../../../hooks/useAuth";
 
-const MenuDropdown = ({
-  userId,
-  closeDropdown,
-}: {
-  userId: number;
-  closeDropdown: () => void;
-}) => {
-  const { logout } = useAuth();
+const MenuDropdown = ({ closeDropdown }: { closeDropdown: () => void }) => {
+  const { logout, authId } = useAuth();
 
   const menuOptions = [
     {
       label: "Profile",
-      link: `/profile/${userId}`,
+      link: `/profile/${authId}`,
     },
     {
       label: "Collect",

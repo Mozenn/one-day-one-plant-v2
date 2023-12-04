@@ -1,7 +1,5 @@
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import useLocalStorage from "./useLocalStorage";
-import { User } from "@/types/user";
-import { useEffect } from "react";
 
 export type AuthFetchParams = {
   [key: string]: any;
@@ -12,19 +10,9 @@ export type AuthFetchProps = {
   params?: AuthFetchParams;
 };
 
-const useAuth = (/*{ authCheckRate = 5000 }: { authCheckRate?: number }*/) => {
-  const router = useRouter();
+const useAuth = () => {
   const pathname = usePathname();
-  const [authUser, setAuthUser] = useLocalStorage<User>("authUser", null);
-  const [lastAuthCheckTime, setLastAuthCheckTime] = useLocalStorage(
-    "lastAuthCheckTime",
-    null
-  );
-
-  useEffect(() => {
-    console.log("authUser effect", authUser, isAuthenticated());
-    //router.refresh();
-  }, [authUser, router]);
+  const [authId, setAuthId] = useLocalStorage<number>("authId", null);
 
   const login = async (data: any) => {
     console.log("login");
@@ -39,7 +27,7 @@ const useAuth = (/*{ authCheckRate = 5000 }: { authCheckRate?: number }*/) => {
 
     if (res.status === 200) {
       const user = await res.json();
-      setAuthUser(user);
+      setAuthId(user.id);
       redirectTo("/");
     } else {
       return res;
@@ -59,7 +47,7 @@ const useAuth = (/*{ authCheckRate = 5000 }: { authCheckRate?: number }*/) => {
 
     if (res.status === 201) {
       const user = await res.json();
-      setAuthUser(user);
+      setAuthId(user.id);
       redirectTo("/");
     } else {
       return res;
@@ -77,16 +65,14 @@ const useAuth = (/*{ authCheckRate = 5000 }: { authCheckRate?: number }*/) => {
       body: JSON.stringify({}),
     });
 
-    console.log("logout path", pathname);
-
     if (res.status === 200 || res.status === 401) {
-      setAuthUser(null);
+      setAuthId(null);
       redirectTo(redirectUri || "/");
     }
   };
 
   const isAuthenticated = () => {
-    return authUser != null;
+    return authId != null;
   };
 
   const authFetch = async (target: string, props?: AuthFetchProps) => {
@@ -105,7 +91,7 @@ const useAuth = (/*{ authCheckRate = 5000 }: { authCheckRate?: number }*/) => {
     );
 
     if (res.status === 401) {
-      setAuthUser(null);
+      setAuthId(null);
       redirectTo("/auth/login");
     }
 
@@ -113,10 +99,11 @@ const useAuth = (/*{ authCheckRate = 5000 }: { authCheckRate?: number }*/) => {
   };
 
   const redirectTo = (path: string) => {
+    console.log(`redirect to ${path} from ${pathname}`);
     if (pathname == path) {
       window.location.reload();
     } else {
-      router.push(path);
+      window.location.replace(`${process.env.NEXT_PUBLIC_APP_URL}${path}`);
     }
   };
 
@@ -126,7 +113,7 @@ const useAuth = (/*{ authCheckRate = 5000 }: { authCheckRate?: number }*/) => {
     logout,
     isAuthenticated,
     authFetch,
-    authUser,
+    authId,
   };
 };
 

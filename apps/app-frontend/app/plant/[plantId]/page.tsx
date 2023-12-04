@@ -6,6 +6,7 @@ import Spinner from "@/components/Spinner/Spinner";
 import Link from "next/link";
 import styles from "../../../styles/Plant.module.scss";
 import { capitalize } from "@/lib/stringUtils";
+import AuthGuard from "@/components/Auth/AuthGuard";
 
 const PlantPage = ({ params }: { params: { plantId: string } }) => {
   const { data: plant } = useFetch<Plant>({
@@ -13,7 +14,7 @@ const PlantPage = ({ params }: { params: { plantId: string } }) => {
   });
 
   return (
-    <>
+    <AuthGuard>
       {!plant ? (
         <Spinner styleOverride='ml-[50%] !mt-[20vh]' />
       ) : (
@@ -22,7 +23,7 @@ const PlantPage = ({ params }: { params: { plantId: string } }) => {
             <img
               src={plant.imageUrl}
               alt={`A picture of a ${capitalize(plant.name)}`}
-              className='rounded-2xl border-solid border-[8px] border-primary-dark w-[35rem]'
+              className='rounded-2xl w-[35rem] shadow-[0_0px_12px_0px_rgba(0,0,0,0.6)]'
             />
             <div className='ml-14'>
               <h2 className='text-3xl font-bold mr-8 mb-4'>
@@ -47,7 +48,7 @@ const PlantPage = ({ params }: { params: { plantId: string } }) => {
               plant.urls.map((url) => {
                 return (
                   <Link href={url.url} passHref key={url.source}>
-                    <button className='globalButton !text-xl hover:scale-110'>{`Learn more on ${capitalize(
+                    <button className='globalButton !text-xl hover:scale-110 !font-medium'>{`Learn more on ${capitalize(
                       url.source
                     )}`}</button>
                   </Link>
@@ -56,7 +57,7 @@ const PlantPage = ({ params }: { params: { plantId: string } }) => {
           </div>
         </main>
       )}
-    </>
+    </AuthGuard>
   );
 };
 

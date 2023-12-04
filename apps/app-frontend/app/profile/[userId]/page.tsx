@@ -9,6 +9,7 @@ import {
   getGradeFromScore,
 } from "../../../lib/gradeUtils";
 import NoContent from "@/components/NoContent/NoContent";
+import AuthGuard from "@/components/Auth/AuthGuard";
 
 const Profile = ({ params }: { params: { userId: string } }) => {
   const { data: user } = useFetch<User>({
@@ -20,7 +21,7 @@ const Profile = ({ params }: { params: { userId: string } }) => {
   }
 
   return (
-    <>
+    <AuthGuard>
       <main className='flex overflow-hidden min-h-[88vh]'>
         <aside className='flex flex-col items-center pt-32 pb-0 px-12 bg-white'>
           <img
@@ -54,7 +55,7 @@ const Profile = ({ params }: { params: { userId: string } }) => {
           <Collection />
         </section>
       </main>
-    </>
+    </AuthGuard>
   );
 };
 

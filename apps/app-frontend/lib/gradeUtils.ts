@@ -4,7 +4,7 @@ const scholarThreshold = 5000;
 const worshiperThreshold = 10000;
 
 export const getGradeFromScore = (score: number): string => {
-  if(score < hobbyistThreshold) {
+  if (score < hobbyistThreshold) {
     return "novice";
   } else if (score >= hobbyistThreshold && score < connoisseurThreshold) {
     return "hobbyist";
@@ -15,13 +15,32 @@ export const getGradeFromScore = (score: number): string => {
   } else {
     return "worshiper";
   }
-}
+};
 
 export const getGradeBorderFromScore = (score: number): string => {
-  return `border-${getGradeFromScore(score)}`;
-}
+  if (score < hobbyistThreshold) {
+    return "border-novice";
+  } else if (score >= hobbyistThreshold && score < connoisseurThreshold) {
+    return "border-hobbyist";
+  } else if (score >= connoisseurThreshold && score < scholarThreshold) {
+    return "border-connoisseur";
+  } else if (score >= scholarThreshold && score < worshiperThreshold) {
+    return "border-scholar";
+  } else {
+    return "border-worshiper";
+  }
+};
 
 export const getGradeTextColorFromScore = (score: number): string => {
-  return `text-${getGradeFromScore(score)}`;
-}
-
+  if (score < hobbyistThreshold) {
+    return "text-novice";
+  } else if (score >= hobbyistThreshold && score < connoisseurThreshold) {
+    return "text-hobbyist";
+  } else if (score >= connoisseurThreshold && score < scholarThreshold) {
+    return "text-connoisseur";
+  } else if (score >= scholarThreshold && score < worshiperThreshold) {
+    return "text-scholar";
+  } else {
+    return "text-worshiper";
+  }
+};

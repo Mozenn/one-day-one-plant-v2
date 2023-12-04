@@ -14,7 +14,6 @@ const useLocalStorage = <T extends any>(
   });
 
   const setValue = (value: any) => {
-    console.log("set local storage", value);
     try {
       const valueToStore =
         value instanceof Function ? value(storedValue) : value;
