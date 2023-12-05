@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettierCheck": "prettier --check .",
+    "prettierApply": "prettier --write .",
     "pre-commit": "npm run lint && npm run prettierCheck"
   },
   "dependencies": {

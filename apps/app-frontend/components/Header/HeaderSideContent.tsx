@@ -46,17 +46,17 @@ const HeaderSideContent = () => {
         </button>
       )}
       {isAuthenticated() ? (
-        <div className='flex items-center font-normal my-0 mr-8 ml-auto'>
-          <div className='flex flex-col items-center'>
+        <div className="flex items-center font-normal my-0 mr-8 ml-auto">
+          <div className="flex flex-col items-center">
             <button
               className={styles.button}
-              data-testid='dropdown-button'
+              data-testid="dropdown-button"
               onClick={onMenuDropdownClicked}
             >
               <img
-                className='filter-primary-dark'
-                src='/images/icons/menu.svg'
-                alt='menu button icon'
+                className="filter-primary-dark"
+                src="/images/icons/menu.svg"
+                alt="menu button icon"
               />
             </button>
             {isDropdownVisible && (
@@ -65,11 +65,11 @@ const HeaderSideContent = () => {
           </div>
         </div>
       ) : (
-        <div className='flex items-center my-0 mr-4 ml-auto'>
-          <Link href='/auth/login' passHref>
+        <div className="flex items-center my-0 mr-4 ml-auto">
+          <Link href="/auth/login" passHref>
             <p className={styles.button}>Log In</p>
           </Link>
-          <Link href='/auth/signup' passHref>
+          <Link href="/auth/signup" passHref>
             <p className={styles.button}>Sign Up</p>
           </Link>
         </div>

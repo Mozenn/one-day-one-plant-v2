@@ -14,7 +14,7 @@ const FilterButton = () => {
 
   return (
     <div
-      className='relative flex flex-col items-start'
+      className="relative flex flex-col items-start"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -26,8 +26,8 @@ const FilterButton = () => {
         onClick={onButtonClicked}
       >
         <img
-          src='/images/icons/filter.svg'
-          alt='filter icon'
+          src="/images/icons/filter.svg"
+          alt="filter icon"
           className={`w-8 p-1 filter-primary-dark ${
             showOverlay && "filter-white"
           }`}
@@ -35,7 +35,7 @@ const FilterButton = () => {
       </button>
       {showOverlay && <FilterButtonOverlay />}
       <SmallTooltip
-        text='Filter'
+        text="Filter"
         shouldRender={isHovered && !showOverlay}
         topOffset={42}
         leftOffset={0}

@@ -35,7 +35,7 @@ const TableContent = <T extends TableRow>({
   const renderTableElement = (
     row: T,
     columns: TableColumn<T>[],
-    isLast: boolean
+    isLast: boolean,
   ) => {
     return tableData.tableElementType === "select" &&
       tableData.onElementSelected ? (
@@ -75,10 +75,10 @@ const TableContent = <T extends TableRow>({
     <tbody>
       {data.content && data.total ? (
         data.content.map((row, index) =>
-          renderTableElement(row, columns, index === data.content.length - 1)
+          renderTableElement(row, columns, index === data.content.length - 1),
         )
       ) : (
-        <tr className='min-h-[3vh] block' />
+        <tr className="min-h-[3vh] block" />
       )}
     </tbody>
   );

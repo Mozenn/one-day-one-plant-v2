@@ -15,8 +15,8 @@ const FilterOverlayField = ({
     <div className={styles.container}>
       <label>{`${label}:`}</label>
       <input
-        className='px-2'
-        placeholder='...'
+        className="px-2"
+        placeholder="..."
         value={getFilter(filterId) || ""}
         onChange={(event) => setFilter(filterId, event.target.value)}
       ></input>

@@ -57,19 +57,19 @@ const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
 
   return (
     <main
-      className='flex flex-col items-center flex-1 m-0 min-h-[80vh] py-28 px-0 bg-gradient-linear'
-      role='main'
+      className="flex flex-col items-center flex-1 m-0 min-h-[80vh] py-28 px-0 bg-gradient-linear"
+      role="main"
     >
-      <div className='flex items-center flex-col w-2/5 bg-white border-solid border-primary-dark border-4 rounded-3xl p-12 shadow-xl'>
+      <div className="flex items-center flex-col w-2/5 bg-white border-solid border-primary-dark border-4 rounded-3xl p-12 shadow-xl">
         <img
-          className='h-[12rem] w-auto absolute top-28'
-          src='/images/logo.png'
-          alt='Logo'
+          className="h-[12rem] w-auto absolute top-28"
+          src="/images/logo.png"
+          alt="Logo"
         />
-        <h2 className='text-3xl font-bold mt-16 mb-8'>{title}</h2>
+        <h2 className="text-3xl font-bold mt-16 mb-8">{title}</h2>
         <form
           onSubmit={handleSubmit(_onSubmit)}
-          className='flex items-center flex-col w-3/4'
+          className="flex items-center flex-col w-3/4"
         >
           {authFields.map((fieldData) =>
             fieldData.name === "password" ? (
@@ -92,10 +92,10 @@ const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
                   rules: fieldData.rules,
                 }}
               />
-            )
+            ),
           )}
           <input
-            type='submit'
+            type="submit"
             value={submitLabel}
             className={`globalButton !mt-8 ${
               _formDisabled() ? "globalButtonDisabled" : ""
@@ -103,13 +103,13 @@ const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
             disabled={_formDisabled()}
           />
           {formError && (
-            <span role='alert' className='text-danger mt-1 '>
+            <span role="alert" className="text-danger mt-1 ">
               {formError}
             </span>
           )}
         </form>
         <Link href={footerLink.route} passHref>
-          <p className='mt-4 underline hover:text-primary transition-colors duration-200'>
+          <p className="mt-4 underline hover:text-primary transition-colors duration-200">
             {footerLink.text}
           </p>
         </Link>

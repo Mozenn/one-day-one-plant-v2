@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <body className={font.className} id='__next'>
+    <html lang="en">
+      <body className={font.className} id="__next">
         <Header />
         <Suspense fallback={<Loading />}>{children}</Suspense>
         <Footer />

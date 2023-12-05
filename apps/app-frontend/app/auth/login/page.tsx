@@ -57,8 +57,8 @@ const Login = () => {
 
   return (
     <AuthForm
-      title='Log In to One Day One Plant'
-      submitLabel='Log In'
+      title="Log In to One Day One Plant"
+      submitLabel="Log In"
       authFields={authFields}
       defaultValues={defaultValues}
       onSubmit={login}

@@ -16,40 +16,40 @@ const PlantPage = ({ params }: { params: { plantId: string } }) => {
   return (
     <AuthGuard>
       {!plant ? (
-        <Spinner styleOverride='ml-[50%] !mt-[20vh]' />
+        <Spinner styleOverride="ml-[50%] !mt-[20vh]" />
       ) : (
-        <main className='flex flex-col min-h-[88vh] py-0 px-20'>
-          <div className='flex mt-8'>
+        <main className="flex flex-col min-h-[88vh] py-0 px-20">
+          <div className="flex mt-8">
             <img
               src={plant.imageUrl}
               alt={`A picture of a ${capitalize(plant.name)}`}
-              className='rounded-2xl w-[35rem] shadow-[0_0px_12px_0px_rgba(0,0,0,0.6)]'
+              className="rounded-2xl w-[35rem] shadow-[0_0px_12px_0px_rgba(0,0,0,0.6)]"
             />
-            <div className='ml-14'>
-              <h2 className='text-3xl font-bold mr-8 mb-4'>
+            <div className="ml-14">
+              <h2 className="text-3xl font-bold mr-8 mb-4">
                 {capitalize(plant.name)}
               </h2>
               <div className={styles.field}>
                 <label>Scientific name :</label>
-                <label className='ml-2'>
+                <label className="ml-2">
                   {capitalize(plant.scientificName)}
                 </label>
               </div>
               <div className={styles.field}>
                 <label>Family :</label>
-                <label className='ml-2'>{capitalize(plant.family)}</label>
+                <label className="ml-2">{capitalize(plant.family)}</label>
               </div>
             </div>
           </div>
 
-          <div className='flex mt-8'>
+          <div className="flex mt-8">
             {plant &&
               plant.urls &&
               plant.urls.map((url) => {
                 return (
                   <Link href={url.url} passHref key={url.source}>
-                    <button className='globalButton !text-xl hover:scale-110 !font-medium'>{`Learn more on ${capitalize(
-                      url.source
+                    <button className="globalButton !text-xl hover:scale-110 !font-medium">{`Learn more on ${capitalize(
+                      url.source,
                     )}`}</button>
                   </Link>
                 );

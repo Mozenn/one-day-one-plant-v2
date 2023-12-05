@@ -78,8 +78,8 @@ const SignUp = () => {
 
   return (
     <AuthForm
-      title='Sign Up to One Day One Plant'
-      submitLabel='Sign Up'
+      title="Sign Up to One Day One Plant"
+      submitLabel="Sign Up"
       authFields={authFields}
       defaultValues={defaultValues}
       onSubmit={register}

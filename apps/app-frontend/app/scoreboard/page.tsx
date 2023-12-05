@@ -11,12 +11,12 @@ const ScoreboardPage = () => {
   return (
     <AuthGuard>
       <main
-        className='flex flex-col items-center flex-1 m-0 min-h-[80vh] py-20 px-0'
-        role='main'
+        className="flex flex-col items-center flex-1 m-0 min-h-[80vh] py-20 px-0"
+        role="main"
       >
         <h1
-          className='text-primary-dark text-4xl p-4 rounded-full font-bold'
-          role='heading'
+          className="text-primary-dark text-4xl p-4 rounded-full font-bold"
+          role="heading"
         >
           Scoreboard
         </h1>

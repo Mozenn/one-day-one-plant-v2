@@ -6,7 +6,7 @@ import { useState } from "react";
 import { AuthFieldProps } from "./AuthFieldProps";
 
 const AuthPasswordField = <T extends AuthFormInputs>(
-  props: AuthFieldProps<T>
+  props: AuthFieldProps<T>,
 ) => {
   const { field, fieldState } = useController(props.useControllerProps);
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -17,7 +17,7 @@ const AuthPasswordField = <T extends AuthFormInputs>(
         name={props.useControllerProps.name}
         label={props.label}
       />
-      <div className='flex items-center w-3/4'>
+      <div className="flex items-center w-3/4">
         <input
           className={`border-solid ${
             fieldState.error ? "border-danger" : "border-primary-dark"
@@ -30,13 +30,13 @@ const AuthPasswordField = <T extends AuthFormInputs>(
         />
         <button
           onClick={() => setIsVisible((prevState) => !prevState)}
-          className=' bg-primary p-2 rounded-xl hover:bg-primary-dark transition-colors duration-200
-          active:bg-primary-light'
+          className=" bg-primary p-2 rounded-xl hover:bg-primary-dark transition-colors duration-200
+          active:bg-primary-light"
         >
           <img
             src={`/images/icons/eye${isVisible ? "-off" : ""}.svg`}
-            alt='toogle password visibility icon'
-            className='filter-white'
+            alt="toogle password visibility icon"
+            className="filter-white"
           />
         </button>
       </div>

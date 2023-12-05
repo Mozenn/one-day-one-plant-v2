@@ -34,19 +34,19 @@ const Table = <T extends TableRow>({
   const { showOverlay, setShowOverlay } = useContext(FilterContext);
 
   return (
-    <div className='flex flex-col items-center mt-16 min-h-[88vh]'>
-      <div className='flex items-start'>
+    <div className="flex flex-col items-center mt-16 min-h-[88vh]">
+      <div className="flex items-start">
         <button
           className={`flex items-center border-2 border-solid border-primary-dark 
           rounded-xl bg-background outline-none cursor-pointer 
           transition-transform duration-500 mr-8 mt-8 hover:rotate-45
           ${showOverlay && "bg-primary"}`}
           onClick={() => setShowOverlay(!showOverlay)}
-          data-testid='filter-button'
+          data-testid="filter-button"
         >
           <img
-            src='/images/icons/filter.svg'
-            alt='filter button icon'
+            src="/images/icons/filter.svg"
+            alt="filter button icon"
             className={`filter-primary-dark p-[12%] h-8 ${
               showOverlay && "filter-white"
             }`}

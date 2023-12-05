@@ -87,7 +87,7 @@ const useAuth = () => {
           "Content-Type": "application/json",
           ...props?.headers,
         },
-      }
+      },
     );
 
     if (res.status === 401) {

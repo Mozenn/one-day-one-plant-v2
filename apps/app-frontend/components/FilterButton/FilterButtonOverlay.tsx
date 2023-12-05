@@ -9,8 +9,8 @@ const FilterButtonOverlay = () => {
 
   return (
     <div
-      role='overlay'
-      className='relative top-3 flex flex-col p-4 bg-white border-2 border-solid border-primary-dark text-primary-dark rounded-3xl last:mb-0'
+      role="overlay"
+      className="relative top-3 flex flex-col p-4 bg-white border-2 border-solid border-primary-dark text-primary-dark rounded-3xl last:mb-0"
     >
       <ResetButton reset={resetFilters} />
       {filtersOnOverlay.map((field: any) => {

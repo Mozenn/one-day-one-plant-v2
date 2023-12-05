@@ -2,8 +2,8 @@ import styles from "../../styles/About.module.scss";
 
 const Terms = () => {
   return (
-    <main className={styles.main} role='main'>
-      <h1 className={styles.title} role='heading'>
+    <main className={styles.main} role="main">
+      <h1 className={styles.title} role="heading">
         Terms of Use
       </h1>
       <p className={styles.text}>
@@ -11,7 +11,7 @@ const Terms = () => {
         If you disagree with any part of the terms then you may not access the
         Service.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         User content and Intellectual property rights
       </h2>
       <p className={styles.text}>
@@ -32,7 +32,7 @@ const Terms = () => {
         repeatedly infringe or are believed to be repeatedly infringing the
         rights of copyright holders will be terminated.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Registration
       </h2>
       <p className={styles.text}>
@@ -48,7 +48,7 @@ const Terms = () => {
         access to the Registration Data and any other information you provide to
         the Site. You are responsible for all activity on your Site account.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Termination
       </h2>
       <p className={styles.text}>
@@ -73,14 +73,14 @@ const Terms = () => {
         liable to you or any third party for any termination of your access to
         the Site.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Changes
       </h2>
       <p className={styles.text}>
         We reserve the right, at our sole discretion, to change or modify
         portions of these Terms of Use at any time.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         External or third party links
       </h2>
       <p className={styles.text}>
@@ -92,7 +92,7 @@ const Terms = () => {
         advertised on those websites. If you decide to access any third party
         website linked from this Site, you do so at your own risk.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Governing Law
       </h2>
       <p className={styles.text}>
@@ -100,7 +100,7 @@ const Terms = () => {
         of law provisions. You expressly commit not to using any racist,
         pornographic or slanderous words on the application.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Disclaimer
       </h2>
       <p className={styles.text}>
@@ -115,12 +115,12 @@ const Terms = () => {
         site or otherwise relating to such materials or on any sites linked to
         this site.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Contact
       </h2>
       <p className={styles.text}>
         If you have any questions about these Terms, please contact us at{" "}
-        <a href='mailto:info@mailgo.dev'>contact@odop.net</a>.
+        <a href="mailto:info@mailgo.dev">contact@odop.net</a>.
       </p>
     </main>
   );

@@ -33,7 +33,7 @@ const TableElement = <T extends TableRow>({
   };
 
   return (
-    <tr className='text-center mt-8'>
+    <tr className="text-center mt-8">
       {columns.map((column) => {
         return column.getLink ? (
           <Link

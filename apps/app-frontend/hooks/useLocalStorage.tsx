@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const useLocalStorage = <T extends any>(
   key: string,
-  initialValue: any
+  initialValue: any,
 ): [T, (value: any) => void] => {
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {

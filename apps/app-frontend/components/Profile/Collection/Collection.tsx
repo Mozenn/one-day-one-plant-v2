@@ -47,16 +47,16 @@ const Collection = () => {
   };
 
   return (
-    <div className='flex flex-col items-center min-h-[60vh] w-full'>
+    <div className="flex flex-col items-center min-h-[60vh] w-full">
       <h2
-        className='text-primary-dark text-4xl p-4 rounded-full font-bold'
-        role='heading'
+        className="text-primary-dark text-4xl p-4 rounded-full font-bold"
+        role="heading"
       >
         Collection
       </h2>
       <PaginationProvider elementsPerPage={8}>
         <FilterProvider initialFiltersOnOverlay={postInitialFilters}>
-          <SortProvider initialKey='name'>
+          <SortProvider initialKey="name">
             <Panel panelInputs={plantsPanelInputs} />
           </SortProvider>
         </FilterProvider>

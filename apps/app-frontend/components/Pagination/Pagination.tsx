@@ -70,15 +70,15 @@ const Pagination = () => {
   };
 
   return (
-    <div className='flex items-center mt-8 [&>*]:mr-3'>
+    <div className="flex items-center mt-8 [&>*]:mr-3">
       <button
         onClick={() => goToFirstPage()}
         disabled={atFirstPage()}
         className={atFirstPage() ? styles.buttonDisabled : styles.button}
       >
         <img
-          src='/images/icons/chevrons-left.svg'
-          alt='go to first page icon'
+          src="/images/icons/chevrons-left.svg"
+          alt="go to first page icon"
         />
       </button>
       <button
@@ -87,11 +87,11 @@ const Pagination = () => {
         className={atFirstPage() ? styles.buttonDisabled : styles.button}
       >
         <img
-          src='/images/icons/chevron-left.svg'
-          alt='go to previous page icon'
+          src="/images/icons/chevron-left.svg"
+          alt="go to previous page icon"
         />
       </button>
-      <div className='flex flex-col items-center justify-center w-16 h-7 my-0 mr-3 ml-0 border-2 border-solid border-primary-dark rounded-3xl'>
+      <div className="flex flex-col items-center justify-center w-16 h-7 my-0 mr-3 ml-0 border-2 border-solid border-primary-dark rounded-3xl">
         {inEditMode ? (
           <input
             className={styles.pageInput}
@@ -115,7 +115,7 @@ const Pagination = () => {
         disabled={atLastPage()}
         className={atLastPage() ? styles.buttonDisabled : styles.button}
       >
-        <img src='/images/icons/chevron-right.svg' alt='go to next page icon' />
+        <img src="/images/icons/chevron-right.svg" alt="go to next page icon" />
       </button>
       <button
         onClick={goToLastPage}
@@ -123,8 +123,8 @@ const Pagination = () => {
         className={atLastPage() ? styles.buttonDisabled : styles.button}
       >
         <img
-          src='/images/icons/chevrons-right.svg'
-          alt='go to last page icon'
+          src="/images/icons/chevrons-right.svg"
+          alt="go to last page icon"
         />
       </button>
     </div>

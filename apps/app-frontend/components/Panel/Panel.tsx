@@ -51,7 +51,7 @@ const Panel = <T extends unknown>({
   };
 
   const { data, error } = useFetch<Page<T>>(
-    adaptFetchItems(panelInputs.fetchItem)
+    adaptFetchItems(panelInputs.fetchItem),
   );
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Panel = <T extends unknown>({
   };
 
   const getGridTemplateColumns = (
-    gridSizeOverwrite: number | undefined
+    gridSizeOverwrite: number | undefined,
   ): string => {
     const gridSize = gridSizeOverwrite ? gridSizeOverwrite : 10;
 
@@ -73,8 +73,8 @@ const Panel = <T extends unknown>({
   };
 
   return (
-    <div className='flex flex-col items-center justify-center py-0 px-8 w-full'>
-      <div className='self-start w-full flex items-start content-between mt-8 [&>*]:mr-8'>
+    <div className="flex flex-col items-center justify-center py-0 px-8 w-full">
+      <div className="self-start w-full flex items-start content-between mt-8 [&>*]:mr-8">
         <SortButton />
         <FilterButton />
       </div>
@@ -84,17 +84,17 @@ const Panel = <T extends unknown>({
           <div
             style={{
               gridTemplateColumns: getGridTemplateColumns(
-                panelInputs.gridSizeOverwrite
+                panelInputs.gridSizeOverwrite,
               ),
             }}
-            className='grid w-full my-8 justify-center items-center gap-8'
-            data-testid='items-container'
+            className="grid w-full my-8 justify-center items-center gap-8"
+            data-testid="items-container"
           >
             {data?.content.map((item) => {
               return panelInputs.renderItem(item);
             })}
           </div>
-          <div className='mb-8' data-testid='pagination-container'>
+          <div className="mb-8" data-testid="pagination-container">
             <Pagination />
           </div>
         </>

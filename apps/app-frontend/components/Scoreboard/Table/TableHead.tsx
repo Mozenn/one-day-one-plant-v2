@@ -32,7 +32,7 @@ const TableHead = <T extends TableRow>({
 
   const reducer = (
     acc: any,
-    { propertyName, type }: { propertyName: string; type: string }
+    { propertyName, type }: { propertyName: string; type: string },
   ) => {
     switch (type) {
       case "text":
@@ -85,7 +85,7 @@ const TableHead = <T extends TableRow>({
           const isActiveSortColumn: boolean = index === activeSortColumnIndex;
           return (
             <th key={column.name}>
-              <div className='flex items-center justify-center'>
+              <div className="flex items-center justify-center">
                 <button
                   onClick={() => setActiveColumn(index)}
                   className={`bg-transparent outline-none border-none cursor-pointer w-auto mr-4 
@@ -111,7 +111,7 @@ const TableHead = <T extends TableRow>({
                 >
                   <img
                     src={`/images/icons/sort${columnSortStates[index]}.svg`}
-                    alt='sort icon'
+                    alt="sort icon"
                     className={`h-auto w-7 filter-primary-dark p-[12%] ${
                       isActiveSortColumn && "filter-secondary"
                     }`}
@@ -135,10 +135,10 @@ const TableHead = <T extends TableRow>({
                     <input
                       value={getFilter(filterMapping[index])}
                       onChange={(e) => updateFilterValue(index, e.target.value)}
-                      placeholder='...'
-                      className='border-2 border-solid border-primary-dark rounded-2xl
+                      placeholder="..."
+                      className="border-2 border-solid border-primary-dark rounded-2xl
                       text-center outline-none py-1 px-0 text-secondary-dark
-                      '
+                      "
                     ></input>
                   </th>
                 );

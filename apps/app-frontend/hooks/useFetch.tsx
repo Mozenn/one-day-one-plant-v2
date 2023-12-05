@@ -27,7 +27,7 @@ export type FetchItem = {
 
 function useFetch<T>(
   fetchInput: UseFetchInput,
-  resultAccumulator: UseFetchResultAccumulator<T> = (result, acc) => result
+  resultAccumulator: UseFetchResultAccumulator<T> = (result, acc) => result,
 ): UseFetchOutput<T> {
   const { authFetch } = useAuth();
 
@@ -53,7 +53,7 @@ function useFetch<T>(
       console.log("fetch result", result);
 
       return result;
-    }
+    },
   );
 
   return {

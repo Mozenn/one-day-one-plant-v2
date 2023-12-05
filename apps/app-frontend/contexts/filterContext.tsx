@@ -13,7 +13,7 @@ const FilterProvider = ({
 }) => {
   const [filterParams, setFilterParams] = useState<any>({});
   const [filtersOnOverlay, setFiltersOnOverlay] = useState(
-    initialFiltersOnOverlay
+    initialFiltersOnOverlay,
   );
   const [showOverlay, setShowOverlay] = useState(false);
   const [filtersInitialized, setFilterInitialized] = useState(false);

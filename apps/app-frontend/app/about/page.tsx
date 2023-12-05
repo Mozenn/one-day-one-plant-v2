@@ -2,8 +2,8 @@ import styles from "../../styles/About.module.scss";
 
 const About = () => {
   return (
-    <main className={styles.main} role='main'>
-      <h1 className={styles.title} role='heading'>
+    <main className={styles.main} role="main">
+      <h1 className={styles.title} role="heading">
         About
       </h1>
       <p className={styles.text}>
@@ -12,7 +12,7 @@ const About = () => {
       </p>
       <p className={styles.text}>
         This website is developped and maintained by{" "}
-        <a href='https://gauthier-cassany.com'>Gauthier Cassany</a>.
+        <a href="https://gauthier-cassany.com">Gauthier Cassany</a>.
       </p>
     </main>
   );

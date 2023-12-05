@@ -35,7 +35,7 @@ const BaseTooltip = ({
         setRenderState(RenderState.WaitingRender);
         const newTimer = setTimeout(
           () => setRenderState(RenderState.Visible),
-          renderDelay
+          renderDelay,
         );
         setTimer(newTimer);
       } else {
@@ -65,7 +65,7 @@ const BaseTooltip = ({
       } ${renderState === RenderState.Visible && "z-[1] opacity-100"}
         top-[${topOffset}px] left-[${leftOffset}px]
       `}
-      data-testid='tooltip'
+      data-testid="tooltip"
     >
       <p>{text}</p>
     </div>

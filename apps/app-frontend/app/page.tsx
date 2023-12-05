@@ -99,39 +99,39 @@ export default function Home() {
   ];
 
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       {isAuthenticated() ? (
         <main
-          className='flex flex-col flex-1 items-center justify-center m-0 py-20 px-0 min-h-[80vh]'
-          role='main'
+          className="flex flex-col flex-1 items-center justify-center m-0 py-20 px-0 min-h-[80vh]"
+          role="main"
         >
           <h1
-            className='text-primary-dark text-4xl p-4 rounded-full font-bold mt-1'
-            role='heading'
+            className="text-primary-dark text-4xl p-4 rounded-full font-bold mt-1"
+            role="heading"
           >
             Welcome Back!
           </h1>
-          <div className='flex  items-center'>
+          <div className="flex  items-center">
             <Link href={`/profile/${authId}`} passHref>
-              <button className='globalButton'>Profile</button>
+              <button className="globalButton">Profile</button>
             </Link>
             <Link href={`/collect`} passHref>
-              <button className='globalButton'>Collect</button>
+              <button className="globalButton">Collect</button>
             </Link>
             <Link href={`/scoreboard`} passHref>
-              <button className='globalButton'>Scoreboard</button>
+              <button className="globalButton">Scoreboard</button>
             </Link>
           </div>
         </main>
       ) : (
         <main
-          className='flex flex-col items-center flex-1 m-0 min-h-[80vh] pb-20 px-0'
-          role='main'
+          className="flex flex-col items-center flex-1 m-0 min-h-[80vh] pb-20 px-0"
+          role="main"
         >
-          <section className='flex flex-col items-center justify-center w-full h-[100vh]'>
+          <section className="flex flex-col items-center justify-center w-full h-[100vh]">
             <h1
-              className='text-primary-dark text-5xl font-semibold p-4 rounded-full'
-              role='heading'
+              className="text-primary-dark text-5xl font-semibold p-4 rounded-full"
+              role="heading"
             >
               Welcome to One Day One Plant !
             </h1>
@@ -165,7 +165,7 @@ export default function Home() {
 
             const img = (
               <img
-                className='h-96 w-auto border-solid border-2 border-primary-dark rounded-2xl'
+                className="h-96 w-auto border-solid border-2 border-primary-dark rounded-2xl"
                 src={section.imgSource}
                 alt={section.imgAlt}
               />
@@ -183,9 +183,9 @@ export default function Home() {
               </section>
             );
           })}
-          <section className='mt-16'>
-            <Link href='/auth/signup' passHref>
-              <p className='globalButton !text-2xl hover:scale-110'>
+          <section className="mt-16">
+            <Link href="/auth/signup" passHref>
+              <p className="globalButton !text-2xl hover:scale-110">
                 Start Collecting
               </p>
             </Link>

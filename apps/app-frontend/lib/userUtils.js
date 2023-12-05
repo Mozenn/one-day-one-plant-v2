@@ -24,7 +24,7 @@ export const getUserPage = (page, elementsPerPage) => {
   const usersResult = users
     .slice(
       page === 0 ? page : page * elementsPerPage,
-      page === 0 ? elementsPerPage : (page + 1) * elementsPerPage
+      page === 0 ? elementsPerPage : (page + 1) * elementsPerPage,
     )
     .map((user) => fillUser(user));
 

@@ -2,8 +2,8 @@ import styles from "../../styles/About.module.scss";
 
 const Privacy = () => {
   return (
-    <main className={styles.main} role='main'>
-      <h1 className={styles.title} role='heading'>
+    <main className={styles.main} role="main">
+      <h1 className={styles.title} role="heading">
         Privacy Policy
       </h1>
       <p className={styles.text}>
@@ -20,7 +20,7 @@ const Privacy = () => {
         more information about our Privacy Policy, do not hesitate to contact
         us.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         What Information Do We Collect?
       </h2>
       <p className={styles.text}>
@@ -30,7 +30,7 @@ const Privacy = () => {
         your account, your score. We do not collect any Sensitive Data about
         you.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         How do we use your information?
       </h2>
       <p className={styles.text}>
@@ -48,7 +48,7 @@ const Privacy = () => {
           To maintain and improve the content and functionality of the Service
         </li>
       </ul>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Who has access to my personal data?
       </h2>
       <p className={styles.text}>
@@ -57,7 +57,7 @@ const Privacy = () => {
         rights to such systems. The information displayed on your profil are
         accessible by all One Day One Plant users.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Cookies
       </h2>
       <p className={styles.text}>
@@ -68,7 +68,7 @@ const Privacy = () => {
         of the Site to help analyze our web page flow and measure promotional
         effectiveness.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Data Retention
       </h2>
       <p className={styles.text}>
@@ -78,7 +78,7 @@ const Privacy = () => {
         within a few days, your personal data won&apos;t even exist in our
         backups.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Security
       </h2>
       <p className={styles.text}>
@@ -88,7 +88,7 @@ const Privacy = () => {
         secured networks and is only accessible by a limited number of persons
         who have special access rights to such systems.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Third-Party links
       </h2>
       <p className={styles.text}>
@@ -99,7 +99,7 @@ const Privacy = () => {
         privacy statements. When you leave our website, we encourage you to read
         the privacy notice of every website you visit.
       </p>
-      <h2 className={styles.subtitle} role='heading'>
+      <h2 className={styles.subtitle} role="heading">
         Other organizations
       </h2>
       <p className={styles.text}>

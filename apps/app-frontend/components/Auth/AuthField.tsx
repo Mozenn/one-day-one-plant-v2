@@ -19,7 +19,7 @@ const AuthField = <T extends AuthFormInputs>(props: AuthFieldProps<T>) => {
         } border-2 rounded-2xl px-2 w-3/4 text-secondary-dark`}
         placeholder={props.label}
         {...field}
-        type='text'
+        type="text"
       />
       <AuthFieldError fieldState={fieldState} />
     </>

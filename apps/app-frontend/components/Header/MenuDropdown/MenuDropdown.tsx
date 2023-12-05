@@ -45,10 +45,10 @@ const MenuDropdown = ({ closeDropdown }: { closeDropdown: () => void }) => {
 
   return ReactDOM.createPortal(
     <div
-      className='absolute top-20 right-6 box-border h-auto inline-block bg-white text-primary-dark
-    rounded-xl border-solid border-primary-dark shadow-[0_0px_10px_0px_rgba(0,0,0,0.4)]'
+      className="absolute top-20 right-6 box-border h-auto inline-block bg-white text-primary-dark
+    rounded-xl border-solid border-primary-dark shadow-[0_0px_10px_0px_rgba(0,0,0,0.4)]"
     >
-      <ul className='list-none p-2 flex flex-col items-center'>
+      <ul className="list-none p-2 flex flex-col items-center">
         {menuOptions.map((option) => {
           return (
             <li key={option.label}>
@@ -62,7 +62,7 @@ const MenuDropdown = ({ closeDropdown }: { closeDropdown: () => void }) => {
         })}
       </ul>
     </div>,
-    document.querySelector<Element>("#__next")!
+    document.querySelector<Element>("#__next")!,
   );
 };
 

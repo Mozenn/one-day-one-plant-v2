@@ -13,7 +13,7 @@ const SortButton = () => {
 
   return (
     <div
-      className='relative flex flex-col items-start'
+      className="relative flex flex-col items-start"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -26,7 +26,7 @@ const SortButton = () => {
       >
         <img
           src={`/images/icons/sort${sortParams.direction}.svg`}
-          alt='sort icon'
+          alt="sort icon"
           className={`w-8 p-1 filter-primary-dark ${
             showOverlay && "filter-white"
           }`}
@@ -34,7 +34,7 @@ const SortButton = () => {
       </button>
       {showOverlay && <SortButtonOverlay />}
       <SmallTooltip
-        text='Sort'
+        text="Sort"
         shouldRender={isHovered && !showOverlay}
         topOffset={42}
         leftOffset={0}

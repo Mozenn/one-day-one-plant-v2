@@ -8,7 +8,7 @@ const AuthFieldError = ({
   return (
     <>
       {fieldState.error && (
-        <span role='alert' className='text-danger mt-1 '>
+        <span role="alert" className="text-danger mt-1 ">
           {fieldState.error.message}
         </span>
       )}

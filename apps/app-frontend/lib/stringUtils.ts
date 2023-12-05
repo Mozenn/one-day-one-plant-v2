@@ -7,9 +7,9 @@ export const capitalize = (stringToCapitalize: string) => {
             prev.concat(
               index == 0 ? "" : " ",
               current.slice(0, 1).toUpperCase(),
-              current.slice(1)
+              current.slice(1),
             ),
-          ""
+          "",
         )
     : stringToCapitalize;
 };

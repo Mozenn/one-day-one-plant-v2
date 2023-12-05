@@ -9,5 +9,5 @@ export default function NotFoundPage({
   error: Error;
   reset: () => void;
 }) {
-  return <Error message='404 Page not found' />;
+  return <Error message="404 Page not found" />;
 }
