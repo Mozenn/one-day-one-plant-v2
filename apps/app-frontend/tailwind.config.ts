@@ -29,6 +29,7 @@ const config: Config = {
       },
       boxShadow: {
         "plant-thumbnail": "inset 5em 5em 5em 1em rgba(132, 230, 34,0.5)",
+        "profile-image-edit": "inset 5em 5em 5em 5em rgba(142, 108, 41,0.8)",
       },
       colors: {
         primary: "var(--color-primary)",
@@ -36,6 +37,7 @@ const config: Config = {
         "primary-dark": "var(--color-primary-dark)",
         "primary-disabled": "var(--color-primary-disabled)",
         secondary: "var(--color-secondary)",
+        "secondary-passthrough": "var(--color-secondary-passthrough)",
         "secondary-light": "var(--color-secondary-light)",
         "secondary-dark": "var(--color-secondary-dark)",
         "secondary-dark-light": "var(--color-secondary-dark-light)",

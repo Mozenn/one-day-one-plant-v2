@@ -2,19 +2,16 @@
 
 import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Header.module.scss";
 import MenuDropdown from "./MenuDropdown/MenuDropdown";
 import GoogleAnalytics from "../GoogleAnalytics/GoogleAnalytics";
+import useLoader from "@/hooks/useLoader";
 
 const HeaderSideContent = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const { isAuthenticated, authFetch } = useAuth();
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  const { isLoaded } = useLoader();
 
   const onMenuDropdownClicked = () => {
     setDropdownVisible(!isDropdownVisible);

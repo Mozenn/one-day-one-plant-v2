@@ -17,9 +17,8 @@ const PlantThumbnail = ({ plantData }: { plantData: Plant }) => {
     "
     >
       <div
-        // border-4 border-solid border-secondary-dark
         className="flex flex-col items-start 
-        w-full h-full rounded-3xl py-2
+        w-full h-full rounded-3xl p-2
       bg-no-repeat bg-center bg-cover 
       shadow-plant-thumbnail
       "

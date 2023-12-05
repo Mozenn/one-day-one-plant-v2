@@ -3,13 +3,10 @@
 import useFetch from "../../../hooks/useFetch";
 import Collection from "@/components/Profile/Collection/Collection";
 import { User } from "@/types/user";
-import {
-  getGradeTextColorFromScore,
-  getGradeBorderFromScore,
-  getGradeFromScore,
-} from "../../../lib/gradeUtils";
-import NoContent from "@/components/NoContent/NoContent";
+import { getGradeFromScore } from "../../../lib/gradeUtils";
 import AuthGuard from "@/components/Auth/AuthGuard";
+import Spinner from "@/components/Spinner/Spinner";
+import ProfilePicture from "@/components/Profile/ProfilePicture/ProfilePicture";
 
 const Profile = ({ params }: { params: { userId: string } }) => {
   const { data: user } = useFetch<User>({
@@ -17,21 +14,14 @@ const Profile = ({ params }: { params: { userId: string } }) => {
   });
 
   if (!user) {
-    return <NoContent />;
+    return <Spinner />;
   }
 
   return (
     <AuthGuard>
       <main className="flex overflow-hidden min-h-[88vh]">
         <aside className="flex flex-col items-center pt-32 pb-0 px-12 bg-white">
-          <img
-            className={`h-48 w-48 object-cover border-8 border-solid 
-            ${getGradeBorderFromScore(user.score)} rounded-3xl
-            -outline-offset-2 outline-4 outline-primary-dark outline
-            `}
-            src={user.profilePlantUrl}
-            alt="Profile Image"
-          />
+          <ProfilePicture user={user} />
           <h2 className="font-semibold text-2xl mt-2">{user.username}</h2>
           <div className="flex items-center text-xl">
             <div className="flex items-center mr-12">
@@ -44,9 +34,10 @@ const Profile = ({ params }: { params: { userId: string } }) => {
             </div>
           </div>
           <label
-            className={`text-lg font-bold mb-4 ${getGradeTextColorFromScore(
-              user.score,
-            )}`}
+            className={`text-lg font-bold mb-4`}
+            style={{
+              color: `var(--color-grade-${getGradeFromScore(user.score)})`,
+            }}
           >
             {getGradeFromScore(user.score).toUpperCase()}
           </label>

@@ -3,10 +3,16 @@
 import HeroCapsule from "@/components/Home/HeroCapsule";
 import useAuth from "../hooks/useAuth";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import useLoader from "@/hooks/useLoader";
+import Spinner from "@/components/Spinner/Spinner";
 
 export default function Home() {
   const { isAuthenticated, authId } = useAuth();
+  const { isLoaded } = useLoader();
+
+  if (!isLoaded) {
+    return <Spinner />;
+  }
 
   const sections = [
     {
