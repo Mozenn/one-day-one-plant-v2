@@ -4,12 +4,15 @@ import { PrismaService } from 'src/shared/prisma.service';
 import { User } from '@prisma/client';
 import { PaginationResult } from 'src/shared/paginationResult';
 import { ConfigService } from '@nestjs/config';
+import { UpdateUserPictureDto } from './update-user-picture.dto';
+import { PlantService } from 'src/plant/plant.service';
 
 @Injectable()
 export class UserService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly configService: ConfigService,
+    private readonly plantService: PlantService,
   ) {}
 
   async getUser(id: number): Promise<User | null> {
@@ -117,6 +120,32 @@ export class UserService {
         plants: {
           connect: [{ name: defaultPlant.name }],
         },
+      },
+    });
+  }
+
+  async updateUserPicture(
+    updateUserPicture: UpdateUserPictureDto,
+  ): Promise<User> {
+    const plant = await this.plantService.getPlant(updateUserPicture.plantId);
+
+    return await this.prisma.user.update({
+      where: {
+        id: updateUserPicture.userId,
+      },
+      data: {
+        profilePlantUrl: plant.imageUrl,
+      },
+    });
+  }
+
+  async verifyUser(email: string): Promise<User> {
+    return await this.prisma.user.update({
+      where: {
+        email: email,
+      },
+      data: {
+        verified: true,
       },
     });
   }

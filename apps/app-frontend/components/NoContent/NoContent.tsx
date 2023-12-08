@@ -1,4 +1,4 @@
-const NoContent = ({ message = "Nothing to see" }: { message?: string }) => {
+const NoContent = ({ message = "" }: { message?: string }) => {
   return (
     <div className="flex flex-col items-center justify-center h-80">
       <img

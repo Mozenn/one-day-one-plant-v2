@@ -14,6 +14,7 @@ import { FastifyReply } from 'fastify';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './signup.dto';
 import JwtAuthenticationGuard from './jwtAuth.guard';
+import VerifyDto from './verify.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -50,5 +51,20 @@ export class AuthController {
   authenticate(@Req() request: RequestWithUser) {
     const user = request.user;
     return user;
+  }
+
+  @UseGuards(JwtAuthenticationGuard)
+  @Post('verify')
+  async verify(@Body() verificationData: VerifyDto) {
+    const email = await this.authService.decodeVerificationToken(
+      verificationData.token,
+    );
+    await this.authService.confirmEmail(email);
+  }
+
+  @Post('resend-confirmation-link')
+  @UseGuards(JwtAuthenticationGuard)
+  async resendConfirmationLink(@Req() request: RequestWithUser) {
+    await this.authService.resendConfirmationLink(request.user.id);
   }
 }

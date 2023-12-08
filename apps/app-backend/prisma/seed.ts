@@ -192,6 +192,7 @@ async function main() {
         'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG',
       createdAt: new Date(),
       password: await hash('Password1*', 10),
+      verified: true,
       lastDrawDate: new Date('2021-05-04 19:10:25'),
       lastDrawPlantId: 1,
       plants: {

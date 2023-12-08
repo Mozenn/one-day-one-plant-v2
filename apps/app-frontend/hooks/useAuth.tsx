@@ -1,18 +1,25 @@
 import { usePathname } from "next/navigation";
 import useLocalStorage from "./useLocalStorage";
+import { User } from "@/types/user";
 
 export type AuthFetchParams = {
   [key: string]: any;
 };
 
 export type AuthFetchProps = {
+  method?: string;
   headers?: HeadersInit;
   params?: AuthFetchParams;
+  body?: BodyInit | null;
 };
 
 const useAuth = () => {
   const pathname = usePathname();
   const [authId, setAuthId] = useLocalStorage<number>("authId", null);
+  const [scheduledToast, setScheduledToast] = useLocalStorage<string>(
+    "scheduledToast",
+    null,
+  );
 
   const login = async (data: any) => {
     console.log("login");
@@ -28,6 +35,13 @@ const useAuth = () => {
     if (res.status === 200) {
       const user = await res.json();
       setAuthId(user.id);
+      setScheduledToast(
+        JSON.stringify({
+          type: "warning",
+          message:
+            "Your account has not been confirmed yet. Please check your email, or ask for the confirmation email to be re-sent in your profile page",
+        }),
+      );
       redirectTo("/");
     } else {
       return res;
@@ -46,9 +60,15 @@ const useAuth = () => {
     });
 
     if (res.status === 201) {
-      const user = await res.json();
+      const user: User = await res.json();
       setAuthId(user.id);
       redirectTo("/");
+      setScheduledToast(
+        JSON.stringify({
+          type: "success",
+          message: `Welcome! An email has been sent to ${user.email} to verify your account`,
+        }),
+      );
     } else {
       return res;
     }
@@ -75,18 +95,22 @@ const useAuth = () => {
     return authId != null;
   };
 
-  const authFetch = async (target: string, props?: AuthFetchProps) => {
+  const authFetch = async (
+    target: string,
+    props: AuthFetchProps = { method: "GET" },
+  ) => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}${target}${
-        props != undefined ? "?" + new URLSearchParams(props.params) : ""
+        props.params != undefined ? "?" + new URLSearchParams(props.params) : ""
       }`,
       {
-        method: "GET",
+        method: props.method || "GET",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
           ...props?.headers,
         },
+        body: props?.body,
       },
     );
 

@@ -1,10 +1,18 @@
 import { User } from "@/types/user";
 import { getGradeFromScore } from "../../../lib/gradeUtils";
 import { useState } from "react";
+import ProfilePictureSelection from "./ProfilePictureSelection";
 
-const ProfilePicture = ({ user }: { user: User }) => {
+const ProfilePicture = ({
+  user,
+  onNewPictureSelected,
+}: {
+  user: User;
+  onNewPictureSelected: () => void;
+}) => {
   const [isHoveringPicture, setIsHoveringPicture] = useState(false);
-  const [isImageSelectionVisible, setImageSelectionVisible] = useState(false);
+  const [isPictureSelectionVisible, setPictureSelectionVisible] =
+    useState(false);
 
   return (
     <div
@@ -26,13 +34,30 @@ const ProfilePicture = ({ user }: { user: User }) => {
         <button
           className={`bg-secondary-passthrough hover:bg-secondary transition-colors duration-200
           p-3 hover:cursor-pointer rounded-3xl `}
+          onClick={() => setPictureSelectionVisible((pastValue) => !pastValue)}
         >
           <img
-            src={"/images/icons/edit.svg"}
-            alt="Edit Profile Image"
+            src={`${
+              isPictureSelectionVisible
+                ? "/images/icons/x.svg"
+                : "/images/icons/edit.svg"
+            }`}
+            alt={`${
+              isPictureSelectionVisible
+                ? "Close picture selection icon"
+                : "Edit profile picture icon"
+            }`}
             className="filter-white w-12 "
           />
         </button>
+      )}
+      {isPictureSelectionVisible && (
+        <ProfilePictureSelection
+          onNewPictureSelected={() => {
+            setPictureSelectionVisible(false);
+            onNewPictureSelected();
+          }}
+        />
       )}
     </div>
   );

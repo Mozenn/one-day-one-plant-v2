@@ -1,9 +1,10 @@
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/globals.scss";
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import Loading from "./loading";
 
 const font = Nunito_Sans({ subsets: ["latin"] });

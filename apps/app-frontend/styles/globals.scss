@@ -51,6 +51,8 @@ body {
   //   rgb(var(--background-start-rgb));
 }
 
+// DATE PICKER
+
 .react-datepicker {
   border-radius: 20px;
 
@@ -101,6 +103,22 @@ body {
     padding-left: 8px;
   }
 }
+
+// TOASTIFY
+
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  @apply bg-danger text-white rounded-2xl text-base;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--info {
+  @apply bg-primary text-white rounded-2xl text-base;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--warning {
+  @apply bg-secondary text-white rounded-2xl text-base;
+}
+
+// GLOBAL
 
 .globalButton {
   @apply bg-primary text-white rounded-3xl

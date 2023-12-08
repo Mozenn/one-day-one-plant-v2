@@ -9,7 +9,7 @@ import Spinner from "@/components/Spinner/Spinner";
 import ProfilePicture from "@/components/Profile/ProfilePicture/ProfilePicture";
 
 const Profile = ({ params }: { params: { userId: string } }) => {
-  const { data: user } = useFetch<User>({
+  const { data: user, mutate } = useFetch<User>({
     url: `/user/${params.userId}`,
   });
 
@@ -21,7 +21,7 @@ const Profile = ({ params }: { params: { userId: string } }) => {
     <AuthGuard>
       <main className="flex overflow-hidden min-h-[88vh]">
         <aside className="flex flex-col items-center pt-32 pb-0 px-12 bg-white">
-          <ProfilePicture user={user} />
+          <ProfilePicture user={user} onNewPictureSelected={() => mutate()} />
           <h2 className="font-semibold text-2xl mt-2">{user.username}</h2>
           <div className="flex items-center text-xl">
             <div className="flex items-center mr-12">

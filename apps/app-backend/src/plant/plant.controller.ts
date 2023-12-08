@@ -12,6 +12,7 @@ import { PlantPageDto } from './plant-page.dto';
 import { Plant } from '@prisma/client';
 import { PaginationResult } from 'src/shared/paginationResult';
 import JwtAuthenticationGuard from 'src/auth/jwtAuth.guard';
+import { VerificationGuard } from 'src/auth/verification.guard';
 
 @Controller('plant')
 export class PlantController {
@@ -27,6 +28,7 @@ export class PlantController {
     return await this.plantService.getPlant(+id);
   }
 
+  @UseGuards(VerificationGuard)
   @UseGuards(JwtAuthenticationGuard)
   @Get('draw')
   async drawPlant(@Query('userId') userId: string): Promise<Plant> {

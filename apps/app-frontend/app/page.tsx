@@ -5,10 +5,28 @@ import useAuth from "../hooks/useAuth";
 import Link from "next/link";
 import useLoader from "@/hooks/useLoader";
 import Spinner from "@/components/Spinner/Spinner";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Home() {
   const { isAuthenticated, authId } = useAuth();
   const { isLoaded } = useLoader();
+  const [scheduledToast, setScheduledToast] = useLocalStorage<string>(
+    "scheduledToast",
+    null,
+  );
+
+  useEffect(() => {
+    if (scheduledToast && isLoaded) {
+      const parsedScheduledToast = JSON.parse(scheduledToast);
+      toast(parsedScheduledToast.message, {
+        type: parsedScheduledToast.type,
+      });
+
+      setScheduledToast(null);
+    }
+  }, [scheduledToast, setScheduledToast, isLoaded]);
 
   if (!isLoaded) {
     return <Spinner />;
@@ -198,6 +216,11 @@ export default function Home() {
           </section>
         </main>
       )}
+      <ToastContainer
+        autoClose={false}
+        position="bottom-right"
+        theme="colored"
+      />
     </div>
   );
 }

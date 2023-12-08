@@ -105,7 +105,7 @@ export class PlantService {
 
     const [plants, count] = await this.prisma.$transaction([
       this.prisma.plant.findMany({
-        skip: Math.max(pageDto.page * pageDto.elementsPerPage - 1, 0),
+        skip: pageDto.page * pageDto.elementsPerPage,
         take: pageDto.elementsPerPage,
         orderBy: [
           {

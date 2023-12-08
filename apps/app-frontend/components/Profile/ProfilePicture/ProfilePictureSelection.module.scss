@@ -1,0 +1,15 @@
+/* Works on Firefox */
+.commentsContainer {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-dark) var(--color-secondary-light);
+}
+
+/* Works on Chrome, Edge, and Safari */
+.commentsContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+.commentsContainer::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-dark);
+  border-radius: 20px;
+}
