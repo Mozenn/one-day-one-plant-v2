@@ -35,13 +35,15 @@ const useAuth = () => {
     if (res.status === 200) {
       const user = await res.json();
       setAuthId(user.id);
-      setScheduledToast(
-        JSON.stringify({
-          type: "warning",
-          message:
-            "Your account has not been confirmed yet. Please check your email, or ask for the confirmation email to be re-sent in your profile page",
-        }),
-      );
+      if (!user.verified) {
+        setScheduledToast(
+          JSON.stringify({
+            type: "warning",
+            message:
+              "Your account has not been confirmed yet. Please check your email, or ask for the confirmation email to be re-sent in your profile page",
+          }),
+        );
+      }
       redirectTo("/");
     } else {
       return res;

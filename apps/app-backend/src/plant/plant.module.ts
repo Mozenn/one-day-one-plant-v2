@@ -6,5 +6,6 @@ import { PlantService } from './plant.service';
   imports: [],
   controllers: [PlantController],
   providers: [PlantService, Logger],
+  exports: [PlantService],
 })
 export class PlantModule {}

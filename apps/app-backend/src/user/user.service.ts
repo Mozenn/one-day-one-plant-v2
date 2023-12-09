@@ -116,6 +116,7 @@ export class UserService {
         score: 0,
         createdAt: new Date(),
         password: password,
+        verified: false,
         profilePlantUrl: defaultPlant.imageUrl,
         plants: {
           connect: [{ name: defaultPlant.name }],

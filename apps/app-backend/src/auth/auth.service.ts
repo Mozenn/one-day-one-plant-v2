@@ -15,6 +15,9 @@ import { PrismaErrorCode } from 'src/shared/prismaErrorCode.enum';
 import { User } from '@prisma/client';
 import { EmailService } from 'src/email/email.service';
 import { VerificationTokenPayload } from './verificationTokenPayload.interface';
+import path from 'path';
+import fs from 'fs';
+import Handlebars from 'handlebars';
 
 @Injectable()
 export class AuthService {
@@ -35,7 +38,7 @@ export class AuthService {
         hashPassword,
       );
 
-      await this.sendVerificationEmail(signUpDto.email);
+      await this.sendVerificationEmail(signUpDto.email, signUpDto.username);
 
       return user;
     } catch (error: any) {
@@ -47,7 +50,7 @@ export class AuthService {
     }
   }
 
-  async sendVerificationEmail(email: string) {
+  async sendVerificationEmail(email: string, username: string) {
     const payload: VerificationTokenPayload = { email };
     const token = this.jwtService.sign(payload, {
       secret: this.configService.get('JWT_VERIFICATION_TOKEN_SECRET'),
@@ -60,13 +63,29 @@ export class AuthService {
       'EMAIL_CONFIRMATION_URL',
     )}?token=${token}`;
 
-    const text = `Welcome to One Day One Plant. To confirm the email address, click here: ${url}`;
+    const html = this.renderTemplate(url, username);
 
     return this.emailService.sendMail({
       to: email,
       subject: 'One Day One Plant - Email confirmation',
-      text,
+      html,
     });
+  }
+
+  private renderTemplate(url: string, username: string) {
+    const template = Handlebars.compile(
+      fs.readFileSync(
+        path.join(__dirname, '..', '..', 'views', 'email-confirmation.hbs'),
+        'utf8',
+      ),
+    );
+
+    const logo = `data:image/png;base64, ${fs.readFileSync(
+      path.join(__dirname, '..', '..', 'views', 'logo.png'),
+      'base64',
+    )}`;
+
+    return template({ url, username, logo });
   }
 
   public async confirmEmail(email: string) {
@@ -100,7 +119,7 @@ export class AuthService {
     if (user.verified) {
       throw new BadRequestException('Email already confirmed');
     }
-    await this.sendVerificationEmail(user.email);
+    await this.sendVerificationEmail(user.email, user.username);
   }
 
   async getAuthenticatedUser(emailOrUsername: string, password: string) {

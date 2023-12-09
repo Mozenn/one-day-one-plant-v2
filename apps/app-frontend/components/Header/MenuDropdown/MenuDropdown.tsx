@@ -18,6 +18,10 @@ const MenuDropdown = ({ closeDropdown }: { closeDropdown: () => void }) => {
       link: "/collect",
     },
     {
+      label: "Scoreboard",
+      link: "/scoreboard",
+    },
+    {
       label: "Log out",
       action: () => {
         logout();

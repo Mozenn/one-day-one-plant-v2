@@ -7,6 +7,7 @@ export interface User extends TableRow {
   score: number;
   profilePlantUrl: string;
   createdAt: string;
+  verified: boolean;
   lastDrawDate: string;
   lastDrawPlant: Plant;
 }

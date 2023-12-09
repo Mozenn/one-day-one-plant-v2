@@ -1,5 +1,7 @@
+"use client";
+
 import AuthGuard from "@/components/Auth/AuthGuard";
-import Scoreboard, { ScoreboardData } from "@/components/Scoreboard/Scoreboard";
+import Scoreboard from "@/components/Scoreboard/Scoreboard";
 import FilterProvider from "@/contexts/filterContext";
 import PaginationProvider from "@/contexts/paginationContext";
 import SortProvider from "@/contexts/sortContext";

@@ -54,6 +54,7 @@ export class AuthController {
   }
 
   @UseGuards(JwtAuthenticationGuard)
+  @HttpCode(200)
   @Post('verify')
   async verify(@Body() verificationData: VerifyDto) {
     const email = await this.authService.decodeVerificationToken(

@@ -43,9 +43,12 @@ const Collect = () => {
       return (
         <button
           onClick={fetchRandomPlant}
-          className="!mt-6 globalButton !text-2xl hover:scale-110"
+          className={`!mt-6 globalButton !text-2xl hover:scale-110 ${
+            !data?.verified && "globalButtonDisabled hover:scale-100"
+          }`}
+          disabled={!data?.verified}
         >
-          Collect
+          {!data?.verified ? "Confirm Email to start collecting" : "Collect"}
         </button>
       );
     } else if (data && data.lastDrawPlant) {
@@ -107,7 +110,7 @@ const Collect = () => {
         role="main"
       >
         <h1
-          className="text-primary-dark text-4xl p-6 rounded-full mb-4"
+          className="text-primary-dark text-4xl p-6 rounded-full mb-4 font-bold"
           role="heading"
         >
           Collect your daily plant
