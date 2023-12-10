@@ -44,3 +44,23 @@ export const getGradeTextColorFromScore = (score: number): string => {
     return "text-worshiper";
   }
 };
+
+export const getNewGrade = (
+  oldScore: number,
+  newScore: number,
+): string | null => {
+  if (oldScore < hobbyistThreshold && newScore >= hobbyistThreshold) {
+    return "hobbyist";
+  } else if (
+    oldScore < connoisseurThreshold &&
+    newScore >= connoisseurThreshold
+  ) {
+    return "connoisseur";
+  } else if (oldScore < scholarThreshold && newScore >= scholarThreshold) {
+    return "scholar";
+  } else if (oldScore < worshiperThreshold && newScore >= worshiperThreshold) {
+    return "worshiper";
+  } else {
+    return null;
+  }
+};

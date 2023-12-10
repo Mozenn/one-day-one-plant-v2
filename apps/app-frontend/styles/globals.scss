@@ -21,11 +21,28 @@
   --color-background-hex: 255, 255, 255;
   --color-background-dark: rgb(87, 87, 87);
 
-  --color-grade-novice: rgb(41, 244, 0);
-  --color-grade-hobbyist: rgb(216, 145, 12);
-  --color-grade-connoisseur: rgb(0, 185, 227);
-  --color-grade-scholar: rgb(0, 48, 207);
-  --color-grade-worshiper: rgb(133, 0, 186);
+  --color-grade-novice: rgb(41, 244, 0); //#29f400
+  --color-grade-hobbyist: rgb(216, 145, 12); //#d8910c
+  --color-grade-connoisseur: rgb(0, 185, 227); //#00b9e3
+  --color-grade-scholar: rgb(0, 48, 207); //#0030cf
+  --color-grade-worshiper: rgb(133, 0, 186); //#8500ba
+
+  --color-rarity-common: var(--color-grade-novice);
+  --color-rarity-uncommon: var(--color-grade-hobbyist);
+  --color-rarity-rare: var(--color-grade-connoisseur);
+  --color-rarity-ultra-rare: var(--color-grade-scholar);
+
+  --filter-rarity-common: invert(67%) sepia(24%) saturate(7487%)
+    hue-rotate(68deg) brightness(112%) contrast(116%);
+
+  --filter-rarity-uncommon: invert(58%) sepia(83%) saturate(492%)
+    hue-rotate(359deg) brightness(87%) contrast(95%);
+
+  --filter-rarity-rare: invert(44%) sepia(54%) saturate(3126%)
+    hue-rotate(161deg) brightness(109%) contrast(105%);
+
+  --filter-rarity-ultra-rare: invert(10%) sepia(79%) saturate(7269%)
+    hue-rotate(225deg) brightness(87%) contrast(115%);
 
   background-color: var(--color-background);
   color: var(--color-primary-dark);

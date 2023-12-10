@@ -32,4 +32,12 @@ model Plant {
   urls            Json
   users         User[] @relation(name: "UserToPlant")
   lastDrawUsers User[] @relation(name: "UserToLastDrawPlant")
+  rarity        Rarity @default(COMMON)
+}
+
+enum Rarity {
+  COMMON
+  UNCOMMON
+  RARE
+  ULTRA_RARE
 }

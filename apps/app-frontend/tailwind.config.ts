@@ -52,6 +52,10 @@ const config: Config = {
         connoisseur: "var(--color-grade-connoisseur)",
         scholar: "var(--color-grade-scholar)",
         worshiper: "var(--color-grade-worshiper)",
+        common: "var(--color-grade-novice)",
+        uncommon: "var(--color-grade-hobbyist)",
+        rare: "var(--color-grade-connoisseur)",
+        "ultra-rare": "var(--color-grade-scholar)",
       },
     },
   },
@@ -89,6 +93,22 @@ const config: Config = {
         ".filter-danger": {
           filter:
             "invert(16%) sepia(54%) saturate(5466%) hue-rotate(2deg) brightness(98%) contrast(97%)",
+        },
+        ".filter-rarity-common": {
+          filter:
+            "invert(67%) sepia(24%) saturate(7487%) hue-rotate(68deg) brightness(112%) contrast(116%)",
+        },
+        ".filter-rarity-uncommon": {
+          filter:
+            "invert(58%) sepia(83%) saturate(492%) hue-rotate(359deg) brightness(87%) contrast(95%)",
+        },
+        ".filter-rarity-rare": {
+          filter:
+            "invert(44%) sepia(54%) saturate(3126%) hue-rotate(161deg) brightness(109%) contrast(105%)",
+        },
+        ".filter-rarity-ultra-rare": {
+          filter:
+            "invert(10%) sepia(79%) saturate(7269%) hue-rotate(225deg) brightness(87%) contrast(115%)",
         },
       });
     }),

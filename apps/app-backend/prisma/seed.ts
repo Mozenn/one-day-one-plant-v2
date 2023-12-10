@@ -187,7 +187,7 @@ async function main() {
     create: {
       username: 'user1',
       email: 'gauthier.cassany@gmail.com',
-      score: 100,
+      score: 450,
       profilePlantUrl:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG',
       createdAt: new Date(),

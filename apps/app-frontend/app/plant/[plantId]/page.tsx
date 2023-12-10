@@ -7,6 +7,7 @@ import Link from "next/link";
 import styles from "../../../styles/Plant.module.scss";
 import { capitalize } from "@/lib/stringUtils";
 import AuthGuard from "@/components/Auth/AuthGuard";
+import { getRarityFilter } from "@/lib/rarityUtills";
 
 const PlantPage = ({ params }: { params: { plantId: string } }) => {
   const { data: plant } = useFetch<Plant>({
@@ -38,6 +39,25 @@ const PlantPage = ({ params }: { params: { plantId: string } }) => {
               <div className={styles.field}>
                 <label>Family :</label>
                 <label className="ml-2">{capitalize(plant.family)}</label>
+              </div>
+              <div className={styles.field}>
+                <label>Rarity :</label>
+                <label
+                  className="ml-2"
+                  style={{
+                    color: `var(--color-rarity-${plant.rarity.toLocaleLowerCase()})`,
+                  }}
+                >
+                  {capitalize(plant.rarity.toLocaleLowerCase())}
+                </label>
+                <img
+                  src={`/images/icons/rarity-${plant.rarity.toLocaleLowerCase()}.svg`}
+                  alt="Rarity icon"
+                  className="ml-2"
+                  style={{
+                    filter: `var(--filter-rarity-${plant.rarity.toLocaleLowerCase()})`,
+                  }}
+                />
               </div>
             </div>
           </div>

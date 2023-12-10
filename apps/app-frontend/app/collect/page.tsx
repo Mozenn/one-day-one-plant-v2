@@ -9,13 +9,22 @@ import { cooldownBetweenDraw } from "@/lib/timeUtils";
 import Link from "next/link";
 import { capitalize } from "@/lib/stringUtils";
 import AuthGuard from "@/components/Auth/AuthGuard";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { ToastContainer, toast } from "react-toastify";
+import { getGradeFromScore, getNewGrade } from "@/lib/gradeUtils";
+import { motion } from "framer-motion";
 
 const Collect = () => {
   const [inCooldown, setInCooldown] = useState(false);
+  const [collected, setCollected] = useState(false);
   const { authId, authFetch } = useAuth();
   const { data, mutate } = useFetch<User>({
     url: `/user/${authId}`,
   });
+  const [scoreDuringDraw, setScoreDuringDraw] = useLocalStorage<number>(
+    "scoreDuringDraw",
+    null,
+  );
 
   useEffect(() => {
     if (data) {
@@ -24,17 +33,37 @@ const Collect = () => {
           cooldownBetweenDraw,
       );
     }
-  }, [data]);
+
+    if (scoreDuringDraw && data?.score) {
+      const newGrade = getNewGrade(scoreDuringDraw, data.score);
+
+      if (newGrade) {
+        setScoreDuringDraw(null);
+        toast(
+          `You've reached the grade of ${capitalize(
+            getGradeFromScore(data?.score),
+          )}, congratulation!`,
+          {
+            type: "success",
+          },
+        );
+      }
+    }
+  }, [data, scoreDuringDraw, setScoreDuringDraw]);
 
   const fetchRandomPlant = async () => {
     const requestData = {
-      dataId: authId,
+      userId: authId,
     };
 
     const response = await authFetch("/plant/draw", { params: requestData });
 
     if (response.status === 200) {
-      mutate();
+      setScoreDuringDraw(data?.score);
+      setTimeout(() => {
+        setCollected(true);
+        mutate();
+      }, 300);
     }
   };
 
@@ -71,13 +100,13 @@ const Collect = () => {
   const renderImage = () => {
     const readyToCollect =
       !inCooldown || !data || data.lastDrawPlant === undefined;
-
+    // border-solid border-primary-dark border-[0.8rem]
     return (
-      <div className="bg-white border-solid border-primary-dark border-[0.8rem] rounded-3xl">
+      <div className="bg-white shadow-[0_0px_10px_0px_rgba(0,0,0,0.4)] rounded-3xl">
         <img
           className={`text-primary h-[20rem] w-auto ${
             readyToCollect
-              ? "filter-primary transition-transform hover:animate-wiggle p-8"
+              ? "filter-primary-dark transition-transform hover:animate-wiggle p-8"
               : "rounded-xl"
           }`}
           src={
@@ -103,6 +132,19 @@ const Collect = () => {
     }
   };
 
+  const animationVariants = {
+    hidden: {
+      opacity: 0,
+      y: 0,
+    },
+    visible: {
+      opacity: [0, 1, 0],
+      scale: [0.5, 1, 1],
+      y: [0, -300],
+      transition: { duration: 3 },
+    },
+  };
+
   return (
     <AuthGuard>
       <main
@@ -118,6 +160,22 @@ const Collect = () => {
         {renderImage()}
         {renderName()}
         {renderButtons()}
+        <ToastContainer
+          autoClose={false}
+          position="bottom-right"
+          theme="colored"
+        />
+        <motion.div
+          variants={animationVariants}
+          initial="hidden"
+          //animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 1], y: [0, -300] }}
+          animate={collected ? "visible" : "hidden"}
+          className="absolute top-1/2 left-2/3 flex items-center justify-center w-32 h-32"
+        >
+          <p className="text-white text-3xl font-semibold bg-primary p-4 rounded-3xl">
+            + 100
+          </p>
+        </motion.div>
       </main>
     </AuthGuard>
   );

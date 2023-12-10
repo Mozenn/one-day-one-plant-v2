@@ -64,6 +64,10 @@ export class PlantService {
     const plantToDraw =
       plantStackToDraw[Math.floor(Math.random() * plantStackToDraw.length)];
 
+    const scoreOnDraw: number =
+      +this.configService.get<number>('SCORE_ON_DRAW');
+    const newScore: number = user.score + scoreOnDraw;
+
     await this.prisma.user.update({
       where: {
         id: userId,
@@ -72,6 +76,7 @@ export class PlantService {
         plants: true,
       },
       data: {
+        score: newScore,
         lastDrawDate: new Date(),
         lastDrawPlantId: plantToDraw.id,
         plants: {

@@ -1,0 +1,308 @@
+{
+  "info": {
+    "_postman_id": "fcba9cae-2a61-461d-b1a5-1786a61061ac",
+    "name": "ODOP V2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "11130309"
+  },
+  "item": [
+    {
+      "name": "GetRandomPlant",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/plant/draw?userId=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["plant", "draw"],
+          "query": [
+            {
+              "key": "userId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetUser",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/user/2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["user", "2"],
+          "query": [
+            {
+              "key": "id",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetPlant",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/plant/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["plant", "1"],
+          "query": [
+            {
+              "key": "id",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetPlantPage",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/plant/page?page=0&elementsPerPage=5&direction=asc&key=name&userId=2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["plant", "page"],
+          "query": [
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "elementsPerPage",
+              "value": "5"
+            },
+            {
+              "key": "direction",
+              "value": "asc"
+            },
+            {
+              "key": "key",
+              "value": "name"
+            },
+            {
+              "key": "scientificName",
+              "value": "P",
+              "disabled": true
+            },
+            {
+              "key": "name",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "family",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "startDate",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "endDate",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "userId",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetUserPage",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/user/page?page=0&elementsPerPage=5&direction=asc&key=username&score=&username=",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["user", "page"],
+          "query": [
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "elementsPerPage",
+              "value": "5"
+            },
+            {
+              "key": "direction",
+              "value": "asc"
+            },
+            {
+              "key": "key",
+              "value": "username"
+            },
+            {
+              "key": "score",
+              "value": ""
+            },
+            {
+              "key": "username",
+              "value": ""
+            },
+            {
+              "key": "family",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "startDate",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "endDate",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Access-Control-Allow-Credentials",
+            "value": "true",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"emailOrUsername\": \"gauthier.cassany@gmail.com\",\r\n    \"password\": \"Password1*\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Signup",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"username\": \"test\",\r\n    \"email\": \"test1@gmail.com\",\r\n    \"password\": \"Password21*\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/auth/signup",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["auth", "signup"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "value": ""
+    },
+    {
+      "key": "authToken",
+      "value": "",
+      "type": "string",
+      "disabled": true
+    }
+  ]
+}
