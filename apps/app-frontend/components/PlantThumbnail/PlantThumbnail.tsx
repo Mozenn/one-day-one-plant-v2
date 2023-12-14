@@ -42,6 +42,14 @@ const PlantThumbnail = ({ plantData }: { plantData: Plant }) => {
           <label>{capitalize(plantData.family)}</label>
         </div>
       </div>
+      <img
+        src={`/images/icons/rarity-${plantData.rarity.toLocaleLowerCase()}.svg`}
+        alt="Rarity icon"
+        className="absolute top-10 right-4"
+        style={{
+          filter: `var(--filter-rarity-${plantData.rarity.toLocaleLowerCase()})`,
+        }}
+      />
     </div>
   );
 };
