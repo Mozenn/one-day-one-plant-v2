@@ -10,7 +10,7 @@ const PlantThumbnail = ({ plantData }: { plantData: Plant }) => {
   };
   return (
     <div
-      className="shadow-[0_0px_12px_0px_rgba(0,0,0,0.6)] w-80 h-48 rounded-3xl
+      className="relative shadow-[0_0px_12px_0px_rgba(0,0,0,0.6)] w-80 h-48 rounded-3xl
     text-white cursor-pointer 
       transition-transform hover:scale-110 duration-200
       [&_*]:cursor-[inherit] [&_label]:text-lg [&_label]:font-extrabold
@@ -45,7 +45,7 @@ const PlantThumbnail = ({ plantData }: { plantData: Plant }) => {
       <img
         src={`/images/icons/rarity-${plantData.rarity.toLocaleLowerCase()}.svg`}
         alt="Rarity icon"
-        className="absolute top-10 right-4"
+        className="absolute top-4 right-4 w-4 h-4"
         style={{
           filter: `var(--filter-rarity-${plantData.rarity.toLocaleLowerCase()})`,
         }}

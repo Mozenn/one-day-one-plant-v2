@@ -8,7 +8,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier '!./apps/app-backend/database' --write \"**/*.{ts,tsx,md,json}\"",
+    "format": "prettier '!./apps/app-backend/database' --write \"**/*.{ts,tsx,md,json,hbs}\"",
     "pre-commit": "pnpm run --filter odop-* pre-commit",
     "prepare": "husky install"
   },

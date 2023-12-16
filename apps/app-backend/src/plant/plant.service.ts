@@ -64,8 +64,9 @@ export class PlantService {
     const plantToDraw =
       plantStackToDraw[Math.floor(Math.random() * plantStackToDraw.length)];
 
-    const scoreOnDraw: number =
-      +this.configService.get<number>('SCORE_ON_DRAW');
+    const scoreOnDraw: number = +this.configService.get<number>(
+      `SCORE_ON_DRAW_${plantToDraw.rarity.toUpperCase()}`,
+    );
     const newScore: number = user.score + scoreOnDraw;
 
     await this.prisma.user.update({

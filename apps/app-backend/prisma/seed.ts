@@ -209,25 +209,26 @@ async function main() {
       },
     },
   });
-  // const user2 = await prisma.user.upsert({
-  //   where: { email: 'gauthierclapiers@hotmail.fr' },
-  //   update: {},
-  //   create: {
-  //     username: 'user2',
-  //     email: 'gauthierclapiers@hotmail.fr',
-  //     score: 500,
-  //     profilePlantUrl:
-  //       'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG',
-  //     createdAt: new Date(),
-  //     password: await hash('Password1*', 10),
-  //     lastDrawDate: new Date('2021-05-04 19:10:25'),
-  //     lastDrawPlantId: 2,
-  //     plants: {
-  //       connect: [{ id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }, { id: 9 }],
-  //     },
-  //   },
-  // });
-  console.log({ user1 });
+  const user2 = await prisma.user.upsert({
+    where: { email: 'gauthierclapiers@hotmail.fr' },
+    update: {},
+    create: {
+      username: 'user2',
+      email: 'gauthierclapiers@hotmail.fr',
+      score: 500,
+      profilePlantUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Abies_lasiocarpa_26008.JPG/450px-Abies_lasiocarpa_26008.JPG',
+      createdAt: new Date('2023-12-07 19:10:25'),
+      password: await hash('Password1*', 10),
+      verified: false,
+      lastDrawDate: new Date('2021-05-04 19:10:25'),
+      lastDrawPlantId: 2,
+      plants: {
+        connect: [{ id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }, { id: 9 }],
+      },
+    },
+  });
+  console.log({ user1, user2 });
 }
 main()
   .then(async () => {

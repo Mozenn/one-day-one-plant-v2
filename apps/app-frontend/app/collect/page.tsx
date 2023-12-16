@@ -13,6 +13,7 @@ import useLocalStorage from "@/hooks/useLocalStorage";
 import { ToastContainer, toast } from "react-toastify";
 import { getGradeFromScore, getNewGrade } from "@/lib/gradeUtils";
 import { motion } from "framer-motion";
+import { getRarityScoreOnDraw } from "@/lib/rarityUtills";
 
 const Collect = () => {
   const [inCooldown, setInCooldown] = useState(false);
@@ -63,7 +64,7 @@ const Collect = () => {
       setTimeout(() => {
         setCollected(true);
         mutate();
-      }, 300);
+      }, 400);
     }
   };
 
@@ -168,12 +169,11 @@ const Collect = () => {
         <motion.div
           variants={animationVariants}
           initial="hidden"
-          //animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 1], y: [0, -300] }}
           animate={collected ? "visible" : "hidden"}
           className="absolute top-1/2 left-2/3 flex items-center justify-center w-32 h-32"
         >
           <p className="text-white text-3xl font-semibold bg-primary p-4 rounded-3xl">
-            + 100
+            {`+ ${getRarityScoreOnDraw(data?.lastDrawPlant.rarity || "RARE")}`}
           </p>
         </motion.div>
       </main>

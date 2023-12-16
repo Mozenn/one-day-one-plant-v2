@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier '!./database' --write \"**/*.{ts,tsx,md,json, hbs}\"",
     "prettierCheck": "prettier '!./database' --check .",
     "prettierApply": "prettier '!./database' --write .",
     "dev": "nest start",
@@ -32,6 +32,7 @@
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/passport": "^10.0.2",
     "@nestjs/platform-fastify": "^10.0.0",
+    "@nestjs/schedule": "^4.0.0",
     "@prisma/client": "^5.7.0",
     "@types/bcrypt": "^5.0.2",
     "@types/nodemailer": "^6.4.14",

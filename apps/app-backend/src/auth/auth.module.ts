@@ -1,6 +1,7 @@
 import { Logger, Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { AuthTasksService } from './authTasks.service';
 import { UserModule } from 'src/user/user.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
@@ -36,6 +37,7 @@ import { EmailModule } from 'src/email/email.module';
     JwtStrategy,
     UserService,
     EmailService,
+    AuthTasksService,
   ],
 })
 export class AuthModule {}

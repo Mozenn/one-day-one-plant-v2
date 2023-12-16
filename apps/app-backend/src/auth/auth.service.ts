@@ -15,9 +15,6 @@ import { PrismaErrorCode } from 'src/shared/prismaErrorCode.enum';
 import { User } from '@prisma/client';
 import { EmailService } from 'src/email/email.service';
 import { VerificationTokenPayload } from './verificationTokenPayload.interface';
-import path from 'path';
-import fs from 'fs';
-import Handlebars from 'handlebars';
 
 @Injectable()
 export class AuthService {
@@ -38,7 +35,13 @@ export class AuthService {
         hashPassword,
       );
 
-      await this.sendVerificationEmail(signUpDto.email, signUpDto.username);
+      const url = this.buildEmailConfirmationUrl(signUpDto.email);
+
+      await this.emailService.sendVerificationEmail(
+        signUpDto.email,
+        signUpDto.username,
+        url,
+      );
 
       return user;
     } catch (error: any) {
@@ -48,44 +51,6 @@ export class AuthService {
       }
       throw error;
     }
-  }
-
-  async sendVerificationEmail(email: string, username: string) {
-    const payload: VerificationTokenPayload = { email };
-    const token = this.jwtService.sign(payload, {
-      secret: this.configService.get('JWT_VERIFICATION_TOKEN_SECRET'),
-      expiresIn: `${this.configService.get(
-        'JWT_VERIFICATION_TOKEN_EXPIRATION_TIME',
-      )}s`,
-    });
-
-    const url = `${this.configService.get(
-      'EMAIL_CONFIRMATION_URL',
-    )}?token=${token}`;
-
-    const html = this.renderTemplate(url, username);
-
-    return this.emailService.sendMail({
-      to: email,
-      subject: 'One Day One Plant - Email confirmation',
-      html,
-    });
-  }
-
-  private renderTemplate(url: string, username: string) {
-    const template = Handlebars.compile(
-      fs.readFileSync(
-        path.join(__dirname, '..', '..', 'views', 'email-confirmation.hbs'),
-        'utf8',
-      ),
-    );
-
-    const logo = `data:image/png;base64, ${fs.readFileSync(
-      path.join(__dirname, '..', '..', 'views', 'logo.png'),
-      'base64',
-    )}`;
-
-    return template({ url, username, logo });
   }
 
   public async confirmEmail(email: string) {
@@ -119,7 +84,26 @@ export class AuthService {
     if (user.verified) {
       throw new BadRequestException('Email already confirmed');
     }
-    await this.sendVerificationEmail(user.email, user.username);
+
+    const url = this.buildEmailConfirmationUrl(user.email);
+
+    await this.emailService.sendVerificationEmail(
+      user.email,
+      user.username,
+      url,
+    );
+  }
+
+  public buildEmailConfirmationUrl(email: string) {
+    const payload: VerificationTokenPayload = { email };
+    const token = this.jwtService.sign(payload, {
+      secret: this.configService.get('JWT_VERIFICATION_TOKEN_SECRET'),
+      expiresIn: `${this.configService.get(
+        'JWT_VERIFICATION_TOKEN_EXPIRATION_TIME',
+      )}s`,
+    });
+
+    return `${this.configService.get('EMAIL_CONFIRMATION_URL')}?token=${token}`;
   }
 
   async getAuthenticatedUser(emailOrUsername: string, password: string) {
