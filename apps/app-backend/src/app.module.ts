@@ -9,6 +9,7 @@ import { CacheInterceptor, CacheModule } from '@nestjs/cache-manager';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TaskController } from './shared/task.controller';
+import { validate } from './shared/env.validation';
 @Module({
   imports: [
     UserModule,
@@ -19,6 +20,7 @@ import { TaskController } from './shared/task.controller';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
+      validate: validate,
     }),
     LoggerModule.forRoot({
       pinoHttp: {

@@ -23,12 +23,8 @@ const useAuth = () => {
 
   const login = async (data: any) => {
     console.log("login");
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+    const res = await authFetch(`/auth/login`, {
       method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(data),
     });
 
@@ -52,12 +48,8 @@ const useAuth = () => {
 
   const register = async (data: any) => {
     console.log("register");
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
+    const res = await authFetch(`/auth/signup`, {
       method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(data),
     });
 
@@ -76,14 +68,45 @@ const useAuth = () => {
     }
   };
 
+  const signInWithGoogle = async (
+    token: string,
+    displayToastOnSuccess: boolean,
+  ) => {
+    console.log("sign in with google");
+    let res;
+    try {
+      res = await authFetch(`/auth/signin-google`, {
+        method: "POST",
+        body: JSON.stringify({ token }),
+      });
+    } catch (e) {
+      console.log("HYE", res);
+    }
+
+    if (!res) {
+      return;
+    }
+
+    if (res.status === 201) {
+      const user: User = await res.json();
+      setAuthId(user.id);
+      redirectTo("/");
+      displayToastOnSuccess &&
+        setScheduledToast(
+          JSON.stringify({
+            type: "success",
+            message: `Welcome! An email has been sent to ${user.email} to verify your account`,
+          }),
+        );
+    } else {
+      return res;
+    }
+  };
+
   const logout = async (redirectUri?: string | undefined) => {
     console.log("logout");
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
+    const res = await authFetch(`/auth/logout`, {
       method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify({}),
     });
 
@@ -116,7 +139,7 @@ const useAuth = () => {
       },
     );
 
-    if (res.status === 401) {
+    if (res?.status === 401) {
       setAuthId(null);
       redirectTo("/auth/login");
     }
@@ -136,6 +159,7 @@ const useAuth = () => {
   return {
     login,
     register,
+    signInWithGoogle,
     logout,
     isAuthenticated,
     authFetch,

@@ -14,7 +14,7 @@ model User {
   score           Int      @default(0)
   profilePlantUrl String   @default("https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg/796px-Fr%C3%BChling_bl%C3%BChender_Kirschenbaum.jpg")
   createdAt       DateTime @default(now())
-  password        String 
+  password        String? 
   verified        Boolean  @default(false)
   lastDrawDate    DateTime @default(dbgenerated("NOW() - interval '1 day'"))
   lastDrawPlant   Plant?   @relation(fields: [lastDrawPlantId], references: [id], name: "UserToLastDrawPlant")

@@ -29,7 +29,7 @@ const HeaderSideContent = () => {
     <>
       {process.env.NODE_ENV === "production" &&
         typeof window !== "undefined" && <GoogleAnalytics />}
-      {process.env.NODE_ENV !== "production" && (
+      {process.env.NODE_ENV !== "production" && false && (
         <button
           className={styles.button}
           onClick={async () => {

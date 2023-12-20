@@ -4,6 +4,7 @@ import AuthForm from "@/components/Auth/AuthForm";
 import useAuth from "@/hooks/useAuth";
 import { AuthFieldData } from "@/types/authFieldData";
 import { AuthFormInputs } from "@/types/authFormInputs";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { DefaultValues } from "react-hook-form";
 interface LogInFieldData extends AuthFieldData {
   name: "password" | "emailOrUsername";
@@ -14,7 +15,7 @@ interface LogInFormInputs extends AuthFormInputs {
 }
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, signInWithGoogle } = useAuth();
 
   const defaultValues: DefaultValues<LogInFormInputs> = {
     emailOrUsername: "",
@@ -56,17 +57,34 @@ const Login = () => {
   ];
 
   return (
-    <AuthForm
-      title="Log In to One Day One Plant"
-      submitLabel="Log In"
-      authFields={authFields}
-      defaultValues={defaultValues}
-      onSubmit={login}
-      footerLink={{
-        route: "/auth/signup",
-        text: "No account yet ? Sign up here",
-      }}
-    />
+    <GoogleOAuthProvider
+      clientId={process.env.NEXT_PUBLIC_GOOGLE_AUTH_CLIENT_ID || ""}
+    >
+      <AuthForm
+        title="Log In to One Day One Plant"
+        submitLabel="Log In"
+        authFields={authFields}
+        defaultValues={defaultValues}
+        onSubmit={login}
+        footerLink={{
+          route: "/auth/signup",
+          text: "No account yet ? Sign up here",
+        }}
+        googleAuthProps={{
+          onSuccess: (credentialResponse) => {
+            return (
+              credentialResponse.credential &&
+              signInWithGoogle(credentialResponse.credential, false)
+            );
+          },
+          onError: () => {
+            console.log("Login Failed");
+          },
+          text: "signin_with",
+          useOneTap: true,
+        }}
+      />
+    </GoogleOAuthProvider>
   );
 };
 

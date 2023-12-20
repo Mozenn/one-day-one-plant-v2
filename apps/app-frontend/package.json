@@ -12,16 +12,17 @@
     "pre-commit": "npm run lint && npm run prettierCheck"
   },
   "dependencies": {
-    "@types/react-datepicker": "^4.15.1",
-    "axios": "^1.5.1",
+    "@react-oauth/google": "^0.12.1",
+    "@types/react-datepicker": "^4.19.4",
+    "axios": "^1.6.2",
     "framer-motion": "^10.16.16",
     "next": "latest",
     "react": "latest",
-    "react-datepicker": "^4.18.0",
+    "react-datepicker": "^4.25.0",
     "react-dom": "latest",
-    "react-hook-form": "^7.48.2",
+    "react-hook-form": "^7.49.2",
     "react-toastify": "^9.1.3",
-    "sass": "^1.68.0",
+    "sass": "^1.69.5",
     "swr": "^2.2.4"
   },
   "devDependencies": {

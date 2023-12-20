@@ -34,7 +34,7 @@ const Table = <T extends TableRow>({
   const { showOverlay, setShowOverlay } = useContext(FilterContext);
 
   return (
-    <div className="flex flex-col items-center mt-16 min-h-[88vh]">
+    <div className="flex flex-col items-center mt-16 min-h-[50vh]">
       <div className="flex items-start">
         <button
           className={`flex items-center border-2 border-solid border-primary-dark 

@@ -9,6 +9,7 @@ import { ValidationPipe } from '@nestjs/common/pipes';
 import { ConfigService } from '@nestjs/config';
 import { RemovePasswordInterceptor } from './shared/removePassword.interceptor';
 import cookie from '@fastify/cookie';
+import helmet from '@fastify/helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -18,6 +19,7 @@ async function bootstrap() {
   );
 
   await app.register(cookie);
+  await app.register(helmet);
 
   const configService = app.get(ConfigService);
   const frontendUrl = configService.get('FRONTEND_URL');

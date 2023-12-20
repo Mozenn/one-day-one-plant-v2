@@ -126,7 +126,7 @@ export default function Home() {
     <div className="flex flex-col">
       {isAuthenticated() ? (
         <main
-          className="flex flex-col flex-1 items-center justify-center m-0 py-20 px-0 min-h-[80vh]"
+          className="flex flex-col flex-1 items-center justify-center py-20 px-0 min-h-[80vh]"
           role="main"
         >
           <h1
@@ -149,7 +149,7 @@ export default function Home() {
         </main>
       ) : (
         <main
-          className="flex flex-col items-center flex-1 m-0 min-h-[80vh] pb-20 px-0"
+          className="flex flex-col items-center flex-1 min-h-[80vh] pb-20 px-0"
           role="main"
         >
           <section className="flex flex-col items-center justify-center w-full h-[100vh]">

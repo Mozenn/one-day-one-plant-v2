@@ -19,7 +19,7 @@ const PlantPage = ({ params }: { params: { plantId: string } }) => {
       {!plant ? (
         <Spinner />
       ) : (
-        <main className="flex flex-col min-h-[88vh] py-0 px-20">
+        <main className="flex flex-col min-h-[78vh] py-0 px-20">
           <div className="flex mt-8">
             <img
               src={plant.imageUrl}

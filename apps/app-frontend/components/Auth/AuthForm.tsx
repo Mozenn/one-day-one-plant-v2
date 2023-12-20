@@ -5,10 +5,18 @@ import { DefaultValues, SubmitHandler, useForm } from "react-hook-form";
 import AuthPasswordField from "./AuthPasswordField";
 import AuthField from "./AuthField";
 import Link from "next/link";
+import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
 
 export interface FooterLinkData {
   text: any;
   route: string;
+}
+
+export interface GoogleAuthProps {
+  onSuccess: (credentialResponse: CredentialResponse) => any;
+  onError: (() => void) | undefined;
+  text: "signup_with" | "signin_with" | "continue_with" | "signin" | undefined;
+  useOneTap: boolean;
 }
 
 const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
@@ -18,6 +26,7 @@ const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
   defaultValues,
   onSubmit,
   footerLink,
+  googleAuthProps,
 }: {
   title: string;
   submitLabel: string;
@@ -25,6 +34,7 @@ const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
   defaultValues?: DefaultValues<S>;
   onSubmit: (data: any) => Promise<Response | undefined>;
   footerLink: FooterLinkData;
+  googleAuthProps: GoogleAuthProps;
 }) => {
   const {
     control,
@@ -42,13 +52,8 @@ const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
   const _onSubmit: SubmitHandler<S> = async (data) => {
     const res = await onSubmit(data);
 
-    // TODO remove
-    res?.headers.forEach((value, key) => console.log("header", key, value));
-
     if (res && res.status != 201) {
-      // TODO remove
       const jsonRes = JSON.parse(await res.text());
-      console.log(jsonRes);
       setFormError(jsonRes?.message);
     } else {
       setFormError(null);
@@ -57,7 +62,7 @@ const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
 
   return (
     <main
-      className="flex flex-col items-center flex-1 m-0 min-h-[80vh] py-28 px-0 bg-gradient-linear"
+      className="flex flex-col items-center flex-1 min-h-[75vh] pt-28 pt-25 px-0 bg-gradient-linear"
       role="main"
     >
       <div className="flex items-center flex-col w-2/5 bg-white border-solid border-primary-dark border-4 rounded-3xl p-12 shadow-xl">
@@ -97,13 +102,28 @@ const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
           <input
             type="submit"
             value={submitLabel}
-            className={`globalButton !mt-8 ${
+            className={`globalButton !mt-8 mb-2 ${
               _formDisabled() ? "globalButtonDisabled" : ""
             }`}
             disabled={_formDisabled()}
           />
+          <GoogleLogin
+            onSuccess={async (credentialResponse) => {
+              const res = await googleAuthProps.onSuccess(credentialResponse);
+              if (res && res.status !== 201) {
+                setFormError("Sign in failed");
+              }
+            }}
+            onError={() => {
+              setFormError("Sign in failed");
+            }}
+            shape="circle"
+            text={googleAuthProps.text}
+            theme="outline"
+            useOneTap={googleAuthProps.useOneTap}
+          />
           {formError && (
-            <span role="alert" className="text-danger mt-1 ">
+            <span role="alert" className="text-danger mt-1 mb-2">
               {formError}
             </span>
           )}

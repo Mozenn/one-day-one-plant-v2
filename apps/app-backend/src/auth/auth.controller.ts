@@ -13,6 +13,7 @@ import RequestWithUser from './requestWithUser.interface';
 import { FastifyReply } from 'fastify';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './signup.dto';
+import { SignInGoogleDto } from './signinGoogle.dto';
 import JwtAuthenticationGuard from './jwtAuth.guard';
 import VerifyDto from './verify.dto';
 
@@ -33,6 +34,17 @@ export class AuthController {
   @Post('signup')
   async signup(@Body() signupDto: SignUpDto, @Res() reply: FastifyReply) {
     const user = await this.authService.signUp(signupDto);
+    const cookie = this.authService.getCookieWithJwtToken(user.id);
+    reply.headers({ 'Set-Cookie': cookie });
+    return reply.send(user);
+  }
+
+  @Post('signin-google')
+  async signinGoogle(
+    @Body() signinGoogleDto: SignInGoogleDto,
+    @Res() reply: FastifyReply,
+  ) {
+    const user = await this.authService.signInGoogle(signinGoogleDto);
     const cookie = this.authService.getCookieWithJwtToken(user.id);
     reply.headers({ 'Set-Cookie': cookie });
     return reply.send(user);

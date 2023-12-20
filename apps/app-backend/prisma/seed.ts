@@ -197,15 +197,15 @@ async function main() {
       lastDrawPlantId: 1,
       plants: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }],
-        create: [
-          {
-            name: 'test',
-            scientificName: 'test',
-            family: 'test',
-            imageUrl: 'test',
-            urls: '{}',
-          },
-        ],
+        // create: [
+        //   {
+        //     name: 'test',
+        //     scientificName: 'test',
+        //     family: 'test',
+        //     imageUrl: 'test',
+        //     urls: '{}',
+        //   },
+        // ],
       },
     },
   });

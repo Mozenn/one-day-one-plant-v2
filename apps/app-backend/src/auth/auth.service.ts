@@ -6,7 +6,6 @@ import {
   Logger,
 } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
-import { SignUpDto } from './signup.dto';
 import { hash, compare } from 'bcrypt';
 import { TokenPayload } from './tokenPayload.interface';
 import { JwtService } from '@nestjs/jwt';
@@ -15,6 +14,7 @@ import { PrismaErrorCode } from 'src/shared/prismaErrorCode.enum';
 import { User } from '@prisma/client';
 import { EmailService } from 'src/email/email.service';
 import { VerificationTokenPayload } from './verificationTokenPayload.interface';
+import { SignInGoogleDto } from './signinGoogle.dto';
 
 @Injectable()
 export class AuthService {
@@ -26,22 +26,26 @@ export class AuthService {
     private readonly emailService: EmailService,
   ) {}
 
-  async signUp(signUpDto: SignUpDto): Promise<User> {
-    const hashPassword = await hash(signUpDto.password, 10);
+  async signUp({
+    username,
+    email,
+    password,
+  }: {
+    username: string;
+    email: string;
+    password?: string;
+  }): Promise<User> {
+    const hashPassword = password ? await hash(password, 10) : '';
     try {
       const user = await this.userService.createUser(
-        signUpDto.username,
-        signUpDto.email,
+        username,
+        email,
         hashPassword,
       );
 
-      const url = this.buildEmailConfirmationUrl(signUpDto.email);
+      const url = this.buildEmailConfirmationUrl(email);
 
-      await this.emailService.sendVerificationEmail(
-        signUpDto.email,
-        signUpDto.username,
-        url,
-      );
+      await this.emailService.sendVerificationEmail(email, username, url);
 
       return user;
     } catch (error: any) {
@@ -51,6 +55,23 @@ export class AuthService {
       }
       throw error;
     }
+  }
+
+  async signInGoogle(signInGoogleDto: SignInGoogleDto): Promise<User> {
+    const tokenData = this.jwtService.decode(signInGoogleDto.token);
+
+    const user = await this.userService.getUserByEmail(tokenData.email);
+
+    if (!user) {
+      return this.signUp({
+        username: tokenData.name.trim().replace(/\s+/g, ''),
+        email: tokenData.email,
+      });
+    } else if (user.password) {
+      throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
+    }
+
+    return user;
   }
 
   public async confirmEmail(email: string) {

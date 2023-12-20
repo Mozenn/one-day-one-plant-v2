@@ -19,7 +19,7 @@ const Profile = ({ params }: { params: { userId: string } }) => {
 
   return (
     <AuthGuard>
-      <main className="flex overflow-hidden min-h-[88vh]">
+      <main className="flex overflow-hidden min-h-[80vh]">
         <aside className="flex flex-col items-center pt-32 pb-0 px-12 bg-white">
           <ProfilePicture user={user} onNewPictureSelected={() => mutate()} />
           <h2 className="font-semibold text-2xl mt-2">{user.username}</h2>

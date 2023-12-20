@@ -28,6 +28,7 @@ const Collect = () => {
   );
 
   useEffect(() => {
+    console.log("NEW DATA", data);
     if (data) {
       setInCooldown(
         new Date().getTime() - new Date(data.lastDrawDate).getTime() <
@@ -64,7 +65,8 @@ const Collect = () => {
       setTimeout(() => {
         setCollected(true);
         mutate();
-      }, 400);
+        console.log("MUTATE");
+      }, 500);
     }
   };
 
@@ -149,7 +151,7 @@ const Collect = () => {
   return (
     <AuthGuard>
       <main
-        className="flex flex-col items-center flex-1 m-0 min-h-[80vh] py-20 px-0"
+        className="flex flex-col items-center flex-1 min-h-[80vh] py-20 px-0"
         role="main"
       >
         <h1
@@ -173,7 +175,7 @@ const Collect = () => {
           className="absolute top-1/2 left-2/3 flex items-center justify-center w-32 h-32"
         >
           <p className="text-white text-3xl font-semibold bg-primary p-4 rounded-3xl">
-            {`+ ${getRarityScoreOnDraw(data?.lastDrawPlant.rarity || "RARE")}`}
+            {`+ ${getRarityScoreOnDraw(data?.lastDrawPlant?.rarity || "RARE")}`}
           </p>
         </motion.div>
       </main>

@@ -4,7 +4,7 @@ import HeaderSideContent from "./HeaderSideContent";
 
 const Header = () => {
   return (
-    <header className={styles.container}>
+    <header className={`${styles.container} fixed flex top-0 w-full z-10`}>
       <Link href="/" passHref>
         <img
           className="h-20 w-auto mt-1 mr-4 mb-1 ml-4 cursor-pointer"
