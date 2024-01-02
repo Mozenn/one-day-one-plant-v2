@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./Header.module.scss";
 import MenuDropdown from "./MenuDropdown/MenuDropdown";
-import GoogleAnalytics from "../GoogleAnalytics/GoogleAnalytics";
+import GoogleAnalytics from "../Analytics/GoogleAnalytics/GoogleAnalytics";
 import useLoader from "@/hooks/useLoader";
+import Matomo from "../Analytics/Matomo/Matomo";
+import { NavigationEvents } from "../Analytics/NavigationEvents";
 
 const HeaderSideContent = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -27,9 +29,11 @@ const HeaderSideContent = () => {
 
   return (
     <>
+      <NavigationEvents />
       {process.env.NODE_ENV === "production" &&
         typeof window !== "undefined" && <GoogleAnalytics />}
-      {process.env.NODE_ENV !== "production" && false && (
+      {typeof window !== "undefined" && <Matomo />}
+      {process.env.NODE_ENV !== "production" && (
         <button
           className={styles.button}
           onClick={async () => {

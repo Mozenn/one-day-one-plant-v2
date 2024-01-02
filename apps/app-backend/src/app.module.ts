@@ -6,15 +6,24 @@ import { PrismaModule } from './shared/prisma.module';
 import { LoggerModule } from 'nestjs-pino';
 import { AuthModule } from './auth/auth.module';
 import { CacheInterceptor, CacheModule } from '@nestjs/cache-manager';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TaskController } from './shared/task.controller';
 import { validate } from './shared/env.validation';
+import { SentryModule } from './shared/sentry.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 @Module({
   imports: [
     UserModule,
     PlantModule,
     PrismaModule,
+    SentryModule,
+    ThrottlerModule.forRoot([
+      {
+        ttl: 10000,
+        limit: 20,
+      },
+    ]),
     CacheModule.register({
       isGlobal: true,
     }),
@@ -37,6 +46,10 @@ import { validate } from './shared/env.validation';
     {
       provide: APP_INTERCEPTOR,
       useClass: CacheInterceptor,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
     },
     Logger,
   ],

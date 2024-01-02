@@ -1,4 +1,4 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger } from 'nestjs-pino';
 import {
@@ -10,6 +10,7 @@ import { ConfigService } from '@nestjs/config';
 import { RemovePasswordInterceptor } from './shared/removePassword.interceptor';
 import cookie from '@fastify/cookie';
 import helmet from '@fastify/helmet';
+import { SentryFilter } from './shared/sentry.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -32,6 +33,10 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.useGlobalInterceptors(new RemovePasswordInterceptor());
+
+  const { httpAdapter } = app.get(HttpAdapterHost);
+  app.useGlobalFilters(new SentryFilter(httpAdapter));
+
   app.useLogger(app.get(Logger));
   await app.listen(3000);
 }

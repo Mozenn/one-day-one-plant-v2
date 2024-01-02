@@ -75,49 +75,54 @@ export default function Home() {
       id: 1,
       url: "/images/landing/hero/acer-saccharinum.jpg",
       alt: "image of a acer saccharinum",
-      additionalStyle: "rotate-[30deg] top-40 left-20",
+      additionalStyle: `rotate-[30deg] top-40 left-20 hidden md:block`,
       additionalImageStyle: "border-primary",
     },
     {
       id: 2,
       url: "/images/landing/hero/abies-lasiocarpa.jpg",
       alt: "image of a abies lasiocarpa",
-      additionalStyle: "rotate-[15deg] top-[10rem] left-[85rem]",
+      additionalStyle:
+        "rotate-[15deg] top-[10rem] left-[85rem] hidden 2xl:block",
       additionalImageStyle: "border-secondary",
     },
     {
       id: 3,
       url: "/images/landing/hero/edelweiss.jpg",
       alt: "image of a edelweiss",
-      additionalStyle: "rotate-[-24deg] top-[45rem] left-[50rem]",
+      additionalStyle:
+        "rotate-[-24deg] top-[45rem] left-[50rem] hidden lg:block",
       additionalImageStyle: "border-primary",
     },
     {
       id: 4,
       url: "/images/landing/hero/pistia-stratiotes.jpg",
       alt: "image of a pistia stratiotes",
-      additionalStyle: "rotate-[5deg] top-[15rem] left-[60rem]",
+      additionalStyle: "rotate-[5deg] top-[15rem] left-[60rem] hidden xl:block",
       additionalImageStyle: "border-secondary",
     },
     {
       id: 5,
       url: "/images/landing/hero/sour-cherry.jpg",
       alt: "image of a sour cherry",
-      additionalStyle: "rotate-[-15deg] top-[38rem] left-[80rem]",
+      additionalStyle:
+        "rotate-[-15deg] top-[38rem] left-[80rem] hidden 2xl:block",
       additionalImageStyle: "border-primary",
     },
     {
       id: 6,
       url: "/images/landing/hero/subalpinefir.jpg",
       alt: "image of a subalpinefir",
-      additionalStyle: "rotate-[-25deg] top-[10rem] left-[38rem] !w-48",
+      additionalStyle:
+        "rotate-[-25deg] top-[10rem] left-[38rem] !w-48 hidden md:block",
       additionalImageStyle: "border-secondary",
     },
     {
       id: 7,
       url: "/images/landing/hero/subalpinefir2.jpg",
       alt: "image of a subalpinefir",
-      additionalStyle: "rotate-[5deg] top-[38rem] left-[15rem] !w-48",
+      additionalStyle:
+        "rotate-[5deg] top-[38rem] left-[15rem] !w-48 hidden md:block",
       additionalImageStyle: "border-primary",
     },
   ];
@@ -200,7 +205,7 @@ export default function Home() {
                 key={section.id}
                 className={`flex items-center justify-around mb-12 w-full py-8 ${
                   section.colored ? "bg-primary text-white" : ""
-                }`}
+                } flex-col xl:flex-row`}
               >
                 {section.alignLeft ? text : img}
                 {section.alignLeft ? img : text}
