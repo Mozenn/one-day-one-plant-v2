@@ -1,6 +1,6 @@
 {
   "name": "odop-app-frontend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3002",
@@ -27,7 +27,6 @@
     "swr": "^2.2.4"
   },
   "devDependencies": {
-    "@playwright/test": "^1.40.1",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",

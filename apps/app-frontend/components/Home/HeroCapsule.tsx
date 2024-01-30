@@ -13,7 +13,7 @@ const HeroCapsule = ({ capsuleProps }: { capsuleProps: HeroCapsuleProps }) => {
   return (
     <div
       className={`absolute transition-transform hover:scale-125
-       duration-500 w-64 ${additionalStyle} z-0`}
+       duration-300 w-64 ${additionalStyle} z-0`}
     >
       <img
         src={url}

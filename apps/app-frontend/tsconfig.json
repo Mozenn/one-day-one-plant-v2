@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "lib/userUtils.js"
+    "lib/userUtils.js",
+    "../../tests/*.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -10,6 +10,7 @@ const Header = () => {
           className="h-20 w-auto mt-1 mr-4 mb-1 ml-4 cursor-pointer"
           src="/images/logo.png"
           alt="Logo"
+          data-testid="logo"
         />
       </Link>
       <HeaderSideContent />

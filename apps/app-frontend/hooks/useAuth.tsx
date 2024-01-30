@@ -30,6 +30,9 @@ const useAuth = () => {
 
     if (res.status === 200) {
       const user = await res.json();
+      console.log("login res headers");
+      res.headers.forEach((h) => console.log("header:", h));
+
       setAuthId(user.id);
       if (!user.verified) {
         setScheduledToast(
@@ -80,7 +83,7 @@ const useAuth = () => {
         body: JSON.stringify({ token }),
       });
     } catch (e) {
-      console.log("HYE", res);
+      console.log(e);
     }
 
     if (!res) {

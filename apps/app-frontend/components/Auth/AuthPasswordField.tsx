@@ -24,12 +24,18 @@ const AuthPasswordField = <T extends AuthFormInputs>(
           } border-2 rounded-2xl px-2 w-full text-secondary-dark
           mr-2
           `}
+          data-testid={props.useControllerProps.name}
           placeholder={props.useControllerProps.name}
           {...field}
           type={`${isVisible ? "text" : "password"}`}
         />
         <button
-          onClick={() => setIsVisible((prevState) => !prevState)}
+          onClick={(event) => {
+            const nativeEvent: PointerEvent = event.nativeEvent as PointerEvent;
+            if (nativeEvent && nativeEvent.pointerType == "mouse") {
+              setIsVisible((prevState) => !prevState);
+            }
+          }}
           className=" bg-primary p-2 rounded-xl hover:bg-primary-dark transition-colors duration-200
           active:bg-primary-light"
         >

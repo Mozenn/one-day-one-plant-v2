@@ -17,6 +17,7 @@ const AuthField = <T extends AuthFormInputs>(props: AuthFieldProps<T>) => {
         className={`border-solid ${
           fieldState.error ? "border-danger" : "border-primary-dark"
         } border-2 rounded-2xl px-2 w-3/4 text-secondary-dark`}
+        data-testid={props.useControllerProps.name}
         placeholder={props.label}
         {...field}
         type="text"

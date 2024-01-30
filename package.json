@@ -8,6 +8,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
+    "test": "npx playwright test e2e.spec.ts --ui",
     "format": "prettier '!./apps/app-backend/database' --write \"**/*.{ts,tsx,md,json,hbs,js,yml}\"",
     "pre-commit": "pnpm run --filter odop-* pre-commit",
     "prepare": "husky install"
@@ -16,6 +17,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.11.5",
     "husky": "^8.0.3",
     "only-allow": "^1.2.0"
   }

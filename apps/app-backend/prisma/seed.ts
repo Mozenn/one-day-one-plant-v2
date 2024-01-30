@@ -3,10 +3,8 @@ import { hash } from 'bcrypt';
 
 const prisma = new PrismaClient();
 async function main() {
-  const subalpineFir = await prisma.plant.upsert({
-    where: { name: 'subalpine fir' },
-    update: {},
-    create: {
+  const plantsData = [
+    {
       name: 'subalpine fir',
       scientificName: 'abies lasiocarpa',
       family: 'pinaceae',
@@ -20,11 +18,7 @@ async function main() {
         },
       ],
     },
-  });
-  const sourCherry = await prisma.plant.upsert({
-    where: { name: 'sour cherry' },
-    update: {},
-    create: {
+    {
       name: 'sour cherry',
       scientificName: 'prunus cerasus',
       family: 'rosaceae',
@@ -42,11 +36,7 @@ async function main() {
         },
       ],
     },
-  });
-  const chineseWitchHazel = await prisma.plant.upsert({
-    where: { name: 'chinese witch hazel' },
-    update: {},
-    create: {
+    {
       name: 'chinese witch hazel',
       scientificName: 'hamamelis mollis',
       family: 'hamamelidaceae',
@@ -60,11 +50,7 @@ async function main() {
         },
       ],
     },
-  });
-  const asianPear = await prisma.plant.upsert({
-    where: { name: 'asian pear' },
-    update: {},
-    create: {
+    {
       name: 'asian pear',
       scientificName: 'pyrus pyrifolia',
       family: 'rosaceae',
@@ -78,11 +64,7 @@ async function main() {
         },
       ],
     },
-  });
-  const silverMapple = await prisma.plant.upsert({
-    where: { name: 'silver maple' },
-    update: {},
-    create: {
+    {
       name: 'silver maple',
       scientificName: 'acer saccharinum',
       family: 'sapindaceae',
@@ -96,11 +78,7 @@ async function main() {
         },
       ],
     },
-  });
-  const cucumberTree = await prisma.plant.upsert({
-    where: { name: 'cucumber tree' },
-    update: {},
-    create: {
+    {
       name: 'cucumber tree',
       scientificName: 'magnolia acuminata',
       family: 'magnoliaceae',
@@ -114,11 +92,7 @@ async function main() {
         },
       ],
     },
-  });
-  const koreanRhododendron = await prisma.plant.upsert({
-    where: { name: 'korean rhododendron' },
-    update: {},
-    create: {
+    {
       name: 'korean rhododendron',
       scientificName: 'rhododendron mucronulatum',
       family: 'ericaceae',
@@ -132,11 +106,7 @@ async function main() {
         },
       ],
     },
-  });
-  const waterLettuce = await prisma.plant.upsert({
-    where: { name: 'water lettuce' },
-    update: {},
-    create: {
+    {
       name: 'water lettuce',
       scientificName: 'pistia',
       family: 'araceae',
@@ -150,11 +120,7 @@ async function main() {
         },
       ],
     },
-  });
-  const sessileOak = await prisma.plant.upsert({
-    where: { name: 'sessile oak' },
-    update: {},
-    create: {
+    {
       name: 'sessile oak',
       scientificName: 'quercus petraea',
       family: 'fagaceae',
@@ -168,18 +134,202 @@ async function main() {
         },
       ],
     },
-  });
-  console.log({
-    subalpineFir,
-    sourCherry,
-    chineseWitchHazel,
-    asianPear,
-    silverMapple,
-    cucumberTree,
-    koreanRhododendron,
-    waterLettuce,
-    sessileOak,
-  });
+    {
+      name: 'amazon sword',
+      scientificName: 'echinodorus bleheri',
+      family: 'alismataceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/8/81/Echinodorus_grisebachii_-_flower_view_01.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Echinodorus_bleheri',
+        },
+      ],
+    },
+    {
+      name: 'anacharis',
+      scientificName: 'elodea canadensis',
+      family: 'hydrocharitaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/ElodeaCanadensis.jpg/220px-ElodeaCanadensis.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Elodea_canadensis',
+        },
+      ],
+    },
+    {
+      name: 'red root floaters',
+      scientificName: 'phylanthus fluitans',
+      family: 'phylanthaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Phyllanthus_fluitans_2010-06-20_01.jpg/220px-Phyllanthus_fluitans_2010-06-20_01.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Phylanthus_fluitans',
+        },
+      ],
+    },
+    {
+      name: 'lavender',
+      scientificName: 'lavandula',
+      family: 'lamiaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Single_lavender_flower02.jpg/220px-Single_lavender_flower02.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Lavandula',
+        },
+      ],
+    },
+    {
+      name: 'bamboo',
+      scientificName: 'bambusoideae',
+      family: 'poaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Bamboo_forest.jpg/220px-Bamboo_forest.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Bamboo',
+        },
+      ],
+    },
+    {
+      name: 'psilotaceae fern',
+      scientificName: 'psilotaceae',
+      family: 'psilotaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/0/0d/Psilotum.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Psilotaceae',
+        },
+      ],
+    },
+    {
+      name: 'orchid',
+      scientificName: 'orchidaceae',
+      family: 'orchidaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/White_orchid_in_Clara_bog._03.jpg/220px-White_orchid_in_Clara_bog._03.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Orchidaceae',
+        },
+      ],
+    },
+    {
+      name: 'daffodil',
+      scientificName: 'narcissus',
+      family: 'amaryllidaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Narcissus_poeticus_subsp._radiiflorus.1658.jpg/220px-Narcissus_poeticus_subsp._radiiflorus.1658.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Narcissus_(plant)',
+        },
+      ],
+    },
+    {
+      name: 'cactus',
+      scientificName: 'cactaceae',
+      family: 'cactaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Singapore_Botanic_Gardens_Cactus_Garden_2.jpg/225px-Singapore_Botanic_Gardens_Cactus_Garden_2.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Cactus',
+        },
+      ],
+    },
+    {
+      name: 'tulip',
+      scientificName: 'tulipa',
+      family: 'liliaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG/220px-%D7%A6%D7%91%D7%A2%D7%95%D7%A0%D7%99%D7%9D.JPG',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Tulip',
+        },
+      ],
+    },
+    {
+      name: 'fuchsia',
+      scientificName: 'fuchsia',
+      family: 'onagraceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Brincos_De_Princesa.jpg/220px-Brincos_De_Princesa.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Fuchsia',
+        },
+      ],
+    },
+    {
+      name: 'oshima cherry',
+      scientificName: 'prunus speciosa',
+      family: 'rosaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/%C5%8Cshima-zakura2.jpg/220px-%C5%8Cshima-zakura2.jpg',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Prunus_speciosa',
+        },
+      ],
+    },
+    {
+      name: 'aloe vera',
+      scientificName: 'aloe vera',
+      family: 'xanthorrhoeaceae',
+      createdAt: new Date(),
+      imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Aloe_vera_flower_inset.png/260px-Aloe_vera_flower_inset.png',
+      urls: [
+        {
+          source: 'wikipedia',
+          url: 'https://en.wikipedia.org/wiki/Aloe_vera',
+        },
+      ],
+    },
+  ];
+
+  const upsertPlant = async (plantData) => {
+    const plant = await prisma.plant.upsert({
+      where: { name: plantData.name },
+      update: {},
+      create: plantData,
+    });
+    console.log(plant);
+  };
+
+  for (const plantData of plantsData) {
+    await upsertPlant(plantData);
+  }
 
   const user1 = await prisma.user.upsert({
     where: { email: 'gauthier.cassany@gmail.com' },

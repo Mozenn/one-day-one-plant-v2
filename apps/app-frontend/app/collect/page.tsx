@@ -28,7 +28,6 @@ const Collect = () => {
   );
 
   useEffect(() => {
-    console.log("NEW DATA", data);
     if (data) {
       setInCooldown(
         new Date().getTime() - new Date(data.lastDrawDate).getTime() <
@@ -65,7 +64,6 @@ const Collect = () => {
       setTimeout(() => {
         setCollected(true);
         mutate();
-        console.log("MUTATE");
       }, 500);
     }
   };

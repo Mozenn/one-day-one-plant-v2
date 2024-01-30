@@ -38,7 +38,7 @@ export default function Home() {
       title: "Draw a plant each day",
       text: `
       Grow your collection by drawing a plant at random each day, 
-      and increase your score of worshiper of flora 🌱
+      and increase your score of worshiper of flora
       `,
       colored: true,
       alignLeft: true,
@@ -49,7 +49,7 @@ export default function Home() {
       id: "learn",
       title: "Learn about earth flora",
       text: `
-      Use the provided links and learn more about your daily draw 🤓
+      Use the provided links and learn more about your daily draw
       `,
       colored: false,
       alignLeft: false,
@@ -61,7 +61,7 @@ export default function Home() {
       title: "Gotta Collect ‘Em All!",
       text: `
       Complete your collection, and become an ultimate Worshiper of
-      Flora 🎓
+      Flora
       `,
       colored: true,
       alignLeft: true,
