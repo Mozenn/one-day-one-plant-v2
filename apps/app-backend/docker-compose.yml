@@ -1,0 +1,43 @@
+version: '3.9'
+services:
+  postgres:
+    container_name: postgres
+    image: 'postgres:16.1'
+    env_file:
+      - ./.env
+    networks:
+      - backend
+    volumes:
+      - ./db-data:/var/lib/postgresql/data/
+      - ./sql:/docker-entrypoint-initdb.d/:ro
+    ports:
+      - '127.0.0.1:5432:5432'
+  pgadmin:
+    container_name: pgadmin
+    image: 'dpage/pgadmin4:7.8'
+    env_file:
+      - ./.env
+    networks:
+      - backend
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
+    ports:
+      - '5050:80'
+  odop-core:
+    container_name: odop-core
+    image: 'odop-core'
+    env_file:
+      - ./.env
+    networks:
+      - backend
+    ports:
+      - '127.0.0.1:8080:80'
+
+networks:
+  backend:
+    name: backend
+    driver: bridge
+
+volumes:
+  db-data:
+  pgadmin-data:

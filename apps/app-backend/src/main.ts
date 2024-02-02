@@ -23,13 +23,12 @@ async function bootstrap() {
   await app.register(helmet);
 
   const configService = app.get(ConfigService);
-  const frontendUrl = configService.get('FRONTEND_URL');
-  if (frontendUrl) {
-    app.enableCors({
-      origin: [configService.get('FRONTEND_URL'), /127\.0\.0\.1/],
-      credentials: true,
-    });
-  }
+  const originUrl = configService.get('ORIGIN_URL');
+  const originTestUrl = configService.get('ORIGIN_TEST_URL');
+  app.enableCors({
+    origin: [originUrl, originTestUrl],
+    credentials: true,
+  });
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.useGlobalInterceptors(new RemovePasswordInterceptor());
