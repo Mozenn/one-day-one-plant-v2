@@ -8,6 +8,8 @@ class EnvironmentVariables {
   DRAW_COOLDOWN_MS: number;
   @IsString()
   FRONTEND_URL: string;
+  @IsNumber()
+  APPLICATION_PORT: number;
   @IsString()
   DEFAULT_PLANT_NAME: string;
   @IsString()

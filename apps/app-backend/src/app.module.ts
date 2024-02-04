@@ -30,7 +30,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.env.dev', '.env'],
-      ignoreEnvFile: process.env.NODE_ENV === 'production',
+      ignoreEnvFile: false, //process.env.NODE_ENV === 'production',
       validate: validate,
     }),
     LoggerModule.forRoot({

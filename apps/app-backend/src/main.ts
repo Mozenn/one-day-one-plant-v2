@@ -37,6 +37,6 @@ async function bootstrap() {
   app.useGlobalFilters(new SentryFilter(httpAdapter));
 
   app.useLogger(app.get(Logger));
-  await app.listen(3000);
+  await app.listen(configService.get('APPLICATION_PORT'));
 }
 bootstrap();
