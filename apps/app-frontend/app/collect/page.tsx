@@ -101,7 +101,7 @@ const Collect = () => {
   const renderImage = () => {
     const readyToCollect =
       !inCooldown || !data || data.lastDrawPlant === undefined;
-    // border-solid border-primary-dark border-[0.8rem]
+
     return (
       <div className="bg-white shadow-[0_0px_10px_0px_rgba(0,0,0,0.4)] rounded-3xl">
         <img

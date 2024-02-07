@@ -12,6 +12,7 @@ import { TaskController } from './shared/task.controller';
 import { validate } from './shared/env.validation';
 import { SentryModule } from './shared/sentry.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+
 @Module({
   imports: [
     UserModule,
@@ -36,7 +37,23 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
     LoggerModule.forRoot({
       pinoHttp: {
         transport: {
-          target: 'pino-pretty',
+          targets: [
+            {
+              level: 'trace',
+              target: 'pino/file',
+              options: {
+                destination:
+                  process.env.NODE_ENV === 'production'
+                    ? `/var/log/odop/app.log`
+                    : 'logs/app.log',
+              },
+            },
+            {
+              level: 'trace',
+              target: 'pino-pretty',
+              options: {},
+            },
+          ],
         },
       },
     }),

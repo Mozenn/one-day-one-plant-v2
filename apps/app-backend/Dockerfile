@@ -3,7 +3,7 @@ FROM node:20-alpine
 WORKDIR /user/src/app
 
 COPY . .
- 
+
 RUN npm ci --omit=dev
 
 RUN npx prisma generate
