@@ -23,10 +23,13 @@ async function bootstrap() {
   await app.register(helmet);
 
   const configService = app.get(ConfigService);
-  const originUrl = configService.get('ORIGIN_URL');
-  const originTestUrl = configService.get('ORIGIN_TEST_URL');
+  const originUrlCount = configService.get('ORIGIN_URL_COUNT');
+  const originUrls = [];
+  for (let i = 0; i < originUrlCount; i++) {
+    originUrls.push(configService.get(`ORIGIN_URL_${i}`));
+  }
   app.enableCors({
-    origin: [originUrl, originTestUrl],
+    origin: [...originUrls],
     credentials: true,
   });
 
