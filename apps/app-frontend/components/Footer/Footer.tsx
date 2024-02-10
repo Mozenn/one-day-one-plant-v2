@@ -16,7 +16,7 @@ const Footer = () => {
           About
         </Link>
       </div>
-      <p>© Copyright 2023 One Day One Plant</p>
+      <p>© Copyright 2024 One Day One Plant</p>
     </footer>
   );
 };

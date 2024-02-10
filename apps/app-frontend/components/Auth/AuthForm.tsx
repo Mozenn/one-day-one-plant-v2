@@ -65,7 +65,7 @@ const AuthForm = <T extends AuthFieldData, S extends AuthFormInputs>({
       className="flex flex-col items-center flex-1 min-h-[75vh] pt-28 pt-25 px-0 bg-gradient-linear"
       role="main"
     >
-      <div className="flex items-center flex-col w-2/5 bg-white border-solid border-primary-dark border-4 rounded-3xl p-12 shadow-xl">
+      <div className="flex items-center flex-col w-4/5 md:w-2/5 bg-white border-solid border-primary-dark border-4 rounded-3xl p-12 shadow-xl">
         <img
           className="h-[12rem] w-auto absolute top-28"
           src="/images/logo.png"

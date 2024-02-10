@@ -64,7 +64,7 @@ const Collect = () => {
       setTimeout(() => {
         setCollected(true);
         mutate();
-      }, 500);
+      }, 1000);
     }
   };
 

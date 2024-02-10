@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import useAuth from "./useAuth";
+import { devLog } from "@/lib/devUtils";
 
 export type UseFetchParams = {
   [key: string]: any;
@@ -41,7 +42,7 @@ function useFetch<T>(
       let result: any = {};
 
       for (const fetchItem of fetchItems) {
-        console.log("fetch", fetchItem);
+        devLog("fetch", fetchItem);
         const res = await authFetch(fetchItem.url, {
           params: fetchItem.params,
           headers: fetchItem.headers,
@@ -50,7 +51,7 @@ function useFetch<T>(
         result = resultAccumulator(await res.json(), result);
       }
 
-      console.log("fetch result", result);
+      devLog("fetch result", result);
 
       return result;
     },

@@ -75,7 +75,7 @@ export default function Home() {
       id: 1,
       url: "/images/landing/hero/acer-saccharinum.jpg",
       alt: "image of a acer saccharinum",
-      additionalStyle: `rotate-[30deg] top-40 left-20 hidden md:block`,
+      additionalStyle: `rotate-[30deg] top-40 left-20 hidden xl:block`,
       additionalImageStyle: "border-primary",
     },
     {
@@ -91,7 +91,7 @@ export default function Home() {
       url: "/images/landing/hero/edelweiss.jpg",
       alt: "image of a edelweiss",
       additionalStyle:
-        "rotate-[-24deg] top-[45rem] left-[50rem] hidden lg:block",
+        "rotate-[-24deg] top-[45rem] left-[50rem] hidden xl:block",
       additionalImageStyle: "border-primary",
     },
     {
@@ -114,7 +114,7 @@ export default function Home() {
       url: "/images/landing/hero/subalpinefir.jpg",
       alt: "image of a subalpinefir",
       additionalStyle:
-        "rotate-[-25deg] top-[10rem] left-[38rem] !w-48 hidden md:block",
+        "rotate-[-25deg] top-[10rem] left-[38rem] !w-48 hidden xl:block",
       additionalImageStyle: "border-secondary",
     },
     {
@@ -122,7 +122,7 @@ export default function Home() {
       url: "/images/landing/hero/subalpinefir2.jpg",
       alt: "image of a subalpinefir",
       additionalStyle:
-        "rotate-[5deg] top-[38rem] left-[15rem] !w-48 hidden md:block",
+        "rotate-[5deg] top-[38rem] left-[15rem] !w-48 hidden xl:block",
       additionalImageStyle: "border-primary",
     },
   ];
@@ -135,7 +135,7 @@ export default function Home() {
           role="main"
         >
           <h1
-            className="text-primary-dark text-4xl p-4 rounded-full font-bold mt-1"
+            className="text-primary-dark text-4xl p-4 rounded-full font-bold mt-1 text-center"
             role="heading"
           >
             Welcome Back!
@@ -159,7 +159,7 @@ export default function Home() {
         >
           <section className="flex flex-col items-center justify-center w-full h-[100vh]">
             <h1
-              className="text-primary-dark text-5xl font-semibold p-4 rounded-full"
+              className="text-primary-dark text-5xl font-semibold p-4 rounded-full text-center"
               role="heading"
             >
               Welcome to One Day One Plant !

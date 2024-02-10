@@ -1,3 +1,5 @@
+"use client";
+
 import useAuth from "@/hooks/useAuth";
 import useLoader from "@/hooks/useLoader";
 import { useRouter } from "next/navigation";

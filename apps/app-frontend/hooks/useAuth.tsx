@@ -1,6 +1,7 @@
 import { usePathname } from "next/navigation";
 import useLocalStorage from "./useLocalStorage";
 import { User } from "@/types/user";
+import { devLog } from "@/lib/devUtils";
 
 export type AuthFetchParams = {
   [key: string]: any;
@@ -22,7 +23,7 @@ const useAuth = () => {
   );
 
   const login = async (data: any) => {
-    console.log("login");
+    devLog("login");
     const res = await authFetch(`/auth/login`, {
       method: "POST",
       body: JSON.stringify(data),
@@ -30,8 +31,8 @@ const useAuth = () => {
 
     if (res.status === 200) {
       const user = await res.json();
-      console.log("login res headers");
-      res.headers.forEach((h) => console.log("header:", h));
+      devLog("login res headers");
+      res.headers.forEach((h) => devLog("header:", h));
 
       setAuthId(user.id);
       if (!user.verified) {
@@ -50,7 +51,7 @@ const useAuth = () => {
   };
 
   const register = async (data: any) => {
-    console.log("register");
+    devLog("register");
     const res = await authFetch(`/auth/signup`, {
       method: "POST",
       body: JSON.stringify(data),
@@ -75,7 +76,7 @@ const useAuth = () => {
     token: string,
     displayToastOnSuccess: boolean,
   ) => {
-    console.log("sign in with google");
+    devLog("sign in with google");
     let res;
     try {
       res = await authFetch(`/auth/signin-google`, {
@@ -107,7 +108,7 @@ const useAuth = () => {
   };
 
   const logout = async (redirectUri?: string | undefined) => {
-    console.log("logout");
+    devLog("logout");
     const res = await authFetch(`/auth/logout`, {
       method: "POST",
       body: JSON.stringify({}),
@@ -151,7 +152,7 @@ const useAuth = () => {
   };
 
   const redirectTo = (path: string) => {
-    console.log(`redirect to ${path} from ${pathname}`);
+    devLog(`redirect to ${path} from ${pathname}`);
     if (pathname == path) {
       window.location.reload();
     } else {
