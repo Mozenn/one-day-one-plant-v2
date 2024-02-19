@@ -81,7 +81,7 @@ const Login = () => {
             console.log("Login Failed");
           },
           text: "signin_with",
-          useOneTap: true,
+          useOneTap: false,
         }}
       />
     </GoogleOAuthProvider>

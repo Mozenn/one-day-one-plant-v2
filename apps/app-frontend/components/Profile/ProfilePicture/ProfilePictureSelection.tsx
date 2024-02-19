@@ -53,13 +53,14 @@ const ProfilePictureSelection = ({
     <div
       className="absolute top-40 left-64 box-border w-96 h-72 bg-white text-primary-dark
     rounded-xl border-solid border-primary-dark shadow-[0_0px_10px_0px_rgba(0,0,0,0.4)]
-    flex flex-col
+    flex flex-col z-20
     "
       ref={rootRef}
     >
       {plants.length > 0 ? (
         <div
           className={`flex flex-wrap p-2 overflow-scroll overflow-x-hidden justify-start items-center h-full w-full ${styles.commentsContainer}`}
+          data-testid="profile-picture-selection"
         >
           {plants.map((plant) => (
             <ProfilePictureSelectionThumbnail

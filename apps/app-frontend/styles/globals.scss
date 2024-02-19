@@ -21,28 +21,28 @@
   --color-background-hex: 255, 255, 255;
   --color-background-dark: rgb(87, 87, 87);
 
-  --color-grade-novice: rgb(41, 244, 0); //#29f400
-  --color-grade-hobbyist: rgb(216, 145, 12); //#d8910c
-  --color-grade-connoisseur: rgb(0, 185, 227); //#00b9e3
-  --color-grade-scholar: rgb(0, 48, 207); //#0030cf
-  --color-grade-worshiper: rgb(133, 0, 186); //#8500ba
+  --color-grade-novice: rgb(68, 182, 64); //#44b640
+  --color-grade-hobbyist: rgb(187, 135, 39); //#bb8727
+  --color-grade-connoisseur: rgb(29, 158, 187); //#1d9ebb
+  --color-grade-scholar: rgb(24, 51, 141); //#18338d
+  --color-grade-worshiper: rgb(119, 46, 148); //#772e94
 
   --color-rarity-common: var(--color-grade-novice);
   --color-rarity-uncommon: var(--color-grade-hobbyist);
   --color-rarity-rare: var(--color-grade-connoisseur);
   --color-rarity-ultra-rare: var(--color-grade-scholar);
 
-  --filter-rarity-common: invert(67%) sepia(24%) saturate(7487%)
-    hue-rotate(68deg) brightness(112%) contrast(116%);
+  --filter-rarity-common: invert(54%) sepia(94%) saturate(372%)
+    hue-rotate(69deg) brightness(93%) contrast(83%);
 
-  --filter-rarity-uncommon: invert(58%) sepia(83%) saturate(492%)
-    hue-rotate(359deg) brightness(87%) contrast(95%);
+  --filter-rarity-uncommon: invert(46%) sepia(80%) saturate(396%)
+    hue-rotate(0deg) brightness(103%) contrast(94%);
 
-  --filter-rarity-rare: invert(44%) sepia(54%) saturate(3126%)
-    hue-rotate(161deg) brightness(109%) contrast(105%);
+  --filter-rarity-rare: invert(47%) sepia(59%) saturate(550%) hue-rotate(144deg)
+    brightness(98%) contrast(98%);
 
-  --filter-rarity-ultra-rare: invert(10%) sepia(79%) saturate(7269%)
-    hue-rotate(225deg) brightness(87%) contrast(115%);
+  --filter-rarity-ultra-rare: invert(25%) sepia(50%) saturate(1721%)
+    hue-rotate(254deg) brightness(90%) contrast(101%);
 
   background-color: var(--color-background);
   color: var(--color-primary-dark);

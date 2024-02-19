@@ -8,18 +8,21 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "test": "npx playwright test e2e.spec.ts --ui",
-    "format": "prettier '!./apps/app-backend/database' --write \"**/*.{ts,tsx,md,json,hbs,js,yml}\"",
+    "test": "npm run cypress",
+    "format": "prettier '!./apps/app-backend/database' --write \"**/*.{ts,tsx,md,json,hbs,js,yml,config.js}\"",
     "pre-commit": "pnpm run --filter odop-* pre-commit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress:open": "cypress open",
+    "cypress": "cypress run --browser chrome"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.40.1",
     "@types/node": "^20.11.5",
+    "cypress": "^13.6.4",
     "husky": "^8.0.3",
-    "only-allow": "^1.2.0"
+    "only-allow": "^1.2.0",
+    "turbo": "^1.12.4"
   }
 }

@@ -25,6 +25,7 @@ const ProfilePicture = ({
           transition-shadow duration-200
           hover:shadow-plant-thumbnail
           -outline-offset-2 outline-4 outline-primary-dark outline`}
+      data-testid="profile-picture"
       style={{
         backgroundImage: `url(${user.profilePlantUrl})`,
         borderColor: `var(--color-grade-${getGradeFromScore(user.score)})`,
@@ -34,6 +35,7 @@ const ProfilePicture = ({
         <button
           className={`bg-secondary-passthrough hover:bg-secondary transition-colors duration-200
           p-3 hover:cursor-pointer rounded-3xl `}
+          data-testid="edit-profile-picture-button"
           onClick={() => setPictureSelectionVisible((pastValue) => !pastValue)}
         >
           <img

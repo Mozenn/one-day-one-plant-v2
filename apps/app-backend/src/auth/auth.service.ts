@@ -68,7 +68,9 @@ export class AuthService {
         email: tokenData.email,
       });
     } else if (user.password) {
-      throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
+      const message = 'User already exists';
+      this.logger.error(message);
+      throw new HttpException(message, HttpStatus.BAD_REQUEST);
     }
 
     return user;

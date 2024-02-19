@@ -102,7 +102,7 @@ const SignUp = () => {
             console.log("SignUp Failed");
           },
           text: "signup_with",
-          useOneTap: true,
+          useOneTap: false,
         }}
       />
     </GoogleOAuthProvider>

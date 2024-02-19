@@ -14,6 +14,7 @@ const ProfilePictureSelectionThumbnail = ({
       transition-transform hover:scale-110 duration-200
       [&_*]:cursor-[inherit] [&_label]:text-lg [&_label]:font-extrabold
     "
+      data-testid={`profile-picture-selection-${plantData.id}`}
     >
       <div
         className="flex flex-col items-start 

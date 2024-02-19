@@ -87,7 +87,7 @@ async function main() {
         'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Magnolia_acuminata.jpg/220px-Magnolia_acuminata.jpg',
       urls: [
         {
-          label: 'wikipedia',
+          source: 'wikipedia',
           url: 'https://en.wikipedia.org/wiki/Magnolia_acuminata',
         },
       ],

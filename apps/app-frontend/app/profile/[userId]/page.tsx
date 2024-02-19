@@ -21,7 +21,14 @@ const Profile = ({ params }: { params: { userId: string } }) => {
     <AuthGuard>
       <main className="flex flex-col sm:flex-row overflow-hidden min-h-[80vh]">
         <aside className="flex flex-col items-center pt-32 pb-0 px-12 bg-white">
-          <ProfilePicture user={user} onNewPictureSelected={() => mutate()} />
+          <ProfilePicture
+            user={user}
+            onNewPictureSelected={() =>
+              setTimeout(() => {
+                mutate();
+              }, 300)
+            }
+          />
           <h2 className="font-semibold text-2xl mt-2">{user.username}</h2>
           <div className="flex items-center text-xl">
             <div className="flex items-center mr-12">

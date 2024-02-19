@@ -162,7 +162,7 @@ export default function Home() {
               className="text-primary-dark text-5xl font-semibold p-4 rounded-full text-center"
               role="heading"
             >
-              Welcome to One Day One Plant !
+              Welcome to One Day One Plant!
             </h1>
             {heroCapsules.map((capsule) => (
               <HeroCapsule key={capsule.id} capsuleProps={capsule} />

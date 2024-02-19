@@ -125,7 +125,10 @@ const Collect = () => {
     if (inCooldown && data && data.lastDrawPlant !== undefined) {
       return (
         <Link href={`/plant/${data.lastDrawPlant.id}`} passHref>
-          <p className="text-2xl mt-4 font-bold underline transition-colors duration-200 hover:text-primary-light active:text-primary">
+          <p
+            className="text-2xl mt-4 font-bold underline transition-colors duration-200 hover:text-primary-light active:text-primary"
+            data-testid="plant-link"
+          >
             {capitalize(data.lastDrawPlant.name)}
           </p>
         </Link>
