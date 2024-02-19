@@ -39,6 +39,8 @@ jobs:
       - run: pnpm run build
   test:
     runs-on: ubuntu-latest
+    env:
+      CYPRESS_BASE_URL: ${{ vars.CYPRESS_BASE_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -48,4 +50,4 @@ jobs:
         with:
           version: 8
       - run: pnpm install
-      - run: CYPRESS_BASE_URL=https://www.onedayoneplant.com/ pnpm run test
+      - run: CYPRESS_BASE_URL=$CYPRESS_BASE_URL pnpm run test
