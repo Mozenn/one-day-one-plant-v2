@@ -48,4 +48,4 @@ jobs:
         with:
           version: 8
       - run: pnpm install
-      - run: pnpm run test
+      - run: CYPRESS_BASE_URL=https://www.onedayoneplant.com/ pnpm run test
