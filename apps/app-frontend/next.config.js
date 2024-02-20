@@ -15,6 +15,7 @@ module.exports = withSentryConfig(
 
     // Suppresses source map uploading logs during build
     silent: true,
+    dryRun: true,
     org: "mozenn",
     project: "one-day-one-plant",
   },

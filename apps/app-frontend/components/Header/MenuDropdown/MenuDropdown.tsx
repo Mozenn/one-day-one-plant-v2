@@ -49,7 +49,7 @@ const MenuDropdown = ({ closeDropdown }: { closeDropdown: () => void }) => {
 
   return ReactDOM.createPortal(
     <div
-      className="absolute z-20 top-20 right-3 box-border h-auto inline-block bg-white text-primary-dark
+      className="fixed z-20 top-20 right-3 box-border h-auto inline-block bg-white text-primary-dark
     rounded-xl border-solid border-primary-dark shadow-[0_0px_10px_0px_rgba(0,0,0,0.4)]"
     >
       <ul className="list-none p-2 flex flex-col items-center">
