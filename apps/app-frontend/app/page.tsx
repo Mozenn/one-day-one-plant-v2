@@ -106,7 +106,7 @@ export default function Home() {
       url: "/images/landing/hero/sour-cherry.jpg",
       alt: "image of a sour cherry",
       additionalStyle:
-        "rotate-[-15deg] top-[38rem] left-[80rem] hidden 2xl:block",
+        "rotate-[-15deg] top-[45rem] left-[80rem] hidden 2xl:block",
       additionalImageStyle: "border-primary",
     },
     {
