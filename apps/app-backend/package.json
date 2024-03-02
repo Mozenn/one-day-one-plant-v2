@@ -83,7 +83,7 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.3"
   },
-  "packageManager": "pnpm",
+  "packageManager": "pnpm@v8.15.4",
   "jest": {
     "moduleFileExtensions": [
       "js",

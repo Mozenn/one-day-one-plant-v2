@@ -18,7 +18,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm",
+  "packageManager": "pnpm@v8.15.4",
   "devDependencies": {
     "@types/node": "^20.11.24",
     "cypress": "^13.6.6",
