@@ -4,25 +4,16 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
-WORKDIR /user/src/app
+WORKDIR /app
 
 COPY . .
 
-RUN pnpm install --prod
-
-RUN pnpm dlx prisma generate
- 
-RUN pnpm run build
-
-FROM base AS prod-deps
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod 
-
 FROM base AS build
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod 
 RUN pnpm run build
  
 FROM base
-COPY --from=prod-deps /app/node_modules /app/node_modules
+COPY --from=build /app/node_modules /app/node_modules
 COPY --from=build /app/dist /app/dist
 
 USER node
