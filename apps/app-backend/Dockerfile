@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . .
 
 FROM base AS build
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod 
+RUN pnpm install --prod 
 RUN pnpm run build
  
 FROM base
