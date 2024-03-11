@@ -58,9 +58,9 @@ export default function Home() {
     },
     {
       id: "collect",
-      title: "Gotta Collect ‘Em All!",
+      title: "Collect plants",
       text: `
-      Complete your collection, and become an ultimate Worshiper of
+      Complete your plant collection, and become an ultimate Worshiper of
       Flora
       `,
       colored: true,
