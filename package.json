@@ -11,19 +11,19 @@
     "test": "npm run cypress",
     "format": "prettier '!./apps/app-backend/database' --write \"**/*.{ts,tsx,md,json,hbs,js,yml,config.js}\"",
     "pre-commit": "pnpm run --filter odop-* pre-commit",
-    "prepare": "husky install",
+    "prepare": "husky",
     "cypress:open": "cypress open",
     "cypress": "cypress run --browser chrome"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@v8.15.4",
+  "packageManager": "pnpm@9.14.2",
   "devDependencies": {
-    "@types/node": "^20.11.24",
-    "cypress": "^13.6.6",
-    "husky": "^9.0.11",
+    "@types/node": "^22.0.2",
+    "cypress": "^13.13.2",
+    "husky": "^9.1.4",
     "only-allow": "^1.2.1",
-    "turbo": "^1.12.4"
+    "turbo": "^2.0.11"
   }
 }
